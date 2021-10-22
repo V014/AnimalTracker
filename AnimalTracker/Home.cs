@@ -27,7 +27,7 @@ namespace AnimalTracker
         }
 
 /* This section pulls data from the database and fills the datagrids when called */
-        // Returns all data from the animal table
+// Returns all data from the animal table
         public void LoadAnimals()
         {
             string query = "SELECT * FROM Animal";
@@ -193,7 +193,6 @@ namespace AnimalTracker
                     // this happens when we have an error
                     MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
             catch (Exception ex)
             {
@@ -226,6 +225,16 @@ namespace AnimalTracker
             {
                 MessageBox.Show("Failed to insert!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void materialTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // this displays the data in the meals table when meals tab selected
+            if(materialTabControl.SelectedTab == meal_page)
+            {
+                LoadMeals();
+            }
+
         }
     }
 }
