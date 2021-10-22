@@ -63,13 +63,6 @@ namespace AnimalTracker
             animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
         }
 
-        // load meal table when program starts
-        private void Meal_Load(object sender, EventArgs e)
-        {
-            LoadMeals();
-            mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
-        }
-
 /* this section fills and resets the fields after user interaction */
         // fill textboxes with data when user clicks a cell
         public void animalDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -233,6 +226,7 @@ namespace AnimalTracker
             if(materialTabControl.SelectedTab == meal_page)
             {
                 LoadMeals();
+                mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
 
         }
