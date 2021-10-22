@@ -55,6 +55,8 @@ namespace AnimalTracker
             con.Close();
         }
 
+        // Returns all data from requested tables
+
 /* this section loads the data from the pull function on runtime */
         // load animal table when program starts
         private void Home_Load(object sender, EventArgs e)
