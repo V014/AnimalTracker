@@ -190,6 +190,7 @@ namespace AnimalTracker
                 }
                 catch (Exception)
                 {
+                    // this happens when we have an error
                     MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
