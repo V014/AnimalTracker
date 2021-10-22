@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
-using System.Xml.Serialization;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Data.SQLite;
@@ -27,45 +24,29 @@ namespace AnimalTracker
         }
 
 /* This section pulls data from the database and fills the datagrids when called */
-// Returns all data from the animal table
-        public void LoadAnimals()
-        {
-            string query = "SELECT * FROM Animal";
-            var con = Connection.GetConnection();
-            var DB = new SQLiteDataAdapter(query, con);
-            var DS = new DataSet();
-            var DT = new DataTable();
-            DB.Fill(DS);
-            DT = DS.Tables[0];
-            animalDataGrid.DataSource = DT;
-            con.Close();
-        }
-
-        // Returns all data from the meals table
-        public void LoadMeals()
-        {
-            string query = "SELECT * FROM Meal";
-            var con = Connection.GetConnection();
-            var DB = new SQLiteDataAdapter(query, con);
-            var DS = new DataSet();
-            var DT = new DataTable();
-            DB.Fill(DS);
-            DT = DS.Tables[0];
-            mealDataGrid.DataSource = DT;
-            con.Close();
-        }
-
         // Returns all data from requested tables
+        private void LoadData(string query, DataGridView dataGrid)
+        {
+            var con = Connection.GetConnection();
+            var DB = new SQLiteDataAdapter(query, con);
+            var DS = new DataSet();
+            var DT = new DataTable();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            dataGrid = DT;
+            con.Close();
+        }
 
-/* this section loads the data from the pull function on runtime */
+        /* this section loads the data from the pull function on runtime */
         // load animal table when program starts
         private void Home_Load(object sender, EventArgs e)
         {
-            LoadAnimals();
+            string query = "SELECT * FROM Animal";
+            LoadData(query, animalDataGrid.DataSource);
             animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
         }
 
-/* this section fills and resets the fields after user interaction */
+        /* this section fills and resets the fields after user interaction */
         // fill textboxes with data when user clicks a cell
         public void animalDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -125,7 +106,8 @@ namespace AnimalTracker
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
                 MessageBox.Show("Details updated!");
-                LoadAnimals();
+                string query = "SELECT * FROM Animal";
+                LoadData(query);
 
                 // refresh fields
                 name_txt.Text = " ";
@@ -152,7 +134,8 @@ namespace AnimalTracker
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
                 MessageBox.Show("Animal added!");
-                LoadAnimals();
+                string query = "SELECT * FROM Animal";
+                LoadData(query);
 
                 // refresh fields
                 name_txt.Text = " ";
@@ -180,7 +163,8 @@ namespace AnimalTracker
 
                     // we push the query to the AnimalControl class to process the query which links back to the connection class
                     AnimalControls.Querydb(txtQuery);
-                    LoadAnimals();
+                    string query = "SELECT * FROM Animal";
+                    LoadData(query);
                     MessageBox.Show("Animal deleted!");
                 }
                 catch (Exception)
@@ -207,7 +191,8 @@ namespace AnimalTracker
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
                 MessageBox.Show("Meal added!");
-                LoadMeals();
+                string query = "SELECT * FROM Animal";
+                LoadData(query);
 
                 // refresh fields
                 meal_txt.Text = " ";
@@ -227,7 +212,17 @@ namespace AnimalTracker
             // this displays the data in the meals table when meals tab selected
             if(materialTabControl.SelectedTab == meal_page)
             {
-                LoadMeals();
+                // Returns all data from the meals table
+                string query = "SELECT * FROM Meal";
+                LoadData(query);
+                mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            }
+            // this displays the data in the meals table when meals tab selected
+            if (materialTabControl.SelectedTab == animal_page)
+            {
+                // Returns all data from the meals table
+                string query = "SELECT * FROM Animal";
+                LoadData(query);
                 mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
 
