@@ -33,7 +33,7 @@ namespace AnimalTracker
             var DT = new DataTable();
             DB.Fill(DS);
             DT = DS.Tables[0];
-            dataGrid = DT;
+            dataGrid.DataSource = DT;
             con.Close();
         }
 
@@ -42,7 +42,7 @@ namespace AnimalTracker
         private void Home_Load(object sender, EventArgs e)
         {
             string query = "SELECT * FROM Animal";
-            LoadData(query, animalDataGrid.DataSource);
+            LoadData(query, animalDataGrid);
             animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
         }
 
@@ -107,7 +107,7 @@ namespace AnimalTracker
                 AnimalControls.Querydb(txtQuery);
                 MessageBox.Show("Details updated!");
                 string query = "SELECT * FROM Animal";
-                LoadData(query);
+                LoadData(query, animalDataGrid);
 
                 // refresh fields
                 name_txt.Text = " ";
@@ -135,7 +135,7 @@ namespace AnimalTracker
                 AnimalControls.Querydb(txtQuery);
                 MessageBox.Show("Animal added!");
                 string query = "SELECT * FROM Animal";
-                LoadData(query);
+                LoadData(query, animalDataGrid);
 
                 // refresh fields
                 name_txt.Text = " ";
@@ -164,7 +164,7 @@ namespace AnimalTracker
                     // we push the query to the AnimalControl class to process the query which links back to the connection class
                     AnimalControls.Querydb(txtQuery);
                     string query = "SELECT * FROM Animal";
-                    LoadData(query);
+                    LoadData(query, animalDataGrid);
                     MessageBox.Show("Animal deleted!");
                 }
                 catch (Exception)
@@ -192,7 +192,7 @@ namespace AnimalTracker
                 AnimalControls.Querydb(txtQuery);
                 MessageBox.Show("Meal added!");
                 string query = "SELECT * FROM Animal";
-                LoadData(query);
+                LoadData(query, animalDataGrid);
 
                 // refresh fields
                 meal_txt.Text = " ";
@@ -214,7 +214,7 @@ namespace AnimalTracker
             {
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Meal";
-                LoadData(query);
+                LoadData(query, mealDataGrid);
                 mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
             // this displays the data in the meals table when meals tab selected
@@ -222,7 +222,7 @@ namespace AnimalTracker
             {
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Animal";
-                LoadData(query);
+                LoadData(query, animalDataGrid);
                 mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
 
