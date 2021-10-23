@@ -142,7 +142,7 @@ namespace AnimalTracker
             {
                 // we build our query in the form page which has references to the its controls.
                 string txtQuery = "INSERT INTO Animal (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender_txt.Text + "','" + age_txt.Text + "','" + species_txt.
-                Text + "','" + DateTime.Now.ToString("s") + ")";
+                Text + "','" + DateTime.Now.ToString("s") + "')";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
@@ -227,7 +227,7 @@ namespace AnimalTracker
             {
                 // we build our query in the form page which has references to the its controls.
                 string txtQuery = "INSERT INTO Meal (Name, Calories, Portion, AnimalId, Date) VALUES ('" + meal_txt.Text + "','" + calories_txt.Value + "','" + portion_txt.Value + "','" + AnimalId_txt.
-                Value + "','"+ DateTime.Now.ToString("s") +")";
+                Value + "','"+ DateTime.Now.ToString("s") +"')";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
