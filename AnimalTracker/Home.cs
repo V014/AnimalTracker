@@ -13,6 +13,7 @@ namespace AnimalTracker
         public Home()
         {
             InitializeComponent();
+            // collects current date and time
             // Initialize MaterialSkinManager
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -70,123 +71,16 @@ namespace AnimalTracker
             }
         }
 
-        // fill textboxes with data when user clicks a cell
-        public void meallDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewRow row = mealDataGrid.Rows[e.RowIndex];
-                meal_txt.Text = row.Cells[1].Value.ToString();
-                calories_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
-                portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-                AnimalId_txt.Value = Convert.ToInt32(row.Cells[5].Value.ToString());
-            }
-            catch (Exception) // reset textboxes
-            {
-                MessageBox.Show("Empty field");
-                // refresh fields
-                meal_txt.Text = " ";
-                meal_txt.Focus();
-                calories_txt.Value = 0;
-                portion_txt.Value = 0;
-                AnimalId_txt.Value = 0;
-            }
-        }
-
 /* this section queries the database after user interaction */
-        // updates animal list
-        public void update_rec_btn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // we build our query in the form page which has references to its controls
-                int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Animal SET Name = '"+ @name_txt.Text +"', Age = '"+ @age_txt.Value +"', Gender = '"+ @gender_txt.Text +"', Species = '"+ @species_txt.Text +"' WHERE Id ='"+ id +"'";
-
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Details updated!");
-                string query = "SELECT * FROM Animal";
-                LoadData(query, animalDataGrid);
-
-                // refresh fields
-                name_txt.Text = " ";
-                name_txt.Focus();
-                gender_txt.Text = " ";
-                age_txt.Value = 0;
-                species_txt.Text = " ";
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to update!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // adds animal to database
-        private void add_rec_btn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Animal (Name, Gender, Age, Species) VALUES ('"+ name_txt.Text +"','"+ gender_txt.Text +"','"+ age_txt.Text +"','"+ species_txt.
-                Text +"')";
-
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Animal added!");
-                string query = "SELECT * FROM Animal";
-                LoadData(query, animalDataGrid);
-
-                // refresh fields
-                name_txt.Text = " ";
-                name_txt.Focus();
-                gender_txt.Text = " ";
-                age_txt.Value = 0;
-                species_txt.Text = " ";
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to insert!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // deletes animal from database
-        private void delete_rec_btn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                try
-                {
-                    // we build our query in the form page which has references to the its controls.
-                    int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "DELETE FROM Animal WHERE ID = '" + id + "' ";
-
-                    // we push the query to the AnimalControl class to process the query which links back to the connection class
-                    AnimalControls.Querydb(txtQuery);
-                    string query = "SELECT * FROM Animal";
-                    LoadData(query, animalDataGrid);
-                    MessageBox.Show("Animal deleted!");
-                }
-                catch (Exception)
-                {
-                    // this happens when we have an error
-                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+       
         // adds a meal to the database
         private void add_meal_btn_Click(object sender, EventArgs e)
         {
             try
             {
                 // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Meal (Name, Calories, Portion, AnimalId) VALUES ('"+ meal_txt.Text +"','"+ calories_txt.Text +"','"+ portion_txt.Text +"','"+ AnimalId_txt.
-                Text +"')";
+                string txtQuery = "INSERT INTO Meal (Name, Calories, Portion, AnimalId, Date) VALUES ('"+ meal_txt.Text +"','"+ calories_txt.Text +"','"+ portion_txt.Text +"','"+ AnimalId_txt.
+                Text +"','"+ DateTime.Now.ToString("s") +"')";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
@@ -217,15 +111,197 @@ namespace AnimalTracker
                 LoadData(query, mealDataGrid);
                 mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
-            // this displays the data in the meals table when meals tab selected
-            if (materialTabControl.SelectedTab == animal_page)
+        }
+
+        private void mealDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
             {
-                // Returns all data from the meals table
+                DataGridViewRow row = mealDataGrid.Rows[e.RowIndex];
+                name_txt.Text = row.Cells[1].Value.ToString();
+                calories_txt.Value = Convert.ToInt32(row.Cells[4].Value.ToString());
+                portion_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
+                AnimalId_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                name_txt.Text = " ";
+                name_txt.Focus();
+                calories_txt.Value = 0;
+                portion_txt.Value = 0;
+                AnimalId_txt.Value = 0;
+            }
+        }
+
+        // adds animal to database
+        private void add_ani_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to the its controls.
+                string txtQuery = "INSERT INTO Animal (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender_txt.Text + "','" + age_txt.Text + "','" + species_txt.
+                Text + "','" + DateTime.Now.ToString("s") + ")";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Animal Registered!");
                 string query = "SELECT * FROM Animal";
                 LoadData(query, animalDataGrid);
-                mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
-            }
 
+                // refresh fields
+                name_txt.Text = " ";
+                name_txt.Focus();
+                gender_txt.Text = " ";
+                age_txt.Value = 0;
+                species_txt.Text = " ";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to insert!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // updates animal list
+        private void update_ani_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to its controls
+                int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                string txtQuery = "UPDATE Animal SET Name = '" + @name_txt.Text + "', Age = '" + @age_txt.Value + "', Gender = '" + @gender_txt.Text + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Details updated!");
+                string query = "SELECT * FROM Animal";
+                LoadData(query, animalDataGrid);
+
+                // refresh fields
+                name_txt.Text = " ";
+                name_txt.Focus();
+                gender_txt.Text = " ";
+                age_txt.Value = 0;
+                species_txt.Text = " ";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to update!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // deletes animal from database
+        private void delete_ani_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "DELETE FROM Animal WHERE ID = '" + id + "' ";
+
+                    // we push the query to the AnimalControl class to process the query which links back to the connection class
+                    AnimalControls.Querydb(txtQuery);
+                    string query = "SELECT * FROM Animal";
+                    LoadData(query, animalDataGrid);
+                    MessageBox.Show("Animal deleted!");
+                }
+                catch (Exception)
+                {
+                    // this happens when we have an error
+                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // records meals to the database
+        private void rec_meal_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to the its controls.
+                string txtQuery = "INSERT INTO Meal (Name, Calories, Portion, AnimalId, Date) VALUES ('" + meal_txt.Text + "','" + calories_txt.Value + "','" + portion_txt.Value + "','" + AnimalId_txt.
+                Value + "','"+ DateTime.Now.ToString("s") +")";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Meal Recorded!");
+                string query = "SELECT * FROM Meal";
+                LoadData(query, mealDataGrid);
+
+                // refresh fields
+                meal_txt.Text = " ";
+                meal_txt.Focus();
+                calories_txt.Value = 0;
+                portion_txt.Value = 0;
+                AnimalId_txt.Value = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to record meal!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // we build our query in the form page which has references to its controls
+        private void update_meal_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to its controls
+                int id = Convert.ToInt32(mealDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                string txtQuery = "UPDATE Meal SET Name = '" + @meal_txt.Text + "', Calories = '" + @calories_txt.Value + "', Portion = '" + @portion_txt.Value + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Meal record updated!");
+                string query = "SELECT * FROM Meal";
+                LoadData(query, mealDataGrid);
+
+                // refresh fields
+                meal_txt.Text = " ";
+                meal_txt.Focus();
+                calories_txt.Value = 0;
+                portion_txt.Value = 0;
+                AnimalId_txt.Value = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to update meal record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void delete_meal_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    int id = Convert.ToInt32(mealDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "DELETE FROM Meal WHERE ID = '" + id + "' ";
+
+                    // we push the query to the AnimalControl class to process the query which links back to the connection class
+                    AnimalControls.Querydb(txtQuery);
+                    string query = "SELECT * FROM Meal";
+                    LoadData(query, mealDataGrid);
+                    MessageBox.Show("Meal deleted!");
+                }
+                catch (Exception)
+                {
+                    // this happens when we have an error
+                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
