@@ -48,6 +48,7 @@ namespace AnimalTracker
         }
 
         /* this section fills and resets the fields after user interaction */
+
         // fill textboxes with data when user clicks a cell
         public void animalDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -55,9 +56,15 @@ namespace AnimalTracker
             {
                 DataGridViewRow row = animalDataGrid.Rows[e.RowIndex];
                 name_txt.Text = row.Cells[1].Value.ToString();
-                species_txt.Text = row.Cells[4].Value.ToString();
-                gender_txt.Text = row.Cells[2].Value.ToString();
+                if(row.Cells[2].Value.ToString() == "Female")
+                {
+                    female_radio_btn.Checked = true;
+                } else
+                {
+                    male_radio_btn.Checked = true;
+                }
                 age_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                species_txt.Text = row.Cells[4].Value.ToString();
             }
             catch (Exception) // reset textboxes
             {
@@ -65,41 +72,15 @@ namespace AnimalTracker
                 // refresh fields
                 name_txt.Text = " ";
                 name_txt.Focus();
-                gender_txt.Text = " ";
                 age_txt.Value = 0;
                 species_txt.Text = " ";
             }
         }
 
-/* this section queries the database after user interaction */
-       
-        // adds a meal to the database
-        private void add_meal_btn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Meal (Name, Calories, Portion, AnimalId, Date) VALUES ('"+ meal_txt.Text +"','"+ calories_txt.Text +"','"+ portion_txt.Text +"','"+ AnimalId_txt.
-                Text +"','"+ DateTime.Now.ToString("s") +"')";
+        // Create a gender variable
+        string gender = "Male";
 
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Meal added!");
-                string query = "SELECT * FROM Animal";
-                LoadData(query, animalDataGrid);
-
-                // refresh fields
-                meal_txt.Text = " ";
-                meal_txt.Focus();
-                portion_txt.Value = 0;
-                calories_txt.Value = 0;
-                AnimalId_txt.Value = 0;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to insert!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        /* this section queries the database after user interaction */
 
         private void materialTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -141,7 +122,7 @@ namespace AnimalTracker
             try
             {
                 // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Animal (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender_txt.Text + "','" + age_txt.Text + "','" + species_txt.
+                string txtQuery = "INSERT INTO Animal (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
                 Text + "','" + DateTime.Now.ToString("s") + "')";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
@@ -153,7 +134,8 @@ namespace AnimalTracker
                 // refresh fields
                 name_txt.Text = " ";
                 name_txt.Focus();
-                gender_txt.Text = " ";
+                gender = "Male";
+                male_radio_btn.Checked = true;
                 age_txt.Value = 0;
                 species_txt.Text = " ";
             }
@@ -170,7 +152,7 @@ namespace AnimalTracker
             {
                 // we build our query in the form page which has references to its controls
                 int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Animal SET Name = '" + @name_txt.Text + "', Age = '" + @age_txt.Value + "', Gender = '" + @gender_txt.Text + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
+                string txtQuery = "UPDATE Animal SET Name = '" + @name_txt.Text + "', Age = '" + @age_txt.Value + "', Gender = '" + @gender + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
@@ -181,8 +163,9 @@ namespace AnimalTracker
                 // refresh fields
                 name_txt.Text = " ";
                 name_txt.Focus();
-                gender_txt.Text = " ";
                 age_txt.Value = 0;
+                gender = "Male";
+                male_radio_btn.Checked = true;
                 species_txt.Text = " ";
             }
             catch (Exception)
@@ -302,6 +285,11 @@ namespace AnimalTracker
             {
                 MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void female_radio_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            gender = "Female";
         }
     }
 }
