@@ -9,7 +9,6 @@ namespace AnimalTracker
         // declare connection variables
         private static SQLiteConnection con;
         private static SQLiteCommand cmd;
-        private static SQLiteDataAdapter DA;
         private static DataSet DS = new DataSet();
         private static DataTable DT = new DataTable();
 

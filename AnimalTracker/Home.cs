@@ -24,7 +24,7 @@ namespace AnimalTracker
             
         }
 
-/* This section pulls data from the database and fills the datagrids when called */
+        /* This section pulls data from the database and fills the datagrids when called */
         // Returns all data from requested tables
         private void LoadData(string query, DataGridView dataGrid)
         {
@@ -44,10 +44,8 @@ namespace AnimalTracker
         {
             string query = "SELECT * FROM Animal";
             LoadData(query, animalDataGrid);
-            animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            //animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
         }
-
-        /* this section fills and resets the fields after user interaction */
 
         // fill textboxes with data when user clicks a cell
         public void animalDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -77,11 +75,39 @@ namespace AnimalTracker
             }
         }
 
+        private void mealDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = mealDataGrid.Rows[e.RowIndex];
+                meal_txt.Text = row.Cells[1].Value.ToString();
+                calories_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
+                portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                AnimalId_txt.Value = Convert.ToInt32(row.Cells[4].Value.ToString());
+                
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                meal_txt.Text = " ";
+                meal_txt.Focus();
+                calories_txt.Value = 0;
+                portion_txt.Value = 0;
+                AnimalId_txt.Value = 0;
+            }
+        }
+
         // Create a gender variable
         string gender = "Male";
 
-        /* this section queries the database after user interaction */
+        // react to user input when they select the female radio button
+        private void female_radio_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            gender = "Female";
+        }
 
+        // Pull data from the db depending on which tab is selected
         private void materialTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             // this displays the data in the meals table when meals tab selected
@@ -90,31 +116,20 @@ namespace AnimalTracker
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Meal";
                 LoadData(query, mealDataGrid);
-                mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+                //mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            }
+            // this displays the data in the exercise table after exercise tab selected
+            if (materialTabControl.SelectedTab == del_exe_btn)
+            {
+                // Returns all data from the meals table
+                string query = "SELECT * FROM Exercise";
+                LoadData(query, exerciseDataGrid);
+                //exerciseDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
         }
 
-        private void mealDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewRow row = mealDataGrid.Rows[e.RowIndex];
-                name_txt.Text = row.Cells[1].Value.ToString();
-                calories_txt.Value = Convert.ToInt32(row.Cells[4].Value.ToString());
-                portion_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
-                AnimalId_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-            }
-            catch (Exception) // reset textboxes
-            {
-                MessageBox.Show("Empty field");
-                // refresh fields
-                name_txt.Text = " ";
-                name_txt.Focus();
-                calories_txt.Value = 0;
-                portion_txt.Value = 0;
-                AnimalId_txt.Value = 0;
-            }
-        }
+        /* this section queries the database after user interaction */
+        /* Home tab */
 
         // adds animal to database
         private void add_ani_btn_Click(object sender, EventArgs e)
@@ -203,6 +218,7 @@ namespace AnimalTracker
             }
         }
 
+        /* Meal tab */
         // records meals to the database
         private void rec_meal_btn_Click(object sender, EventArgs e)
         {
@@ -287,9 +303,86 @@ namespace AnimalTracker
             }
         }
 
-        private void female_radio_btn_CheckedChanged(object sender, EventArgs e)
+        private void reg_exe_btn_Click(object sender, EventArgs e)
         {
-            gender = "Female";
+            try
+            {
+                // we build our query in the form page which has references to the its controls.
+                string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt.Value + "','" + exercise_ani_id.
+                Value + "','" + DateTime.Now.ToString("s") + "')";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Exercise Recorded!");
+                string query = "SELECT * FROM Exercise";
+                LoadData(query, exerciseDataGrid);
+
+                // refresh fields
+                exercise_txt.Text = " ";
+                exercise_txt.Focus();
+                calories_burnt.Value = 0;
+                duration_txt.Value = 0;
+                exercise_ani_id.Value = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to record exercise!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void update_exe_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to its controls
+                int id = Convert.ToInt32(exerciseDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                string txtQuery = "UPDATE Exercise SET Name = '" + @exercise_txt.Text + "', Duration = '" + @duration_txt.Value + "', CaloriesBurnt = '" + @calories_burnt.Value + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Exercise record updated!");
+                string query = "SELECT * FROM Exercise";
+                LoadData(query, exerciseDataGrid);
+
+                // refresh fields
+                exercise_txt.Text = " ";
+                exercise_txt.Focus();
+                calories_burnt.Value = 0;
+                duration_txt.Value = 0;
+                exercise_ani_id.Value = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to update exercise record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void del_exercise_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "DELETE FROM Exercise WHERE ID = '" + id + "' ";
+
+                    // we push the query to the AnimalControl class to process the query which links back to the connection class
+                    AnimalControls.Querydb(txtQuery);
+                    string query = "SELECT * FROM Exercise";
+                    LoadData(query, exerciseDataGrid);
+                    MessageBox.Show("Session deleted!");
+                }
+                catch (Exception)
+                {
+                    // this happens when we have an error
+                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
