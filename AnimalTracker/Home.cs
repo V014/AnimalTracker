@@ -118,13 +118,41 @@ namespace AnimalTracker
                 LoadData(query, mealDataGrid);
                 //mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
+
             // this displays the data in the exercise table after exercise tab selected
-            if (materialTabControl.SelectedTab == del_exe_btn)
+            if (materialTabControl.SelectedTab == exercise_page)
             {
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Exercise";
                 LoadData(query, exerciseDataGrid);
                 //exerciseDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            }
+
+            // this displays the data in the activity table after activity tab selected
+            if (materialTabControl.SelectedTab == activity_page)
+            {
+                // Returns all data from the meals table
+                string query = "SELECT * FROM Activity";
+                LoadData(query, activityDataGrid);
+                //actvityDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            }
+
+            // this displays the data in the weight table after weight tab selected
+            if (materialTabControl.SelectedTab == weight_page)
+            {
+                // Returns all data from the meals table
+                string query = "SELECT * FROM Weight";
+                LoadData(query, weightDataGrid);
+                //weightDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            }
+
+            // this displays the data in the activity table after activity tab selected
+            if (materialTabControl.SelectedTab == waist_page)
+            {
+                // Returns all data from the meals table
+                string query = "SELECT * FROM Waist";
+                LoadData(query, waistDataGrid);
+                //waistDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
         }
 
@@ -224,6 +252,8 @@ namespace AnimalTracker
         {
             try
             {
+                string mealQuery = "SELECT Name FROM Meal";
+                
                 // we build our query in the form page which has references to the its controls.
                 string txtQuery = "INSERT INTO Meal (Name, Calories, Portion, AnimalId, Date) VALUES ('" + meal_txt.Text + "','" + calories_txt.Value + "','" + portion_txt.Value + "','" + AnimalId_txt.
                 Value + "','"+ DateTime.Now.ToString("s") +"')";
