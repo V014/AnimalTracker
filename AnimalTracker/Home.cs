@@ -24,7 +24,7 @@ namespace AnimalTracker
             
         }
 
-        /* This section pulls data from the database and fills the datagrids when called */
+        /* ======== Pulls data from the database and fills the datagrids ======== */
         // Returns all data from requested tables
         private void LoadData(string query, DataGridView dataGrid)
         {
@@ -38,7 +38,7 @@ namespace AnimalTracker
             con.Close();
         }
 
-        /* this section loads the data from the pull function on runtime */
+        /* ======== this section loads the data from the pull function on runtime ========= */
         // load animal table when program starts
         private void Home_Load(object sender, EventArgs e)
         {
@@ -83,7 +83,6 @@ namespace AnimalTracker
                 meal_txt.Text = row.Cells[1].Value.ToString();
                 calories_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
                 portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-                AnimalId_txt.Value = Convert.ToInt32(row.Cells[4].Value.ToString());
                 
             }
             catch (Exception) // reset textboxes
@@ -94,7 +93,6 @@ namespace AnimalTracker
                 meal_txt.Focus();
                 calories_txt.Value = 0;
                 portion_txt.Value = 0;
-                AnimalId_txt.Value = 0;
             }
         }
 
@@ -107,11 +105,20 @@ namespace AnimalTracker
             gender = "Female";
         }
 
-        // Pull data from the db depending on which tab is selected
+        /* ========= Pull data from the db depending on which tab is selected ========= */
         private void materialTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // this displays the data in the feeding table when feeding tab selected
+            if (materialTabControl.SelectedTab == meal_page)
+            {
+                // Returns all data from the meals table
+                string query = "SELECT * FROM Feeding";
+                LoadData(query, feedingDataGrid);
+                //mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            }
+
             // this displays the data in the meals table when meals tab selected
-            if(materialTabControl.SelectedTab == meal_page)
+            if (materialTabControl.SelectedTab == meal_page)
             {
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Meal";
@@ -157,8 +164,6 @@ namespace AnimalTracker
         }
 
         /* this section queries the database after user interaction */
-        /* Home tab */
-
         // adds animal to database
         private void add_ani_btn_Click(object sender, EventArgs e)
         {
@@ -252,15 +257,31 @@ namespace AnimalTracker
         {
             try
             {
-                string mealQuery = "SELECT Name FROM Meal";
+                // Try to select the meal from the meals table where the name of the meal is
+                // the meal text from the text box, if the query succeeds then the meal is
+                // already in the system. Retrieve columns and use in later queries. Else the
+                // meal is not in the system. Insert meal into meal table and use those values
+                // instead
+                try
+                {
+                    string mealQuery = "SELECT Name FROM Meal WHERE Name = '" + meal_txt.Text + "'";
+                    AnimalControls.Querydb(mealQuery);
+                    MessageBox.Show("Meal Recorded!");
+                    string feedingQuery = "SELECT * FROM feeding";
+                    LoadData(feedingQuery, feedingDataGrid);
+                }
+                catch
+                {
+                    MessageBox.Show("Meal already recorded!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 
+
                 // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Meal (Name, Calories, Portion, AnimalId, Date) VALUES ('" + meal_txt.Text + "','" + calories_txt.Value + "','" + portion_txt.Value + "','" + AnimalId_txt.
-                Value + "','"+ DateTime.Now.ToString("s") +"')";
+                string txtQuery = "INSERT INTO Meal (Name, Calories, Portion, Date) VALUES ('" + meal_txt.Text + "','" + calories_txt.Value + "','" + portion_txt.Value + "','"+ DateTime.Now.ToString("s") +"')";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Meal Recorded!");
+                MessageBox.Show("Feeding Recorded!");
                 string query = "SELECT * FROM Meal";
                 LoadData(query, mealDataGrid);
 
@@ -273,7 +294,7 @@ namespace AnimalTracker
             }
             catch (Exception)
             {
-                MessageBox.Show("Failed to record meal!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to record feeding!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
