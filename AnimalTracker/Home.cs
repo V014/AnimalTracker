@@ -410,6 +410,61 @@ namespace AnimalTracker
             }
         }
 
+        private void update_feeding_txt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to its controls
+                int id = Convert.ToInt32(feedingDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                string txtQuery = "UPDATE Feeding SET AnimalId = '" + AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Feeding record updated!");
+                string query = "SELECT * FROM Feeding";
+                LoadData(query, feedingDataGrid);
+
+                // refresh fields
+                meal_txt.Text = " ";
+                meal_txt.Focus();
+                calories_lbl.Text = "Waiting on you";
+                portion_txt.Value = 0;
+                AnimalId_txt.Value = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to update feeding record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void del_feeding_txt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    int id = Convert.ToInt32(feedingDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "DELETE FROM Feeding WHERE ID = '" + id + "' ";
+
+                    // we push the query to the AnimalControl class to process the query which links back to the connection class
+                    AnimalControls.Querydb(txtQuery);
+                    string query = "SELECT * FROM Feeding";
+                    LoadData(query, feedingDataGrid);
+                    MessageBox.Show("Feeding deleted!");
+                }
+                catch (Exception)
+                {
+                    // this happens when we have an error
+                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         /* Exercise tab */
         private void rec_exe_btn_Click(object sender, EventArgs e)
         {
@@ -492,5 +547,6 @@ namespace AnimalTracker
                 MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
