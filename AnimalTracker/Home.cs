@@ -95,7 +95,30 @@ namespace AnimalTracker
                 portion_txt.Value = 0;
             }
         }
-        
+
+        private void feedingDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = feedingDataGrid.Rows[e.RowIndex];
+                AnimalId_txt.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
+                /*
+                calories_lbl.Text = row.Cells[2].Value.ToString();
+                portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                */
+
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                meal_txt.Text = " ";
+                meal_txt.Focus();
+                calories_lbl.Text = "Waiting on you...";
+                portion_txt.Value = 0;
+            }
+        }
+
         // Create a gender variable
         string gender = "Male";
 
