@@ -81,7 +81,7 @@ namespace AnimalTracker
             {
                 DataGridViewRow row = mealDataGrid.Rows[e.RowIndex];
                 meal_txt.Text = row.Cells[1].Value.ToString();
-                calories_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
+                calories_lbl.Text = row.Cells[2].Value.ToString();
                 portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
                 
             }
@@ -91,7 +91,7 @@ namespace AnimalTracker
                 // refresh fields
                 meal_txt.Text = " ";
                 meal_txt.Focus();
-                calories_txt.Value = 0;
+                calories_lbl.Text = "Waiting on you...";
                 portion_txt.Value = 0;
             }
         }
@@ -287,15 +287,17 @@ namespace AnimalTracker
                     // refresh fields
                     meal_txt.Text = " ";
                     meal_txt.Focus();
-                    calories_txt.Value = 0;
+                    calories_lbl.Text = "Waiting on you";
                     portion_txt.Value = 0;
                     AnimalId_txt.Value = 0;
          
                 } else
                 {
+                    // calculate calories per gram, 4 being the multiple digit to calculate protein
+                    var calories = portion_txt.Value * 4;
                     // if the meal didn't exist, add the feeding and the meal details to the database
                     // we build our query in the form page which has references to the its controls.
-                    string mealQuery = "INSERT INTO Meal (Name, Calories, Portion, Date) VALUES ('" + meal_txt.Text + "','" + calories_txt.Value + "','" + portion_txt.Value + "','" + DateTime.Now.ToString("s") + "')";
+                    string mealQuery = "INSERT INTO Meal (Name, Calories, Portion, Date) VALUES ('" + meal_txt.Text + "','" + calories + "','" + portion_txt.Value + "','" + DateTime.Now.ToString("s") + "')";
                     AnimalControls.Querydb(mealQuery);
 
                     // pull the meal Id to reference to the meal
@@ -314,7 +316,7 @@ namespace AnimalTracker
                     // refresh fields
                     meal_txt.Text = " ";
                     meal_txt.Focus();
-                    calories_txt.Value = 0;
+                    calories_lbl.Text = "Waiting on you";
                     portion_txt.Value = 0;
                     AnimalId_txt.Value = 0;
 
@@ -332,9 +334,11 @@ namespace AnimalTracker
         {
             try
             {
+                // calculate calories per gram, 4 being the multiple digit to calculate protein
+                var calories = portion_txt.Value * 4;
                 // we build our query in the form page which has references to its controls
                 int id = Convert.ToInt32(mealDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Meal SET Name = '" + @meal_txt.Text + "', Calories = '" + @calories_txt.Value + "', Portion = '" + @portion_txt.Value + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+                string txtQuery = "UPDATE Meal SET Name = '" + @meal_txt.Text + "', Calories = '" + @calories + "', Portion = '" + @portion_txt.Value + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
@@ -345,7 +349,7 @@ namespace AnimalTracker
                 // refresh fields
                 meal_txt.Text = " ";
                 meal_txt.Focus();
-                calories_txt.Value = 0;
+                calories_lbl.Text = "Waiting on you";
                 portion_txt.Value = 0;
                 AnimalId_txt.Value = 0;
             }
@@ -383,6 +387,7 @@ namespace AnimalTracker
             }
         }
 
+        /* Exercise tab */
         private void rec_exe_btn_Click(object sender, EventArgs e)
         {
             try
