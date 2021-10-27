@@ -744,7 +744,6 @@
             this.feedingDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.feedingDataGrid.Size = new System.Drawing.Size(650, 200);
             this.feedingDataGrid.TabIndex = 1;
-            this.feedingDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mealDataGrid_CellClick);
             // 
             // exercise_page
             // 
