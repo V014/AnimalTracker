@@ -263,15 +263,18 @@ namespace AnimalTracker
                 // meal is not in the system. Insert meal into meal table and use those values
                 // instead
                 // check to see if meal has alredy been recorded before
-                string queryMealId = "SELECT Id FROM Meal WHERE Name = '" + meal_txt.Text +"'";
-                string mealId = Connection.ReadString(queryMealId);
 
+                // pull the meal name to compare it to the user input
                 string queryMealName = "SELECT Name FROM Meal WHERE Name = '"+ meal_txt.Text +"'";
                 string MealName = Connection.ReadString(queryMealName);
 
+                // pull the meal Id to reference to the meal
+                string queryMealId = "SELECT Id FROM Meal WHERE Name = '" + meal_txt.Text + "'";
+                string mealId = Connection.ReadString(queryMealId);
+
+                // if the meal's name already exists then add the feeding only
                 if (MealName.ToString() == meal_txt.Text)
                 {
-                    MessageBox.Show("Meal recored before, use the list next time!");
                     string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + AnimalId_txt.Value + "', '" + mealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
                     AnimalControls.Querydb(feedingQuery);
 
@@ -287,18 +290,19 @@ namespace AnimalTracker
                     calories_txt.Value = 0;
                     portion_txt.Value = 0;
                     AnimalId_txt.Value = 0;
-                    //MessageBox.Show(feeding.ToString());
+         
                 } else
                 {
-                    MessageBox.Show("Recording new meal!");
-                    /*
+                    // if the meal didn't exist, add the feeding and the meal details to the database
                     // we build our query in the form page which has references to the its controls.
                     string mealQuery = "INSERT INTO Meal (Name, Calories, Portion, Date) VALUES ('" + meal_txt.Text + "','" + calories_txt.Value + "','" + portion_txt.Value + "','" + DateTime.Now.ToString("s") + "')";
-                    // we push the query to the AnimalControl class to process the query which links back to the connection class
                     AnimalControls.Querydb(mealQuery);
-                    //MessageBox.Show("Feeding Recorded!");
 
-                    string feedingQuery ="INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('"+ AnimalId_txt.Value +"', '"+ presence.ToString() + "','" + DateTime.Now.ToString("s") + "')";
+                    // pull the meal Id to reference to the meal
+                    string queryNewMealId = "SELECT Id FROM Meal WHERE Name = '" + meal_txt.Text + "'";
+                    string newMealId = Connection.ReadString(queryNewMealId);
+
+                    string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + AnimalId_txt.Value + "', '" + newMealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
                     AnimalControls.Querydb(feedingQuery);
 
                     string loadMeals = "SELECT * FROM Meal";
@@ -313,15 +317,9 @@ namespace AnimalTracker
                     calories_txt.Value = 0;
                     portion_txt.Value = 0;
                     AnimalId_txt.Value = 0;
-                    */
-                }
-                
-                /*
-                // pull data from the feeding table
-                string feedingQuery = "SELECT * FROM feeding";
-                LoadData(feedingQuery, feedingDataGrid);
-                */
 
+                    MessageBox.Show("Record new meal!");
+                }
             }
             catch (Exception)
             {
@@ -357,33 +355,6 @@ namespace AnimalTracker
             }
         }
 
-        private void rec_exe_btn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt.Value + "','" + exercise_ani_id.
-                Value + "','" + DateTime.Now.ToString("s") + "')";
-
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Exercise Recorded!");
-                string query = "SELECT * FROM Exercise";
-                LoadData(query, exerciseDataGrid);
-
-                // refresh fields
-                exercise_txt.Text = " ";
-                exercise_txt.Focus();
-                calories_burnt.Value = 0;
-                duration_txt.Value = 0;
-                exercise_ani_id.Value = 0;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to record exercise!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void delete_meal_btn_Click(object sender, EventArgs e)
         {
             try
@@ -409,6 +380,33 @@ namespace AnimalTracker
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void rec_exe_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to the its controls.
+                string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt.Value + "','" + exercise_ani_id.
+                Value + "','" + DateTime.Now.ToString("s") + "')";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Exercise Recorded!");
+                string query = "SELECT * FROM Exercise";
+                LoadData(query, exerciseDataGrid);
+
+                // refresh fields
+                exercise_txt.Text = " ";
+                exercise_txt.Focus();
+                calories_burnt.Value = 0;
+                duration_txt.Value = 0;
+                exercise_ani_id.Value = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to record exercise!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
