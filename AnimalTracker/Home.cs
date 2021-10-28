@@ -102,10 +102,6 @@ namespace AnimalTracker
             {
                 DataGridViewRow row = feedingDataGrid.Rows[e.RowIndex];
                 AnimalId_txt.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
-                /*
-                calories_lbl.Text = row.Cells[2].Value.ToString();
-                portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-                */
 
             }
             catch (Exception) // reset textboxes
@@ -116,6 +112,27 @@ namespace AnimalTracker
                 meal_txt.Focus();
                 calories_lbl.Text = "Waiting on you...";
                 portion_txt.Value = 0;
+            }
+        }
+
+        private void weightDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = weightDataGrid.Rows[e.RowIndex];
+                weight_AnimalId.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
+                mor_weight_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
+                eve_weight_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                avg_weight_lbl.Text = row.Cells[4].Value.ToString();
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                weight_AnimalId.Value = 0;
+                mor_weight_txt.Value = 0;
+                eve_weight_txt.Value = 0;
+                avg_weight_lbl.Text = "Calculating...";
             }
         }
 
@@ -203,12 +220,12 @@ namespace AnimalTracker
                 LoadData(query, animalDataGrid);
 
                 // refresh fields
-                name_txt.Text = " ";
+                name_txt.Text = "";
                 name_txt.Focus();
                 gender = "Male";
                 male_radio_btn.Checked = true;
                 age_txt.Value = 0;
-                species_txt.Text = " ";
+                species_txt.Text = "";
             }
             catch (Exception)
             {
@@ -308,7 +325,7 @@ namespace AnimalTracker
                     LoadData(loadFeedings, feedingDataGrid);
 
                     // refresh fields
-                    meal_txt.Text = " ";
+                    meal_txt.Text = "";
                     meal_txt.Focus();
                     calories_lbl.Text = "Waiting on you";
                     portion_txt.Value = 0;
@@ -481,7 +498,7 @@ namespace AnimalTracker
                 LoadData(query, exerciseDataGrid);
 
                 // refresh fields
-                exercise_txt.Text = " ";
+                exercise_txt.Text = "";
                 exercise_txt.Focus();
                 calories_burnt.Value = 0;
                 duration_txt.Value = 0;
@@ -508,7 +525,7 @@ namespace AnimalTracker
                 LoadData(query, exerciseDataGrid);
 
                 // refresh fields
-                exercise_txt.Text = " ";
+                exercise_txt.Text = "";
                 exercise_txt.Focus();
                 calories_burnt.Value = 0;
                 duration_txt.Value = 0;
@@ -548,5 +565,67 @@ namespace AnimalTracker
             }
         }
 
+        /* Weight tab */
+        /*
+        public static double Average(double n1, double n2)
+        {
+            double avrg = (n1 + n2) / 3;
+            return avrg;
+        }
+
+        
+        double avg;
+
+        double num1, num2;
+        */
+
+        private void rec_weight_txt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var average = mor_weight_txt.Value + eve_waist_txt.Value * 2;
+                // we build our query in the form page which has references to the its controls.
+                string txtQuery = "INSERT INTO Weight (AnimalId, WeightMorning, WeightEvening, WeightAverage,  Date) VALUES ('" + weight_AnimalId.Value + "','" + mor_weight_txt.Value + "','" + eve_weight_txt.Value + "','" + average + "','" + DateTime.Now.ToString("s") + "')";
+                AnimalControls.Querydb(txtQuery);
+                //MessageBox.Show("Weight Recorded!");
+
+                string query = "SELECT * FROM Weight";
+                LoadData(query, weightDataGrid);
+
+                // refresh fields
+                weight_AnimalId.Value = 0;
+                mor_weight_txt.Value = 0;
+                eve_weight_txt.Value = 0;
+                avg_weight_lbl.Text = "Waiting...";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to record Weight!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void update_weight_txt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to its controls
+                int id = Convert.ToInt32(weightDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                string txtQuery = "UPDATE Weight SET AnimalId = '" + @weight_AnimalId.Value + "', WeightMorning = '" + @mor_weight_txt.Value + "', WeightEvening = '" + @eve_weight_txt.Value + "', WeightAverage = '" + @avg_weight_lbl.Text + "' WHERE Id ='" + id + "'";
+                AnimalControls.Querydb(txtQuery);
+                MessageBox.Show("Weight record updated!");
+                string query = "SELECT * FROM Weight";
+                LoadData(query, weightDataGrid);
+
+                // refresh fields
+                weight_AnimalId.Value = 0;
+                mor_weight_txt.Value = 0;
+                eve_weight_txt.Value = 0;
+                avg_weight_lbl.Text = "Waiting...";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to update weight record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
