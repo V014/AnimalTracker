@@ -136,6 +136,27 @@ namespace AnimalTracker
             }
         }
 
+        private void waistDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = waistDataGrid.Rows[e.RowIndex];
+                waist_AnimalId_txt.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
+                mor_waist_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
+                eve_waist_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                avg_waist_txt.Text = row.Cells[4].Value.ToString();
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                waist_AnimalId_txt.Value = 0;
+                mor_waist_txt.Value = 0;
+                eve_waist_txt.Value = 0;
+                avg_waist_txt.Text = "Calculating...";
+            }
+        }
+
         // Create a gender variable
         string gender = "Male";
 
@@ -575,7 +596,6 @@ namespace AnimalTracker
                 // we build our query in the form page which has references to the its controls.
                 string txtQuery = "INSERT INTO Weight (AnimalId, WeightMorning, WeightEvening, WeightAverage,  Date) VALUES ('" + weight_AnimalId.Value + "','" + mor_weight_txt.Value + "','" + eve_weight_txt.Value + "','" + average + "','" + DateTime.Now.ToString("s") + "')";
                 AnimalControls.Querydb(txtQuery);
-                //MessageBox.Show("Weight Recorded!");
 
                 string query = "SELECT * FROM Weight";
                 LoadData(query, weightDataGrid);
@@ -653,6 +673,93 @@ namespace AnimalTracker
         }
 
         /* Waist tab */
+        private void rec_waist_txt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // calculate average of weight before entry into the db
+                var average = (mor_waist_txt.Value + eve_waist_txt.Value) / 2;
+                // we build our query in the form page which has references to the its controls.
+                string txtQuery = "INSERT INTO Waist (AnimalId, WaistMorning, WaistEvening, WaistAverage,  Date) VALUES ('" + waist_AnimalId_txt.Value + "','" + mor_waist_txt.Value + "','" + eve_waist_txt.Value + "','" + average + "','" + DateTime.Now.ToString("s") + "')";
+                AnimalControls.Querydb(txtQuery);
+
+                string query = "SELECT * FROM Waist";
+                LoadData(query, waistDataGrid);
+
+                // refresh fields
+                waist_AnimalId_txt.Value = 0;
+                mor_waist_txt.Value = 0;
+                eve_waist_txt.Value = 0;
+                avg_waist_txt.Text = "Waiting...";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to record Waist!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void update_waist_txt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // calculate average of weight before entry into the db
+                var average = (mor_waist_txt.Value + eve_waist_txt.Value) / 2;
+               
+                DialogResult dialogResult = MessageBox.Show("Update Animal '" + @waist_AnimalId_txt.Value + "' waist reading?", "Are you sure?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // we build our query in the form page which has references to its controls
+                    int id = Convert.ToInt32(waistDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "UPDATE Waist SET AnimalId = '" + @waist_AnimalId_txt.Value + "', WaistMorning = '" + @mor_waist_txt.Value + "', WaistEvening = '" + @eve_waist_txt.Value + "', WaistAverage = '" + average + "' WHERE Id ='" + id + "'";
+                    AnimalControls.Querydb(txtQuery);
+                    string query = "SELECT * FROM Waist";
+                    LoadData(query, waistDataGrid);
+                }
+
+                // refresh fields
+                waist_AnimalId_txt.Value = 0;
+                mor_waist_txt.Value = 0;
+                eve_waist_txt.Value = 0;
+                avg_waist_txt.Text = "Waiting...";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to update waist record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void del_waist_txt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    int id = Convert.ToInt32(waistDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "DELETE FROM Waist WHERE ID = '" + id + "' ";
+
+                    DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @waist_AnimalId_txt.Value + "' waist reading?", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // we push the query to the AnimalControl class to process the query which links back to the connection class
+                        AnimalControls.Querydb(txtQuery);
+                        string query = "SELECT * FROM Waist";
+                        LoadData(query, waistDataGrid);
+                        // MessageBox.Show("Weight Reading deleted!");
+                    }
+
+                }
+                catch (Exception)
+                {
+                    // this happens when we have an error
+                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
     }
 }

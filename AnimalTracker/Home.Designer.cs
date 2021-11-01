@@ -133,18 +133,18 @@
             this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             this.weightDataGrid = new System.Windows.Forms.DataGridView();
             this.waist_page = new System.Windows.Forms.TabPage();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
             this.eve_waist_txt = new System.Windows.Forms.NumericUpDown();
-            this.wasit_AnimalId = new System.Windows.Forms.NumericUpDown();
-            this.mor_wasit_txt = new System.Windows.Forms.NumericUpDown();
+            this.waist_AnimalId_txt = new System.Windows.Forms.NumericUpDown();
+            this.mor_waist_txt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel23 = new MaterialSkin.Controls.MaterialLabel();
             this.avg_waist_txt = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel25 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel26 = new MaterialSkin.Controls.MaterialLabel();
             this.waistDataGrid = new System.Windows.Forms.DataGridView();
+            this.del_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
+            this.update_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
+            this.rec_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.animalDataGrid)).BeginInit();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
@@ -170,8 +170,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.weightDataGrid)).BeginInit();
             this.waist_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eve_waist_txt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wasit_AnimalId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mor_wasit_txt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.waist_AnimalId_txt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mor_waist_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1438,13 +1438,13 @@
             // 
             // waist_page
             // 
-            this.waist_page.Controls.Add(this.materialFlatButton1);
-            this.waist_page.Controls.Add(this.materialFlatButton2);
-            this.waist_page.Controls.Add(this.materialFlatButton3);
+            this.waist_page.Controls.Add(this.del_waist_txt);
+            this.waist_page.Controls.Add(this.update_waist_txt);
+            this.waist_page.Controls.Add(this.rec_waist_txt);
             this.waist_page.Controls.Add(this.materialLabel22);
             this.waist_page.Controls.Add(this.eve_waist_txt);
-            this.waist_page.Controls.Add(this.wasit_AnimalId);
-            this.waist_page.Controls.Add(this.mor_wasit_txt);
+            this.waist_page.Controls.Add(this.waist_AnimalId_txt);
+            this.waist_page.Controls.Add(this.mor_waist_txt);
             this.waist_page.Controls.Add(this.materialLabel23);
             this.waist_page.Controls.Add(this.avg_waist_txt);
             this.waist_page.Controls.Add(this.materialLabel25);
@@ -1457,51 +1457,6 @@
             this.waist_page.TabIndex = 5;
             this.waist_page.Text = "Waist";
             this.waist_page.UseVisualStyleBackColor = true;
-            // 
-            // materialFlatButton1
-            // 
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(25, 391);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(60, 36);
-            this.materialFlatButton1.TabIndex = 52;
-            this.materialFlatButton1.Text = "Delete";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            // 
-            // materialFlatButton2
-            // 
-            this.materialFlatButton2.AutoSize = true;
-            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Location = new System.Drawing.Point(25, 343);
-            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Primary = false;
-            this.materialFlatButton2.Size = new System.Drawing.Size(64, 36);
-            this.materialFlatButton2.TabIndex = 53;
-            this.materialFlatButton2.Text = "Update";
-            this.materialFlatButton2.UseVisualStyleBackColor = true;
-            // 
-            // materialFlatButton3
-            // 
-            this.materialFlatButton3.AutoSize = true;
-            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton3.Depth = 0;
-            this.materialFlatButton3.Location = new System.Drawing.Point(25, 295);
-            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton3.Name = "materialFlatButton3";
-            this.materialFlatButton3.Primary = false;
-            this.materialFlatButton3.Size = new System.Drawing.Size(64, 36);
-            this.materialFlatButton3.TabIndex = 54;
-            this.materialFlatButton3.Text = "Record";
-            this.materialFlatButton3.UseVisualStyleBackColor = true;
             // 
             // materialLabel22
             // 
@@ -1526,25 +1481,25 @@
             this.eve_waist_txt.Size = new System.Drawing.Size(128, 20);
             this.eve_waist_txt.TabIndex = 48;
             // 
-            // wasit_AnimalId
+            // waist_AnimalId_txt
             // 
-            this.wasit_AnimalId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.wasit_AnimalId.ForeColor = System.Drawing.Color.White;
-            this.wasit_AnimalId.Location = new System.Drawing.Point(25, 29);
-            this.wasit_AnimalId.Name = "wasit_AnimalId";
-            this.wasit_AnimalId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.wasit_AnimalId.Size = new System.Drawing.Size(128, 20);
-            this.wasit_AnimalId.TabIndex = 49;
+            this.waist_AnimalId_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.waist_AnimalId_txt.ForeColor = System.Drawing.Color.White;
+            this.waist_AnimalId_txt.Location = new System.Drawing.Point(25, 29);
+            this.waist_AnimalId_txt.Name = "waist_AnimalId_txt";
+            this.waist_AnimalId_txt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.waist_AnimalId_txt.Size = new System.Drawing.Size(128, 20);
+            this.waist_AnimalId_txt.TabIndex = 49;
             // 
-            // mor_wasit_txt
+            // mor_waist_txt
             // 
-            this.mor_wasit_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.mor_wasit_txt.ForeColor = System.Drawing.Color.White;
-            this.mor_wasit_txt.Location = new System.Drawing.Point(25, 92);
-            this.mor_wasit_txt.Name = "mor_wasit_txt";
-            this.mor_wasit_txt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.mor_wasit_txt.Size = new System.Drawing.Size(128, 20);
-            this.mor_wasit_txt.TabIndex = 50;
+            this.mor_waist_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.mor_waist_txt.ForeColor = System.Drawing.Color.White;
+            this.mor_waist_txt.Location = new System.Drawing.Point(25, 92);
+            this.mor_waist_txt.Name = "mor_waist_txt";
+            this.mor_waist_txt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.mor_waist_txt.Size = new System.Drawing.Size(128, 20);
+            this.mor_waist_txt.TabIndex = 50;
             // 
             // materialLabel23
             // 
@@ -1581,9 +1536,9 @@
             this.materialLabel25.Location = new System.Drawing.Point(24, 194);
             this.materialLabel25.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel25.Name = "materialLabel25";
-            this.materialLabel25.Size = new System.Drawing.Size(105, 19);
+            this.materialLabel25.Size = new System.Drawing.Size(140, 19);
             this.materialLabel25.TabIndex = 46;
-            this.materialLabel25.Text = "Average Waist";
+            this.materialLabel25.Text = "Average Waist (cm)";
             // 
             // materialLabel26
             // 
@@ -1633,6 +1588,55 @@
             this.waistDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.waistDataGrid.Size = new System.Drawing.Size(650, 430);
             this.waistDataGrid.TabIndex = 5;
+            this.waistDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.waistDataGrid_CellClick);
+            // 
+            // del_waist_txt
+            // 
+            this.del_waist_txt.AutoSize = true;
+            this.del_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.del_waist_txt.Depth = 0;
+            this.del_waist_txt.Location = new System.Drawing.Point(25, 391);
+            this.del_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.del_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.del_waist_txt.Name = "del_waist_txt";
+            this.del_waist_txt.Primary = false;
+            this.del_waist_txt.Size = new System.Drawing.Size(60, 36);
+            this.del_waist_txt.TabIndex = 52;
+            this.del_waist_txt.Text = "Delete";
+            this.del_waist_txt.UseVisualStyleBackColor = true;
+            this.del_waist_txt.Click += new System.EventHandler(this.del_waist_txt_Click);
+            // 
+            // update_waist_txt
+            // 
+            this.update_waist_txt.AutoSize = true;
+            this.update_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.update_waist_txt.Depth = 0;
+            this.update_waist_txt.Location = new System.Drawing.Point(25, 343);
+            this.update_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.update_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.update_waist_txt.Name = "update_waist_txt";
+            this.update_waist_txt.Primary = false;
+            this.update_waist_txt.Size = new System.Drawing.Size(64, 36);
+            this.update_waist_txt.TabIndex = 53;
+            this.update_waist_txt.Text = "Update";
+            this.update_waist_txt.UseVisualStyleBackColor = true;
+            this.update_waist_txt.Click += new System.EventHandler(this.update_waist_txt_Click);
+            // 
+            // rec_waist_txt
+            // 
+            this.rec_waist_txt.AutoSize = true;
+            this.rec_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rec_waist_txt.Depth = 0;
+            this.rec_waist_txt.Location = new System.Drawing.Point(25, 295);
+            this.rec_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.rec_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rec_waist_txt.Name = "rec_waist_txt";
+            this.rec_waist_txt.Primary = false;
+            this.rec_waist_txt.Size = new System.Drawing.Size(64, 36);
+            this.rec_waist_txt.TabIndex = 54;
+            this.rec_waist_txt.Text = "Record";
+            this.rec_waist_txt.UseVisualStyleBackColor = true;
+            this.rec_waist_txt.Click += new System.EventHandler(this.rec_waist_txt_Click);
             // 
             // Home
             // 
@@ -1678,8 +1682,8 @@
             this.waist_page.ResumeLayout(false);
             this.waist_page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eve_waist_txt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wasit_AnimalId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mor_wasit_txt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.waist_AnimalId_txt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mor_waist_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -1763,13 +1767,10 @@
         private System.Windows.Forms.NumericUpDown weight_AnimalId;
         private MaterialSkin.Controls.MaterialLabel avg_weight_lbl;
         private System.Windows.Forms.TabPage waist_page;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton3;
         private MaterialSkin.Controls.MaterialLabel materialLabel22;
         private System.Windows.Forms.NumericUpDown eve_waist_txt;
-        private System.Windows.Forms.NumericUpDown wasit_AnimalId;
-        private System.Windows.Forms.NumericUpDown mor_wasit_txt;
+        private System.Windows.Forms.NumericUpDown waist_AnimalId_txt;
+        private System.Windows.Forms.NumericUpDown mor_waist_txt;
         private MaterialSkin.Controls.MaterialLabel materialLabel23;
         private MaterialSkin.Controls.MaterialLabel avg_waist_txt;
         private MaterialSkin.Controls.MaterialLabel materialLabel25;
@@ -1784,6 +1785,9 @@
         private MaterialSkin.Controls.MaterialFlatButton del_feeding_txt;
         private MaterialSkin.Controls.MaterialFlatButton update_feeding_txt;
         private System.Windows.Forms.NumericUpDown mor_weight_txt;
+        private MaterialSkin.Controls.MaterialFlatButton del_waist_txt;
+        private MaterialSkin.Controls.MaterialFlatButton update_waist_txt;
+        private MaterialSkin.Controls.MaterialFlatButton rec_waist_txt;
     }
 }
 
