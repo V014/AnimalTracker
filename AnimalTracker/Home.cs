@@ -566,24 +566,12 @@ namespace AnimalTracker
         }
 
         /* Weight tab */
-        /*
-        public static double Average(double n1, double n2)
-        {
-            double avrg = (n1 + n2) / 3;
-            return avrg;
-        }
-
-        
-        double avg;
-
-        double num1, num2;
-        */
-
         private void rec_weight_txt_Click(object sender, EventArgs e)
         {
             try
             {
-                var average = mor_weight_txt.Value + eve_waist_txt.Value * 2;
+                // calculate average of weight before entry into the db
+                var average = (mor_weight_txt.Value + eve_weight_txt.Value) / 2;
                 // we build our query in the form page which has references to the its controls.
                 string txtQuery = "INSERT INTO Weight (AnimalId, WeightMorning, WeightEvening, WeightAverage,  Date) VALUES ('" + weight_AnimalId.Value + "','" + mor_weight_txt.Value + "','" + eve_weight_txt.Value + "','" + average + "','" + DateTime.Now.ToString("s") + "')";
                 AnimalControls.Querydb(txtQuery);
@@ -608,13 +596,16 @@ namespace AnimalTracker
         {
             try
             {
+                // calculate average of weight before entry into the db
+                var average = (mor_weight_txt.Value + eve_weight_txt.Value) / 2;
                 // we build our query in the form page which has references to its controls
                 int id = Convert.ToInt32(weightDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Weight SET AnimalId = '" + @weight_AnimalId.Value + "', WeightMorning = '" + @mor_weight_txt.Value + "', WeightEvening = '" + @eve_weight_txt.Value + "', WeightAverage = '" + @avg_weight_lbl.Text + "' WHERE Id ='" + id + "'";
+                string txtQuery = "UPDATE Weight SET AnimalId = '" + @weight_AnimalId.Value + "', WeightMorning = '" + @mor_weight_txt.Value + "', WeightEvening = '" + @eve_weight_txt.Value + "', WeightAverage = '" + average + "' WHERE Id ='" + id + "'";
                 AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Weight record updated!");
                 string query = "SELECT * FROM Weight";
                 LoadData(query, weightDataGrid);
+
+                MessageBox.Show("Weight record updated!");
 
                 // refresh fields
                 weight_AnimalId.Value = 0;
@@ -627,5 +618,41 @@ namespace AnimalTracker
                 MessageBox.Show("Failed to update weight record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void del_weight_txt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    int id = Convert.ToInt32(weightDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "DELETE FROM Weight WHERE ID = '" + id + "' ";
+
+                    DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @weight_AnimalId.Value + "' weight reading?", "Are you sure?", MessageBoxButtons.YesNo);
+                    if(dialogResult == DialogResult.Yes)
+                    {
+                        // we push the query to the AnimalControl class to process the query which links back to the connection class
+                        AnimalControls.Querydb(txtQuery);
+                        string query = "SELECT * FROM Weight";
+                        LoadData(query, weightDataGrid);
+                        // MessageBox.Show("Weight Reading deleted!");
+                    }
+                    
+                }
+                catch (Exception)
+                {
+                    // this happens when we have an error
+                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /* Waist tab */
+
     }
 }
