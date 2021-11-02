@@ -10,7 +10,6 @@ namespace AnimalTracker
         // declare connection variables
         private static SQLiteConnection con;
         private static SQLiteCommand cmd;
-        private static SQLiteDataReader dr;
         private static DataSet DS = new DataSet();
         private static DataTable DT = new DataTable();
 
@@ -39,17 +38,6 @@ namespace AnimalTracker
             return con;
         }
 
-        public static SQLiteDataReader Select(string txtQuery)
-        {
-            setConnection();
-            con.Open();
-            cmd = con.CreateCommand();
-            cmd.CommandText = txtQuery;
-            dr = cmd.ExecuteReader();
-            con.Close();
-            return dr;
-        }
-
         public static string ReadString(string txtQuery)
         {
             using(SQLiteConnection con = GetConnection())
@@ -58,22 +46,6 @@ namespace AnimalTracker
                 object result = cmd.ExecuteScalar();
                 return (result == null ? "" : result.ToString());
             }
-        }
-
-        public void ReadData(string txtQuery, Action<SQLiteDataReader> loader)
-        {
-            using (SQLiteConnection con = GetConnection())
-            using (SQLiteCommand cmd = new SQLiteCommand(txtQuery, con))
-            using (SQLiteDataReader rd = cmd.ExecuteReader()) 
-            {
-                while (rd.Read())
-                    loader(rd);
-            }
-        }
-
-        void readCreatedData(SQLiteDataReader data)
-        {
-            string res = data["created_at"].ToString();
         }
     }
 }

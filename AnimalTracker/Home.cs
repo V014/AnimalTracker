@@ -157,6 +157,33 @@ namespace AnimalTracker
             }
         }
 
+        private void activityDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = activityDataGrid.Rows[e.RowIndex];
+                activity_AnimalId_txt.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
+                if (row.Cells[2].Value.ToString() == "Inactive")
+                {
+                    inactive_radio_btn.Checked = true;
+                }
+                else if (row.Cells[2].Value.ToString() == "Moderately Active")
+                {
+                    moderate_radio_btn.Checked = true;
+                }
+                else
+                {
+                    active_radio_btn.Checked = true;
+                }
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                activity_AnimalId_txt.Value = 0;
+            }
+        }
+
         // Create a gender variable
         string gender = "Male";
 
@@ -164,6 +191,20 @@ namespace AnimalTracker
         private void female_radio_btn_CheckedChanged(object sender, EventArgs e)
         {
             gender = "Female";
+        }
+
+        // Create an activity variable
+        string activity = "Inactive";
+
+        // react to user input when they select the other avtivity buttons
+        private void moderate_radio_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            activity = "Moderately Active"; 
+        }
+
+        private void active_radio_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            activity = "Active";
         }
 
         /* ========= Pull data from the db depending on which tab is selected ========= */
@@ -509,7 +550,7 @@ namespace AnimalTracker
             try
             {
                 // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt.Value + "','" + exercise_ani_id.
+                string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt_txt.Text + "','" + exercise_ani_id.
                 Value + "','" + DateTime.Now.ToString("s") + "')";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
@@ -521,7 +562,7 @@ namespace AnimalTracker
                 // refresh fields
                 exercise_txt.Text = "";
                 exercise_txt.Focus();
-                calories_burnt.Value = 0;
+                calories_burnt_txt.Text = "";
                 duration_txt.Value = 0;
                 exercise_ani_id.Value = 0;
             }
@@ -537,7 +578,7 @@ namespace AnimalTracker
             {
                 // we build our query in the form page which has references to its controls
                 int id = Convert.ToInt32(exerciseDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Exercise SET Name = '" + @exercise_txt.Text + "', Duration = '" + @duration_txt.Value + "', CaloriesBurnt = '" + @calories_burnt.Value + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+                string txtQuery = "UPDATE Exercise SET Name = '" + @exercise_txt.Text + "', Duration = '" + @duration_txt.Value + "', CaloriesBurnt = '" + @calories_burnt_txt.Text + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
@@ -548,7 +589,7 @@ namespace AnimalTracker
                 // refresh fields
                 exercise_txt.Text = "";
                 exercise_txt.Focus();
-                calories_burnt.Value = 0;
+                calories_burnt_txt.Text = "";
                 duration_txt.Value = 0;
                 exercise_ani_id.Value = 0;
             }
@@ -761,5 +802,84 @@ namespace AnimalTracker
             }
         }
 
+        /* Activity tab */
+        private void rec_activity_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to the its controls.
+                string txtQuery = "INSERT INTO Activity (AnimalId, ActivityLevel, Date) VALUES ('" + activity_AnimalId_txt.Value + "','" + activity + "','" + DateTime.Now.ToString("s") + "')";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                //MessageBox.Show("Activity Registered!");
+                string query = "SELECT * FROM Activity";
+                LoadData(query, activityDataGrid);
+
+                // refresh fields
+                activity_AnimalId_txt.Text = "";
+                inactive_radio_btn.Checked = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to insert!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void update_activity_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // we build our query in the form page which has references to its controls
+                int id = Convert.ToInt32(activityDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                string txtQuery = "UPDATE Activity SET AnimalId = '" + @activity_AnimalId_txt.Value + "', ActivityLevel = '" + @activity + "' WHERE Id ='" + id + "'";
+
+                // we push the query to the AnimalControl class to process the query which links back to the connection class
+                AnimalControls.Querydb(txtQuery);
+                //MessageBox.Show("Details updated!");
+                string query = "SELECT * FROM Activity";
+                LoadData(query, activityDataGrid);
+
+                // refresh fields
+                activity_AnimalId_txt.Text = "";
+                inactive_radio_btn.Checked = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to update!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void del_activity_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    int id = Convert.ToInt32(activityDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "DELETE FROM Activity WHERE ID = '" + id + "' ";
+
+                    DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @activity_AnimalId_txt.Value + "' activity Level?", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // we push the query to the AnimalControl class to process the query which links back to the connection class
+                        AnimalControls.Querydb(txtQuery);
+                        string query = "SELECT * FROM Activity";
+                        LoadData(query, activityDataGrid);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    // this happens when we have an error
+                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

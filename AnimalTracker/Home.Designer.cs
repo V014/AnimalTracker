@@ -97,7 +97,6 @@
             this.rec_exe_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.exercise_ani_id = new System.Windows.Forms.NumericUpDown();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
-            this.calories_burnt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.duration_txt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
@@ -105,18 +104,15 @@
             this.exercise_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.exerciseDataGrid = new System.Windows.Forms.DataGridView();
             this.activity_page = new System.Windows.Forms.TabPage();
-            this.materialRadioButton3 = new MaterialSkin.Controls.MaterialRadioButton();
-            this.materialRadioButton1 = new MaterialSkin.Controls.MaterialRadioButton();
-            this.materialRadioButton2 = new MaterialSkin.Controls.MaterialRadioButton();
-            this.del_activity_txt = new MaterialSkin.Controls.MaterialFlatButton();
-            this.update_activity_txt = new MaterialSkin.Controls.MaterialFlatButton();
-            this.rec_activity_txt = new MaterialSkin.Controls.MaterialFlatButton();
+            this.active_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
+            this.moderate_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
+            this.inactive_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
+            this.del_activity_btn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.update_activity_btn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.rec_activity_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
-            this.activity_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.activity_AnimalId_txt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
-            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
             this.activityDataGrid = new System.Windows.Forms.DataGridView();
             this.weight_page = new System.Windows.Forms.TabPage();
@@ -133,6 +129,9 @@
             this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             this.weightDataGrid = new System.Windows.Forms.DataGridView();
             this.waist_page = new System.Windows.Forms.TabPage();
+            this.del_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
+            this.update_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
+            this.rec_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
             this.eve_waist_txt = new System.Windows.Forms.NumericUpDown();
             this.waist_AnimalId_txt = new System.Windows.Forms.NumericUpDown();
@@ -142,9 +141,7 @@
             this.materialLabel25 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel26 = new MaterialSkin.Controls.MaterialLabel();
             this.waistDataGrid = new System.Windows.Forms.DataGridView();
-            this.del_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
-            this.update_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
-            this.rec_waist_txt = new MaterialSkin.Controls.MaterialFlatButton();
+            this.calories_burnt_txt = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.animalDataGrid)).BeginInit();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
@@ -156,12 +153,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.feedingDataGrid)).BeginInit();
             this.exercise_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exercise_ani_id)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calories_burnt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.duration_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exerciseDataGrid)).BeginInit();
             this.activity_page.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activity_AnimalId_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.activityDataGrid)).BeginInit();
             this.weight_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eve_weight_txt)).BeginInit();
@@ -785,12 +780,12 @@
             // exercise_page
             // 
             this.exercise_page.BackColor = System.Drawing.Color.White;
+            this.exercise_page.Controls.Add(this.calories_burnt_txt);
             this.exercise_page.Controls.Add(this.del_exercise_btn);
             this.exercise_page.Controls.Add(this.update_exe_btn);
             this.exercise_page.Controls.Add(this.rec_exe_btn);
             this.exercise_page.Controls.Add(this.exercise_ani_id);
             this.exercise_page.Controls.Add(this.materialLabel9);
-            this.exercise_page.Controls.Add(this.calories_burnt);
             this.exercise_page.Controls.Add(this.materialLabel12);
             this.exercise_page.Controls.Add(this.duration_txt);
             this.exercise_page.Controls.Add(this.materialLabel10);
@@ -874,21 +869,6 @@
             this.materialLabel9.Size = new System.Drawing.Size(74, 19);
             this.materialLabel9.TabIndex = 19;
             this.materialLabel9.Text = "Animal ID";
-            // 
-            // calories_burnt
-            // 
-            this.calories_burnt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.calories_burnt.ForeColor = System.Drawing.Color.White;
-            this.calories_burnt.Location = new System.Drawing.Point(25, 208);
-            this.calories_burnt.Maximum = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            this.calories_burnt.Name = "calories_burnt";
-            this.calories_burnt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.calories_burnt.Size = new System.Drawing.Size(120, 20);
-            this.calories_burnt.TabIndex = 22;
             // 
             // materialLabel12
             // 
@@ -994,18 +974,15 @@
             // activity_page
             // 
             this.activity_page.BackColor = System.Drawing.Color.White;
-            this.activity_page.Controls.Add(this.materialRadioButton3);
-            this.activity_page.Controls.Add(this.materialRadioButton1);
-            this.activity_page.Controls.Add(this.materialRadioButton2);
-            this.activity_page.Controls.Add(this.del_activity_txt);
-            this.activity_page.Controls.Add(this.update_activity_txt);
-            this.activity_page.Controls.Add(this.rec_activity_txt);
+            this.activity_page.Controls.Add(this.active_radio_btn);
+            this.activity_page.Controls.Add(this.moderate_radio_btn);
+            this.activity_page.Controls.Add(this.inactive_radio_btn);
+            this.activity_page.Controls.Add(this.del_activity_btn);
+            this.activity_page.Controls.Add(this.update_activity_btn);
+            this.activity_page.Controls.Add(this.rec_activity_btn);
             this.activity_page.Controls.Add(this.materialLabel16);
-            this.activity_page.Controls.Add(this.activity_txt);
-            this.activity_page.Controls.Add(this.numericUpDown7);
+            this.activity_page.Controls.Add(this.activity_AnimalId_txt);
             this.activity_page.Controls.Add(this.materialLabel13);
-            this.activity_page.Controls.Add(this.numericUpDown8);
-            this.activity_page.Controls.Add(this.materialLabel14);
             this.activity_page.Controls.Add(this.materialLabel15);
             this.activity_page.Controls.Add(this.activityDataGrid);
             this.activity_page.Location = new System.Drawing.Point(4, 22);
@@ -1015,100 +992,105 @@
             this.activity_page.TabIndex = 3;
             this.activity_page.Text = "Activity";
             // 
-            // materialRadioButton3
+            // active_radio_btn
             // 
-            this.materialRadioButton3.AutoSize = true;
-            this.materialRadioButton3.Depth = 0;
-            this.materialRadioButton3.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialRadioButton3.Location = new System.Drawing.Point(25, 197);
-            this.materialRadioButton3.Margin = new System.Windows.Forms.Padding(0);
-            this.materialRadioButton3.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRadioButton3.Name = "materialRadioButton3";
-            this.materialRadioButton3.Ripple = true;
-            this.materialRadioButton3.Size = new System.Drawing.Size(68, 30);
-            this.materialRadioButton3.TabIndex = 37;
-            this.materialRadioButton3.Text = "Active";
-            this.materialRadioButton3.UseVisualStyleBackColor = true;
+            this.active_radio_btn.AutoSize = true;
+            this.active_radio_btn.Depth = 0;
+            this.active_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
+            this.active_radio_btn.Location = new System.Drawing.Point(25, 197);
+            this.active_radio_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.active_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.active_radio_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.active_radio_btn.Name = "active_radio_btn";
+            this.active_radio_btn.Ripple = true;
+            this.active_radio_btn.Size = new System.Drawing.Size(68, 30);
+            this.active_radio_btn.TabIndex = 37;
+            this.active_radio_btn.Text = "Active";
+            this.active_radio_btn.UseVisualStyleBackColor = true;
+            this.active_radio_btn.CheckedChanged += new System.EventHandler(this.active_radio_btn_CheckedChanged);
             // 
-            // materialRadioButton1
+            // moderate_radio_btn
             // 
-            this.materialRadioButton1.AutoSize = true;
-            this.materialRadioButton1.Depth = 0;
-            this.materialRadioButton1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialRadioButton1.Location = new System.Drawing.Point(25, 167);
-            this.materialRadioButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialRadioButton1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRadioButton1.Name = "materialRadioButton1";
-            this.materialRadioButton1.Ripple = true;
-            this.materialRadioButton1.Size = new System.Drawing.Size(140, 30);
-            this.materialRadioButton1.TabIndex = 35;
-            this.materialRadioButton1.Text = "Moderately Active";
-            this.materialRadioButton1.UseVisualStyleBackColor = true;
+            this.moderate_radio_btn.AutoSize = true;
+            this.moderate_radio_btn.Depth = 0;
+            this.moderate_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
+            this.moderate_radio_btn.Location = new System.Drawing.Point(25, 167);
+            this.moderate_radio_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.moderate_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.moderate_radio_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.moderate_radio_btn.Name = "moderate_radio_btn";
+            this.moderate_radio_btn.Ripple = true;
+            this.moderate_radio_btn.Size = new System.Drawing.Size(140, 30);
+            this.moderate_radio_btn.TabIndex = 35;
+            this.moderate_radio_btn.Text = "Moderately Active";
+            this.moderate_radio_btn.UseVisualStyleBackColor = true;
+            this.moderate_radio_btn.CheckedChanged += new System.EventHandler(this.moderate_radio_btn_CheckedChanged);
             // 
-            // materialRadioButton2
+            // inactive_radio_btn
             // 
-            this.materialRadioButton2.AutoSize = true;
-            this.materialRadioButton2.Checked = true;
-            this.materialRadioButton2.Depth = 0;
-            this.materialRadioButton2.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialRadioButton2.Location = new System.Drawing.Point(25, 137);
-            this.materialRadioButton2.Margin = new System.Windows.Forms.Padding(0);
-            this.materialRadioButton2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRadioButton2.Name = "materialRadioButton2";
-            this.materialRadioButton2.Ripple = true;
-            this.materialRadioButton2.Size = new System.Drawing.Size(77, 30);
-            this.materialRadioButton2.TabIndex = 36;
-            this.materialRadioButton2.TabStop = true;
-            this.materialRadioButton2.Text = "Inactive";
-            this.materialRadioButton2.UseVisualStyleBackColor = true;
+            this.inactive_radio_btn.AutoSize = true;
+            this.inactive_radio_btn.Checked = true;
+            this.inactive_radio_btn.Depth = 0;
+            this.inactive_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
+            this.inactive_radio_btn.Location = new System.Drawing.Point(25, 137);
+            this.inactive_radio_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.inactive_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.inactive_radio_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.inactive_radio_btn.Name = "inactive_radio_btn";
+            this.inactive_radio_btn.Ripple = true;
+            this.inactive_radio_btn.Size = new System.Drawing.Size(77, 30);
+            this.inactive_radio_btn.TabIndex = 36;
+            this.inactive_radio_btn.TabStop = true;
+            this.inactive_radio_btn.Text = "Inactive";
+            this.inactive_radio_btn.UseVisualStyleBackColor = true;
             // 
-            // del_activity_txt
+            // del_activity_btn
             // 
-            this.del_activity_txt.AutoSize = true;
-            this.del_activity_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.del_activity_txt.Depth = 0;
-            this.del_activity_txt.Location = new System.Drawing.Point(25, 391);
-            this.del_activity_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.del_activity_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.del_activity_txt.Name = "del_activity_txt";
-            this.del_activity_txt.Primary = false;
-            this.del_activity_txt.Size = new System.Drawing.Size(60, 36);
-            this.del_activity_txt.TabIndex = 32;
-            this.del_activity_txt.Text = "Delete";
-            this.del_activity_txt.UseVisualStyleBackColor = true;
+            this.del_activity_btn.AutoSize = true;
+            this.del_activity_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.del_activity_btn.Depth = 0;
+            this.del_activity_btn.Location = new System.Drawing.Point(25, 391);
+            this.del_activity_btn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.del_activity_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.del_activity_btn.Name = "del_activity_btn";
+            this.del_activity_btn.Primary = false;
+            this.del_activity_btn.Size = new System.Drawing.Size(60, 36);
+            this.del_activity_btn.TabIndex = 32;
+            this.del_activity_btn.Text = "Delete";
+            this.del_activity_btn.UseVisualStyleBackColor = true;
+            this.del_activity_btn.Click += new System.EventHandler(this.del_activity_btn_Click);
             // 
-            // update_activity_txt
+            // update_activity_btn
             // 
-            this.update_activity_txt.AutoSize = true;
-            this.update_activity_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.update_activity_txt.Depth = 0;
-            this.update_activity_txt.Location = new System.Drawing.Point(25, 343);
-            this.update_activity_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.update_activity_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.update_activity_txt.Name = "update_activity_txt";
-            this.update_activity_txt.Primary = false;
-            this.update_activity_txt.Size = new System.Drawing.Size(64, 36);
-            this.update_activity_txt.TabIndex = 33;
-            this.update_activity_txt.Text = "Update";
-            this.update_activity_txt.UseVisualStyleBackColor = true;
+            this.update_activity_btn.AutoSize = true;
+            this.update_activity_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.update_activity_btn.Depth = 0;
+            this.update_activity_btn.Location = new System.Drawing.Point(25, 343);
+            this.update_activity_btn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.update_activity_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.update_activity_btn.Name = "update_activity_btn";
+            this.update_activity_btn.Primary = false;
+            this.update_activity_btn.Size = new System.Drawing.Size(64, 36);
+            this.update_activity_btn.TabIndex = 33;
+            this.update_activity_btn.Text = "Update";
+            this.update_activity_btn.UseVisualStyleBackColor = true;
+            this.update_activity_btn.Click += new System.EventHandler(this.update_activity_btn_Click);
             // 
-            // rec_activity_txt
+            // rec_activity_btn
             // 
-            this.rec_activity_txt.AutoSize = true;
-            this.rec_activity_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.rec_activity_txt.Depth = 0;
-            this.rec_activity_txt.Location = new System.Drawing.Point(25, 295);
-            this.rec_activity_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.rec_activity_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.rec_activity_txt.Name = "rec_activity_txt";
-            this.rec_activity_txt.Primary = false;
-            this.rec_activity_txt.Size = new System.Drawing.Size(64, 36);
-            this.rec_activity_txt.TabIndex = 34;
-            this.rec_activity_txt.Text = "Record";
-            this.rec_activity_txt.UseVisualStyleBackColor = true;
+            this.rec_activity_btn.AutoSize = true;
+            this.rec_activity_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rec_activity_btn.Depth = 0;
+            this.rec_activity_btn.Location = new System.Drawing.Point(25, 295);
+            this.rec_activity_btn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.rec_activity_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rec_activity_btn.Name = "rec_activity_btn";
+            this.rec_activity_btn.Primary = false;
+            this.rec_activity_btn.Size = new System.Drawing.Size(64, 36);
+            this.rec_activity_btn.TabIndex = 34;
+            this.rec_activity_btn.Text = "Record";
+            this.rec_activity_btn.UseVisualStyleBackColor = true;
+            this.rec_activity_btn.Click += new System.EventHandler(this.rec_activity_btn_Click);
             // 
             // materialLabel16
             // 
@@ -1119,35 +1101,19 @@
             this.materialLabel16.Location = new System.Drawing.Point(21, 7);
             this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel16.Name = "materialLabel16";
-            this.materialLabel16.Size = new System.Drawing.Size(121, 19);
+            this.materialLabel16.Size = new System.Drawing.Size(117, 38);
             this.materialLabel16.TabIndex = 31;
-            this.materialLabel16.Text = "Name of Activity";
+            this.materialLabel16.Text = "Activity level for\r\nthe day";
             // 
-            // activity_txt
+            // activity_AnimalId_txt
             // 
-            this.activity_txt.Depth = 0;
-            this.activity_txt.ForeColor = System.Drawing.Color.White;
-            this.activity_txt.Hint = "";
-            this.activity_txt.Location = new System.Drawing.Point(25, 29);
-            this.activity_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.activity_txt.Name = "activity_txt";
-            this.activity_txt.PasswordChar = '\0';
-            this.activity_txt.SelectedText = "";
-            this.activity_txt.SelectionLength = 0;
-            this.activity_txt.SelectionStart = 0;
-            this.activity_txt.Size = new System.Drawing.Size(120, 23);
-            this.activity_txt.TabIndex = 30;
-            this.activity_txt.UseSystemPasswordChar = false;
-            // 
-            // numericUpDown7
-            // 
-            this.numericUpDown7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.numericUpDown7.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown7.Location = new System.Drawing.Point(25, 92);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.numericUpDown7.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown7.TabIndex = 27;
+            this.activity_AnimalId_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.activity_AnimalId_txt.ForeColor = System.Drawing.Color.White;
+            this.activity_AnimalId_txt.Location = new System.Drawing.Point(25, 92);
+            this.activity_AnimalId_txt.Name = "activity_AnimalId_txt";
+            this.activity_AnimalId_txt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.activity_AnimalId_txt.Size = new System.Drawing.Size(120, 20);
+            this.activity_AnimalId_txt.TabIndex = 27;
             // 
             // materialLabel13
             // 
@@ -1161,29 +1127,6 @@
             this.materialLabel13.Size = new System.Drawing.Size(74, 19);
             this.materialLabel13.TabIndex = 24;
             this.materialLabel13.Text = "Animal ID";
-            // 
-            // numericUpDown8
-            // 
-            this.numericUpDown8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.numericUpDown8.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown8.Location = new System.Drawing.Point(25, 262);
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.numericUpDown8.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown8.TabIndex = 28;
-            // 
-            // materialLabel14
-            // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Depth = 0;
-            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(21, 240);
-            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(63, 19);
-            this.materialLabel14.TabIndex = 25;
-            this.materialLabel14.Text = "Average";
             // 
             // materialLabel15
             // 
@@ -1233,6 +1176,7 @@
             this.activityDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.activityDataGrid.Size = new System.Drawing.Size(650, 430);
             this.activityDataGrid.TabIndex = 3;
+            this.activityDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.activityDataGrid_CellClick);
             // 
             // weight_page
             // 
@@ -1458,6 +1402,54 @@
             this.waist_page.Text = "Waist";
             this.waist_page.UseVisualStyleBackColor = true;
             // 
+            // del_waist_txt
+            // 
+            this.del_waist_txt.AutoSize = true;
+            this.del_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.del_waist_txt.Depth = 0;
+            this.del_waist_txt.Location = new System.Drawing.Point(25, 391);
+            this.del_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.del_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.del_waist_txt.Name = "del_waist_txt";
+            this.del_waist_txt.Primary = false;
+            this.del_waist_txt.Size = new System.Drawing.Size(60, 36);
+            this.del_waist_txt.TabIndex = 52;
+            this.del_waist_txt.Text = "Delete";
+            this.del_waist_txt.UseVisualStyleBackColor = true;
+            this.del_waist_txt.Click += new System.EventHandler(this.del_waist_txt_Click);
+            // 
+            // update_waist_txt
+            // 
+            this.update_waist_txt.AutoSize = true;
+            this.update_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.update_waist_txt.Depth = 0;
+            this.update_waist_txt.Location = new System.Drawing.Point(25, 343);
+            this.update_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.update_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.update_waist_txt.Name = "update_waist_txt";
+            this.update_waist_txt.Primary = false;
+            this.update_waist_txt.Size = new System.Drawing.Size(64, 36);
+            this.update_waist_txt.TabIndex = 53;
+            this.update_waist_txt.Text = "Update";
+            this.update_waist_txt.UseVisualStyleBackColor = true;
+            this.update_waist_txt.Click += new System.EventHandler(this.update_waist_txt_Click);
+            // 
+            // rec_waist_txt
+            // 
+            this.rec_waist_txt.AutoSize = true;
+            this.rec_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.rec_waist_txt.Depth = 0;
+            this.rec_waist_txt.Location = new System.Drawing.Point(25, 295);
+            this.rec_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.rec_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rec_waist_txt.Name = "rec_waist_txt";
+            this.rec_waist_txt.Primary = false;
+            this.rec_waist_txt.Size = new System.Drawing.Size(64, 36);
+            this.rec_waist_txt.TabIndex = 54;
+            this.rec_waist_txt.Text = "Record";
+            this.rec_waist_txt.UseVisualStyleBackColor = true;
+            this.rec_waist_txt.Click += new System.EventHandler(this.rec_waist_txt_Click);
+            // 
             // materialLabel22
             // 
             this.materialLabel22.AutoSize = true;
@@ -1590,53 +1582,18 @@
             this.waistDataGrid.TabIndex = 5;
             this.waistDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.waistDataGrid_CellClick);
             // 
-            // del_waist_txt
+            // calories_burnt_txt
             // 
-            this.del_waist_txt.AutoSize = true;
-            this.del_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.del_waist_txt.Depth = 0;
-            this.del_waist_txt.Location = new System.Drawing.Point(25, 391);
-            this.del_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.del_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.del_waist_txt.Name = "del_waist_txt";
-            this.del_waist_txt.Primary = false;
-            this.del_waist_txt.Size = new System.Drawing.Size(60, 36);
-            this.del_waist_txt.TabIndex = 52;
-            this.del_waist_txt.Text = "Delete";
-            this.del_waist_txt.UseVisualStyleBackColor = true;
-            this.del_waist_txt.Click += new System.EventHandler(this.del_waist_txt_Click);
-            // 
-            // update_waist_txt
-            // 
-            this.update_waist_txt.AutoSize = true;
-            this.update_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.update_waist_txt.Depth = 0;
-            this.update_waist_txt.Location = new System.Drawing.Point(25, 343);
-            this.update_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.update_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.update_waist_txt.Name = "update_waist_txt";
-            this.update_waist_txt.Primary = false;
-            this.update_waist_txt.Size = new System.Drawing.Size(64, 36);
-            this.update_waist_txt.TabIndex = 53;
-            this.update_waist_txt.Text = "Update";
-            this.update_waist_txt.UseVisualStyleBackColor = true;
-            this.update_waist_txt.Click += new System.EventHandler(this.update_waist_txt_Click);
-            // 
-            // rec_waist_txt
-            // 
-            this.rec_waist_txt.AutoSize = true;
-            this.rec_waist_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.rec_waist_txt.Depth = 0;
-            this.rec_waist_txt.Location = new System.Drawing.Point(25, 295);
-            this.rec_waist_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.rec_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.rec_waist_txt.Name = "rec_waist_txt";
-            this.rec_waist_txt.Primary = false;
-            this.rec_waist_txt.Size = new System.Drawing.Size(64, 36);
-            this.rec_waist_txt.TabIndex = 54;
-            this.rec_waist_txt.Text = "Record";
-            this.rec_waist_txt.UseVisualStyleBackColor = true;
-            this.rec_waist_txt.Click += new System.EventHandler(this.rec_waist_txt_Click);
+            this.calories_burnt_txt.AutoSize = true;
+            this.calories_burnt_txt.Depth = 0;
+            this.calories_burnt_txt.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calories_burnt_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.calories_burnt_txt.Location = new System.Drawing.Point(22, 214);
+            this.calories_burnt_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.calories_burnt_txt.Name = "calories_burnt_txt";
+            this.calories_burnt_txt.Size = new System.Drawing.Size(71, 18);
+            this.calories_burnt_txt.TabIndex = 26;
+            this.calories_burnt_txt.Text = "Waiting...";
             // 
             // Home
             // 
@@ -1665,13 +1622,11 @@
             this.exercise_page.ResumeLayout(false);
             this.exercise_page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exercise_ani_id)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calories_burnt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.duration_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exerciseDataGrid)).EndInit();
             this.activity_page.ResumeLayout(false);
             this.activity_page.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activity_AnimalId_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.activityDataGrid)).EndInit();
             this.weight_page.ResumeLayout(false);
             this.weight_page.PerformLayout();
@@ -1727,7 +1682,6 @@
         private System.Windows.Forms.DataGridView feedingDataGrid;
         private System.Windows.Forms.NumericUpDown exercise_ani_id;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
-        private System.Windows.Forms.NumericUpDown calories_burnt;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private System.Windows.Forms.NumericUpDown duration_txt;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
@@ -1735,11 +1689,8 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField exercise_txt;
         private System.Windows.Forms.DataGridView exerciseDataGrid;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
-        private MaterialSkin.Controls.MaterialSingleLineTextField activity_txt;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.NumericUpDown activity_AnimalId_txt;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
-        private MaterialSkin.Controls.MaterialLabel materialLabel14;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
         private System.Windows.Forms.DataGridView activityDataGrid;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
@@ -1756,9 +1707,9 @@
         private MaterialSkin.Controls.MaterialFlatButton del_exercise_btn;
         private MaterialSkin.Controls.MaterialFlatButton update_exe_btn;
         private MaterialSkin.Controls.MaterialFlatButton rec_exe_btn;
-        private MaterialSkin.Controls.MaterialFlatButton del_activity_txt;
-        private MaterialSkin.Controls.MaterialFlatButton update_activity_txt;
-        private MaterialSkin.Controls.MaterialFlatButton rec_activity_txt;
+        private MaterialSkin.Controls.MaterialFlatButton del_activity_btn;
+        private MaterialSkin.Controls.MaterialFlatButton update_activity_btn;
+        private MaterialSkin.Controls.MaterialFlatButton rec_activity_btn;
         private MaterialSkin.Controls.MaterialFlatButton del_weight_txt;
         private MaterialSkin.Controls.MaterialFlatButton update_weight_txt;
         private MaterialSkin.Controls.MaterialFlatButton rec_weight_txt;
@@ -1776,9 +1727,9 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel25;
         private MaterialSkin.Controls.MaterialLabel materialLabel26;
         private System.Windows.Forms.DataGridView waistDataGrid;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton3;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton1;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton2;
+        private MaterialSkin.Controls.MaterialRadioButton active_radio_btn;
+        private MaterialSkin.Controls.MaterialRadioButton moderate_radio_btn;
+        private MaterialSkin.Controls.MaterialRadioButton inactive_radio_btn;
         private MaterialSkin.Controls.MaterialLabel materialLabel21;
         private System.Windows.Forms.DataGridView mealDataGrid;
         private MaterialSkin.Controls.MaterialLabel calories_lbl;
@@ -1788,6 +1739,7 @@
         private MaterialSkin.Controls.MaterialFlatButton del_waist_txt;
         private MaterialSkin.Controls.MaterialFlatButton update_waist_txt;
         private MaterialSkin.Controls.MaterialFlatButton rec_waist_txt;
+        private MaterialSkin.Controls.MaterialLabel calories_burnt_txt;
     }
 }
 
