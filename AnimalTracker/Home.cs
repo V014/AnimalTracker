@@ -42,49 +42,112 @@ namespace AnimalTracker
         // load animal table when program starts
         private void Home_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM Animal";
-            LoadData(query, animalDataGrid);
-
             // Load lions
             string queryLion = "SELECT * FROM Lion";
-            LoadData(queryLion, lionGridView);
+            LoadData(queryLion, lionDataGrid);
 
             // Load monkeys
             string queryMonkey = "SELECT * FROM Monkey";
-            LoadData(queryMonkey, monkeyGridView);
+            LoadData(queryMonkey, monkeyDataGrid);
 
             // Load rabbits
             string queryRabbit = "SELECT * FROM Rabbit";
-            LoadData(queryRabbit, rabbitGridView);
+            LoadData(queryRabbit, rabbitDataGrid);
 
             //animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
         }
 
         // fill textboxes with data when user clicks a cell
-        public void animalDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void lionDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                DataGridViewRow row = animalDataGrid.Rows[e.RowIndex];
+                DataGridViewRow row = lionDataGrid.Rows[e.RowIndex];
                 name_txt.Text = row.Cells[1].Value.ToString();
-                if(row.Cells[2].Value.ToString() == "Female")
-                {
-                    female_radio_btn.Checked = true;
-                } else
+                species_txt.Text = row.Cells[2].Value.ToString();
+                age_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                if (row.Cells[4].Value.ToString() == "Male")
                 {
                     male_radio_btn.Checked = true;
                 }
-                age_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-                species_txt.Text = row.Cells[4].Value.ToString();
+                else
+                {
+                    female_radio_btn.Checked = true;
+                }
+
             }
             catch (Exception) // reset textboxes
             {
                 MessageBox.Show("Empty field");
                 // refresh fields
-                name_txt.Text = " ";
+                name_txt.Text = "";
                 name_txt.Focus();
+                species_txt.Text = "";
                 age_txt.Value = 0;
-                species_txt.Text = " ";
+                male_radio_btn.Checked = true;
+                age_txt.Value = 0;
+            }
+        }
+
+        private void monkeyDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = monkeyDataGrid.Rows[e.RowIndex];
+                name_txt.Text = row.Cells[1].Value.ToString();
+                species_txt.Text = row.Cells[2].Value.ToString();
+                age_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                if (row.Cells[4].Value.ToString() == "Male")
+                {
+                    male_radio_btn.Checked = true;
+                }
+                else
+                {
+                    female_radio_btn.Checked = true;
+                }
+
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                name_txt.Text = "";
+                name_txt.Focus();
+                species_txt.Text = "";
+                age_txt.Value = 0;
+                male_radio_btn.Checked = true;
+                age_txt.Value = 0;
+            }
+        }
+
+        private void rabbitDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = rabbitDataGrid.Rows[e.RowIndex];
+                name_txt.Text = row.Cells[1].Value.ToString();
+                species_txt.Text = row.Cells[2].Value.ToString();
+                age_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                if (row.Cells[4].Value.ToString() == "Male")
+                {
+                    male_radio_btn.Checked = true;
+                }
+                else
+                {
+                    female_radio_btn.Checked = true;
+                }
+
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                name_txt.Text = "";
+                name_txt.Focus();
+                species_txt.Text = "";
+                age_txt.Value = 0;
+                male_radio_btn.Checked = true;
+                age_txt.Value = 0;
             }
         }
 
@@ -299,16 +362,36 @@ namespace AnimalTracker
         {
             try
             {
-                // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Animal (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
-                Text + "','" + DateTime.Now.ToString("s") + "')";
+                // if the lion tab is in view, insert into the Lion database
+                if (animalTabs.SelectedTab == lionTab)
+                {
+                    string queryLion = "INSERT INTO Lion (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
+                    Text + "','" + DateTime.Now.ToString("s") + "')";
+                    AnimalControls.Querydb(queryLion);
+                    string queryList = "SELECT * FROM Lion";
+                    LoadData(queryList, lionDataGrid);
+                }
 
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Animal Registered!");
-                string query = "SELECT * FROM Animal";
-                LoadData(query, animalDataGrid);
+                // if the Monkey tab is in view, insert into the Monkey database
+                if (animalTabs.SelectedTab == monkeyTab)
+                {
+                    string queryLion = "INSERT INTO Monkey (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
+                    Text + "','" + DateTime.Now.ToString("s") + "')";
+                    AnimalControls.Querydb(queryLion);
+                    string queryList = "SELECT * FROM Monkey";
+                    LoadData(queryList, monkeyDataGrid);
+                }
 
+                // if the Rabbit tab is in view, insert into the Rabbit database
+                if (animalTabs.SelectedTab == rabbitTab)
+                {
+                    string queryLion = "INSERT INTO Rabbit (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
+                    Text + "','" + DateTime.Now.ToString("s") + "')";
+                    AnimalControls.Querydb(queryLion);
+                    string queryList = "SELECT * FROM Rabbit";
+                    LoadData(queryList, rabbitDataGrid);
+                }
+                
                 // refresh fields
                 name_txt.Text = "";
                 name_txt.Focus();
@@ -319,7 +402,7 @@ namespace AnimalTracker
             }
             catch (Exception)
             {
-                MessageBox.Show("Failed to insert!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -328,15 +411,35 @@ namespace AnimalTracker
         {
             try
             {
-                // we build our query in the form page which has references to its controls
-                int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Animal SET Name = '" + @name_txt.Text + "', Age = '" + @age_txt.Value + "', Gender = '" + @gender + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
+                // if the lion tab is in view, insert into the Lion database
+                if (animalTabs.SelectedTab == lionTab)
+                {
+                    int id = Convert.ToInt32(lionDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string queryLion = "UPDATE Lion SET Name = '" + @name_txt.Text + "', Age = '" + @age_txt.Value + "', Gender = '" + @gender + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
+                    AnimalControls.Querydb(queryLion);
+                    string queryList = "SELECT * FROM Lion";
+                    LoadData(queryList, lionDataGrid);
+                }
 
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Details updated!");
-                string query = "SELECT * FROM Animal";
-                LoadData(query, animalDataGrid);
+                // if the Monkey tab is in view, insert into the Monkey database
+                if (animalTabs.SelectedTab == monkeyTab)
+                {
+                    int id = Convert.ToInt32(monkeyDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string queryMonkey = "UPDATE Monkey SET Name = '" + @name_txt.Text + "', Age = '" + @age_txt.Value + "', Gender = '" + @gender + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
+                    AnimalControls.Querydb(queryMonkey);
+                    string queryList = "SELECT * FROM Monkey";
+                    LoadData(queryList, monkeyDataGrid);
+                }
+
+                // if the Rabbit tab is in view, insert into the Rabbit database
+                if (animalTabs.SelectedTab == rabbitTab)
+                {
+                    int id = Convert.ToInt32(rabbitDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string queryRabbit = "UPDATE Rabbit SET Name = '" + @name_txt.Text + "', Age = '" + @age_txt.Value + "', Gender = '" + @gender + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
+                    AnimalControls.Querydb(queryRabbit);
+                    string queryList = "SELECT * FROM Rabbit";
+                    LoadData(queryList, rabbitDataGrid);
+                }
 
                 // refresh fields
                 name_txt.Text = " ";
@@ -359,18 +462,40 @@ namespace AnimalTracker
             {
                 try
                 {
-                    // we build our query in the form page which has references to the its controls.
-                    int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "DELETE FROM Animal WHERE ID = '" + id + "' ";
-
-                    DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @id + "'?", "Are you sure?", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("Delete Animal?", "Are you sure?", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        // we push the query to the AnimalControl class to process the query which links back to the connection class
-                        AnimalControls.Querydb(txtQuery);
-                        string query = "SELECT * FROM Animal";
-                        LoadData(query, animalDataGrid);
-                    }
+
+                        // if the lion tab is in view, delete the Lion
+                        if (animalTabs.SelectedTab == lionTab)
+                        {
+                            int lionId = Convert.ToInt32(lionDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                            string queryLion = "DELETE FROM Lion WHERE ID = '" + lionId + "' ";
+                            AnimalControls.Querydb(queryLion);
+                            string query = "SELECT * FROM Lion";
+                            LoadData(query, lionDataGrid);
+                        }
+
+                        // if the Monkey tab is in view, delete the Monkey
+                        if (animalTabs.SelectedTab == monkeyTab)
+                        {
+                            int monkeyId = Convert.ToInt32(monkeyDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                            string queryMonkey = "DELETE FROM Monkey WHERE ID = '" + monkeyId + "' ";
+                            AnimalControls.Querydb(queryMonkey);
+                            string query = "SELECT * FROM Monkey";
+                            LoadData(query, monkeyDataGrid);
+                        }
+
+                        // if the Rabbit tab is in view, delete the Rabbit
+                        if (animalTabs.SelectedTab == rabbitTab)
+                        {
+                            int rabbitId = Convert.ToInt32(rabbitDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                            string queryRabbit = "DELETE FROM Rabbit WHERE ID = '" + rabbitId + "' ";
+                            AnimalControls.Querydb(queryRabbit);
+                            string query = "SELECT * FROM Rabbit";
+                            LoadData(query, rabbitDataGrid);
+                        }
+                    } // edd of dialogue
                 }
                 catch (Exception)
                 {
