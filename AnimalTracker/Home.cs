@@ -136,7 +136,6 @@ namespace AnimalTracker
                 {
                     female_radio_btn.Checked = true;
                 }
-
             }
             catch (Exception) // reset textboxes
             {
@@ -313,9 +312,10 @@ namespace AnimalTracker
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Feeding";
                 LoadData(query, feedingDataGrid);
-
+           
                 string queryMeal = "SELECT * FROM Meal";
                 LoadData(queryMeal, mealDataGrid);
+                mealDataGrid.Columns[4].Visible = false;
                 //mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
 
@@ -356,7 +356,7 @@ namespace AnimalTracker
             }
         }
 
-        /* this section queries the database after user interaction */
+        /* ========== this section queries the database after user interaction ======== */
         // adds animal to database
         private void add_ani_btn_Click(object sender, EventArgs e)
         {
@@ -578,7 +578,7 @@ namespace AnimalTracker
                     portion_txt.Value = 0;
                     AnimalId_txt.Value = 0;
 
-                    MessageBox.Show("Record new meal!");
+                    MessageBox.Show("Recorded new meal!");
                 }
             }
             catch (Exception)
@@ -596,7 +596,7 @@ namespace AnimalTracker
                 var calories = portion_txt.Value * 4;
                 // we build our query in the form page which has references to its controls
                 int id = Convert.ToInt32(mealDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Meal SET Name = '" + @meal_txt.Text + "', Calories = '" + @calories + "', Portion = '" + @portion_txt.Value + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+                string txtQuery = "UPDATE Meal SET Name = '" + @meal_txt.Text + "', Calories = '" + @calories + "', Portion = '" + @portion_txt.Value + "' WHERE Id ='" + id + "'";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
                 AnimalControls.Querydb(txtQuery);
