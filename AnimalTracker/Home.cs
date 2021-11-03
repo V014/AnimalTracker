@@ -17,7 +17,7 @@ namespace AnimalTracker
             // Initialize MaterialSkinManager
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
             // style datagrind
@@ -44,6 +44,19 @@ namespace AnimalTracker
         {
             string query = "SELECT * FROM Animal";
             LoadData(query, animalDataGrid);
+
+            // Load lions
+            string queryLion = "SELECT * FROM Lion";
+            LoadData(queryLion, lionGridView);
+
+            // Load monkeys
+            string queryMonkey = "SELECT * FROM Monkey";
+            LoadData(queryMonkey, monkeyGridView);
+
+            // Load rabbits
+            string queryRabbit = "SELECT * FROM Rabbit";
+            LoadData(queryRabbit, rabbitGridView);
+
             //animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
         }
 
@@ -184,6 +197,27 @@ namespace AnimalTracker
             }
         }
 
+        private void exerciseDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = exerciseDataGrid.Rows[e.RowIndex];
+                exercise_txt.Text = row.Cells[1].Value.ToString();
+                duration_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
+                calories_burnt_txt.Text = row.Cells[3].Value.ToString();
+                exercise_AnimalId_txt.Value = Convert.ToInt32(row.Cells[4].Value.ToString());
+
+            }
+            catch (Exception) // reset textboxes
+            {
+                MessageBox.Show("Empty field");
+                // refresh fields
+                exercise_AnimalId_txt.Value = 0;
+                duration_txt.Value = 0;
+                calories_burnt_txt.Text = "Waiting...";
+            }
+        }
+
         // Create a gender variable
         string gender = "Male";
 
@@ -216,15 +250,9 @@ namespace AnimalTracker
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Feeding";
                 LoadData(query, feedingDataGrid);
-                //mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
-            }
 
-            // this displays the data in the meals table when meals tab selected
-            if (materialTabControl.SelectedTab == meal_page)
-            {
-                // Returns all data from the meals table
-                string query = "SELECT * FROM Meal";
-                LoadData(query, mealDataGrid);
+                string queryMeal = "SELECT * FROM Meal";
+                LoadData(queryMeal, mealDataGrid);
                 //mealDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
 
@@ -335,11 +363,14 @@ namespace AnimalTracker
                     int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
                     string txtQuery = "DELETE FROM Animal WHERE ID = '" + id + "' ";
 
-                    // we push the query to the AnimalControl class to process the query which links back to the connection class
-                    AnimalControls.Querydb(txtQuery);
-                    string query = "SELECT * FROM Animal";
-                    LoadData(query, animalDataGrid);
-                    MessageBox.Show("Animal deleted!");
+                    DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @id + "'?", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // we push the query to the AnimalControl class to process the query which links back to the connection class
+                        AnimalControls.Querydb(txtQuery);
+                        string query = "SELECT * FROM Animal";
+                        LoadData(query, animalDataGrid);
+                    }
                 }
                 catch (Exception)
                 {
@@ -550,7 +581,7 @@ namespace AnimalTracker
             try
             {
                 // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt_txt.Text + "','" + exercise_ani_id.
+                string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt_txt.Text + "','" + exercise_AnimalId_txt.
                 Value + "','" + DateTime.Now.ToString("s") + "')";
 
                 // we push the query to the AnimalControl class to process the query which links back to the connection class
@@ -564,7 +595,7 @@ namespace AnimalTracker
                 exercise_txt.Focus();
                 calories_burnt_txt.Text = "";
                 duration_txt.Value = 0;
-                exercise_ani_id.Value = 0;
+                exercise_AnimalId_txt.Value = 0;
             }
             catch (Exception)
             {
@@ -591,7 +622,7 @@ namespace AnimalTracker
                 exercise_txt.Focus();
                 calories_burnt_txt.Text = "";
                 duration_txt.Value = 0;
-                exercise_ani_id.Value = 0;
+                exercise_AnimalId_txt.Value = 0;
             }
             catch (Exception)
             {
@@ -606,14 +637,17 @@ namespace AnimalTracker
                 try
                 {
                     // we build our query in the form page which has references to the its controls.
-                    int id = Convert.ToInt32(animalDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    int id = Convert.ToInt32(exerciseDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
                     string txtQuery = "DELETE FROM Exercise WHERE ID = '" + id + "' ";
 
-                    // we push the query to the AnimalControl class to process the query which links back to the connection class
-                    AnimalControls.Querydb(txtQuery);
-                    string query = "SELECT * FROM Exercise";
-                    LoadData(query, exerciseDataGrid);
-                    MessageBox.Show("Session deleted!");
+                    DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @exercise_AnimalId_txt.Value + "' exercise reading?", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // we push the query to the AnimalControl class to process the query which links back to the connection class
+                        AnimalControls.Querydb(txtQuery);
+                        string query = "SELECT * FROM Exercise";
+                        LoadData(query, exerciseDataGrid);
+                    }
                 }
                 catch (Exception)
                 {
