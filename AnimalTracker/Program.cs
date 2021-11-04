@@ -16,7 +16,7 @@ namespace AnimalTracker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Home());
+            Application.Run(new SplashScreen());
         }
     }
 }

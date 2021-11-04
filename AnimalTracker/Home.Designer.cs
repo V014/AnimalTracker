@@ -28,8 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,15 +48,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,8 +67,16 @@
             this.materialTabSelector = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.animal_page = new System.Windows.Forms.TabPage();
+            this.genderBox = new System.Windows.Forms.GroupBox();
             this.female_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
             this.male_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
+            this.animalTabs = new System.Windows.Forms.TabControl();
+            this.lionTab = new System.Windows.Forms.TabPage();
+            this.lionDataGrid = new System.Windows.Forms.DataGridView();
+            this.monkeyTab = new System.Windows.Forms.TabPage();
+            this.monkeyDataGrid = new System.Windows.Forms.DataGridView();
+            this.rabbitTab = new System.Windows.Forms.TabPage();
+            this.rabbitDataGrid = new System.Windows.Forms.DataGridView();
             this.age_txt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
@@ -76,10 +87,14 @@
             this.species_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.name_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.meal_page = new System.Windows.Forms.TabPage();
-            this.calories_lbl = new MaterialSkin.Controls.MaterialLabel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.feedingDataGrid = new System.Windows.Forms.DataGridView();
             this.del_feeding_txt = new MaterialSkin.Controls.MaterialFlatButton();
-            this.delete_meal_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.update_feeding_txt = new MaterialSkin.Controls.MaterialFlatButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mealDataGrid = new System.Windows.Forms.DataGridView();
+            this.calories_lbl = new MaterialSkin.Controls.MaterialLabel();
+            this.delete_meal_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.update_meal_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rec_meal_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.AnimalId_txt = new System.Windows.Forms.NumericUpDown();
@@ -89,9 +104,8 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.meal_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.mealDataGrid = new System.Windows.Forms.DataGridView();
-            this.feedingDataGrid = new System.Windows.Forms.DataGridView();
             this.exercise_page = new System.Windows.Forms.TabPage();
+            this.calories_burnt_txt = new MaterialSkin.Controls.MaterialLabel();
             this.del_exercise_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.update_exe_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rec_exe_btn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -141,25 +155,25 @@
             this.materialLabel25 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel26 = new MaterialSkin.Controls.MaterialLabel();
             this.waistDataGrid = new System.Windows.Forms.DataGridView();
-            this.calories_burnt_txt = new MaterialSkin.Controls.MaterialLabel();
-            this.animalTabs = new System.Windows.Forms.TabControl();
-            this.lionTab = new System.Windows.Forms.TabPage();
-            this.monkeyTab = new System.Windows.Forms.TabPage();
-            this.rabbitTab = new System.Windows.Forms.TabPage();
-            this.lionDataGrid = new System.Windows.Forms.DataGridView();
-            this.monkeyDataGrid = new System.Windows.Forms.DataGridView();
-            this.rabbitDataGrid = new System.Windows.Forms.DataGridView();
-            this.genderBox = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.animalDataGrid = new System.Windows.Forms.DataGridView();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
+            this.genderBox.SuspendLayout();
+            this.animalTabs.SuspendLayout();
+            this.lionTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lionDataGrid)).BeginInit();
+            this.monkeyTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monkeyDataGrid)).BeginInit();
+            this.rabbitTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rabbitDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).BeginInit();
             this.meal_page.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.feedingDataGrid)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mealDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalId_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.portion_txt)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mealDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.feedingDataGrid)).BeginInit();
             this.exercise_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exercise_AnimalId_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.duration_txt)).BeginInit();
@@ -177,16 +191,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.waist_AnimalId_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mor_waist_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).BeginInit();
-            this.animalTabs.SuspendLayout();
-            this.lionTab.SuspendLayout();
-            this.monkeyTab.SuspendLayout();
-            this.rabbitTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lionDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.monkeyDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rabbitDataGrid)).BeginInit();
-            this.genderBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.animalDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -264,13 +269,14 @@
             this.materialTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl.Name = "materialTabControl";
             this.materialTabControl.SelectedIndex = 0;
-            this.materialTabControl.Size = new System.Drawing.Size(852, 560);
+            this.materialTabControl.Size = new System.Drawing.Size(852, 530);
             this.materialTabControl.TabIndex = 4;
             this.materialTabControl.SelectedIndexChanged += new System.EventHandler(this.materialTabControl_SelectedIndexChanged);
             // 
             // animal_page
             // 
             this.animal_page.BackColor = System.Drawing.Color.White;
+            this.animal_page.Controls.Add(this.animalDataGrid);
             this.animal_page.Controls.Add(this.genderBox);
             this.animal_page.Controls.Add(this.animalTabs);
             this.animal_page.Controls.Add(this.age_txt);
@@ -285,9 +291,21 @@
             this.animal_page.Location = new System.Drawing.Point(4, 22);
             this.animal_page.Name = "animal_page";
             this.animal_page.Padding = new System.Windows.Forms.Padding(3);
-            this.animal_page.Size = new System.Drawing.Size(844, 534);
+            this.animal_page.Size = new System.Drawing.Size(844, 504);
             this.animal_page.TabIndex = 0;
             this.animal_page.Text = "Animal";
+            // 
+            // genderBox
+            // 
+            this.genderBox.Controls.Add(this.female_radio_btn);
+            this.genderBox.Controls.Add(this.male_radio_btn);
+            this.genderBox.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.genderBox.Location = new System.Drawing.Point(16, 188);
+            this.genderBox.Name = "genderBox";
+            this.genderBox.Size = new System.Drawing.Size(153, 60);
+            this.genderBox.TabIndex = 13;
+            this.genderBox.TabStop = false;
+            this.genderBox.Text = "Gender";
             // 
             // female_radio_btn
             // 
@@ -323,6 +341,155 @@
             this.male_radio_btn.TabStop = true;
             this.male_radio_btn.Text = "Male";
             this.male_radio_btn.UseVisualStyleBackColor = true;
+            // 
+            // animalTabs
+            // 
+            this.animalTabs.Controls.Add(this.lionTab);
+            this.animalTabs.Controls.Add(this.monkeyTab);
+            this.animalTabs.Controls.Add(this.rabbitTab);
+            this.animalTabs.Location = new System.Drawing.Point(191, 7);
+            this.animalTabs.Name = "animalTabs";
+            this.animalTabs.SelectedIndex = 0;
+            this.animalTabs.Size = new System.Drawing.Size(650, 259);
+            this.animalTabs.TabIndex = 12;
+            // 
+            // lionTab
+            // 
+            this.lionTab.BackColor = System.Drawing.Color.White;
+            this.lionTab.Controls.Add(this.lionDataGrid);
+            this.lionTab.Location = new System.Drawing.Point(4, 22);
+            this.lionTab.Name = "lionTab";
+            this.lionTab.Padding = new System.Windows.Forms.Padding(3);
+            this.lionTab.Size = new System.Drawing.Size(642, 233);
+            this.lionTab.TabIndex = 0;
+            this.lionTab.Text = "Lion";
+            // 
+            // lionDataGrid
+            // 
+            this.lionDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.lionDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lionDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.lionDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lionDataGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            this.lionDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.lionDataGrid.Name = "lionDataGrid";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lionDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.lionDataGrid.Size = new System.Drawing.Size(639, 233);
+            this.lionDataGrid.TabIndex = 0;
+            this.lionDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lionDataGrid_CellClick);
+            // 
+            // monkeyTab
+            // 
+            this.monkeyTab.BackColor = System.Drawing.Color.White;
+            this.monkeyTab.Controls.Add(this.monkeyDataGrid);
+            this.monkeyTab.Location = new System.Drawing.Point(4, 22);
+            this.monkeyTab.Name = "monkeyTab";
+            this.monkeyTab.Padding = new System.Windows.Forms.Padding(3);
+            this.monkeyTab.Size = new System.Drawing.Size(642, 233);
+            this.monkeyTab.TabIndex = 1;
+            this.monkeyTab.Text = "Monkey";
+            // 
+            // monkeyDataGrid
+            // 
+            this.monkeyDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.monkeyDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.monkeyDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.monkeyDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.monkeyDataGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            this.monkeyDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.monkeyDataGrid.Name = "monkeyDataGrid";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.monkeyDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.monkeyDataGrid.Size = new System.Drawing.Size(639, 233);
+            this.monkeyDataGrid.TabIndex = 1;
+            this.monkeyDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.monkeyDataGrid_CellClick);
+            // 
+            // rabbitTab
+            // 
+            this.rabbitTab.BackColor = System.Drawing.Color.White;
+            this.rabbitTab.Controls.Add(this.rabbitDataGrid);
+            this.rabbitTab.Location = new System.Drawing.Point(4, 22);
+            this.rabbitTab.Name = "rabbitTab";
+            this.rabbitTab.Padding = new System.Windows.Forms.Padding(3);
+            this.rabbitTab.Size = new System.Drawing.Size(642, 233);
+            this.rabbitTab.TabIndex = 2;
+            this.rabbitTab.Text = "Rabbit";
+            // 
+            // rabbitDataGrid
+            // 
+            this.rabbitDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.rabbitDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rabbitDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.rabbitDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.rabbitDataGrid.DefaultCellStyle = dataGridViewCellStyle11;
+            this.rabbitDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.rabbitDataGrid.Name = "rabbitDataGrid";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rabbitDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.rabbitDataGrid.Size = new System.Drawing.Size(639, 233);
+            this.rabbitDataGrid.TabIndex = 1;
+            this.rabbitDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rabbitDataGrid_CellClick);
             // 
             // age_txt
             // 
@@ -378,7 +545,7 @@
             this.delete_ani_btn.AutoSize = true;
             this.delete_ani_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.delete_ani_btn.Depth = 0;
-            this.delete_ani_btn.Location = new System.Drawing.Point(16, 489);
+            this.delete_ani_btn.Location = new System.Drawing.Point(24, 390);
             this.delete_ani_btn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.delete_ani_btn.MouseState = MaterialSkin.MouseState.HOVER;
             this.delete_ani_btn.Name = "delete_ani_btn";
@@ -394,7 +561,7 @@
             this.update_ani_btn.AutoSize = true;
             this.update_ani_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.update_ani_btn.Depth = 0;
-            this.update_ani_btn.Location = new System.Drawing.Point(16, 441);
+            this.update_ani_btn.Location = new System.Drawing.Point(24, 342);
             this.update_ani_btn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.update_ani_btn.MouseState = MaterialSkin.MouseState.HOVER;
             this.update_ani_btn.Name = "update_ani_btn";
@@ -410,7 +577,7 @@
             this.add_ani_btn.AutoSize = true;
             this.add_ani_btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.add_ani_btn.Depth = 0;
-            this.add_ani_btn.Location = new System.Drawing.Point(16, 393);
+            this.add_ani_btn.Location = new System.Drawing.Point(24, 294);
             this.add_ani_btn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.add_ani_btn.MouseState = MaterialSkin.MouseState.HOVER;
             this.add_ani_btn.Name = "add_ani_btn";
@@ -472,9 +639,95 @@
             this.meal_page.Location = new System.Drawing.Point(4, 22);
             this.meal_page.Name = "meal_page";
             this.meal_page.Padding = new System.Windows.Forms.Padding(3);
-            this.meal_page.Size = new System.Drawing.Size(844, 534);
+            this.meal_page.Size = new System.Drawing.Size(844, 504);
             this.meal_page.TabIndex = 1;
             this.meal_page.Text = "Meal";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.feedingDataGrid);
+            this.groupBox2.Controls.Add(this.del_feeding_txt);
+            this.groupBox2.Controls.Add(this.update_feeding_txt);
+            this.groupBox2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(190, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(460, 276);
+            this.groupBox2.TabIndex = 21;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Feedings";
+            // 
+            // feedingDataGrid
+            // 
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.feedingDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.feedingDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.feedingDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.feedingDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.feedingDataGrid.GridColor = System.Drawing.Color.White;
+            this.feedingDataGrid.Location = new System.Drawing.Point(4, 25);
+            this.feedingDataGrid.Name = "feedingDataGrid";
+            this.feedingDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.feedingDataGrid.Size = new System.Drawing.Size(450, 197);
+            this.feedingDataGrid.TabIndex = 1;
+            this.feedingDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.feedingDataGrid_CellClick);
+            // 
+            // del_feeding_txt
+            // 
+            this.del_feeding_txt.AutoSize = true;
+            this.del_feeding_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.del_feeding_txt.Depth = 0;
+            this.del_feeding_txt.Location = new System.Drawing.Point(4, 231);
+            this.del_feeding_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.del_feeding_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.del_feeding_txt.Name = "del_feeding_txt";
+            this.del_feeding_txt.Primary = false;
+            this.del_feeding_txt.Size = new System.Drawing.Size(60, 36);
+            this.del_feeding_txt.TabIndex = 16;
+            this.del_feeding_txt.Text = "Delete";
+            this.del_feeding_txt.UseVisualStyleBackColor = true;
+            this.del_feeding_txt.Click += new System.EventHandler(this.del_feeding_txt_Click);
+            // 
+            // update_feeding_txt
+            // 
+            this.update_feeding_txt.AutoSize = true;
+            this.update_feeding_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.update_feeding_txt.Depth = 0;
+            this.update_feeding_txt.Location = new System.Drawing.Point(72, 231);
+            this.update_feeding_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.update_feeding_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.update_feeding_txt.Name = "update_feeding_txt";
+            this.update_feeding_txt.Primary = false;
+            this.update_feeding_txt.Size = new System.Drawing.Size(64, 36);
+            this.update_feeding_txt.TabIndex = 17;
+            this.update_feeding_txt.Text = "Update";
+            this.update_feeding_txt.UseVisualStyleBackColor = true;
+            this.update_feeding_txt.Click += new System.EventHandler(this.update_feeding_txt_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.mealDataGrid);
+            this.groupBox1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(190, 295);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(460, 195);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Saved Meals";
+            // 
+            // mealDataGrid
+            // 
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Roboto", 11.25F);
+            this.mealDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
+            this.mealDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.mealDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mealDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mealDataGrid.GridColor = System.Drawing.Color.White;
+            this.mealDataGrid.Location = new System.Drawing.Point(10, 25);
+            this.mealDataGrid.Name = "mealDataGrid";
+            this.mealDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.mealDataGrid.Size = new System.Drawing.Size(444, 164);
+            this.mealDataGrid.TabIndex = 1;
+            this.mealDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mealDataGrid_CellClick);
             // 
             // calories_lbl
             // 
@@ -488,22 +741,6 @@
             this.calories_lbl.Size = new System.Drawing.Size(120, 19);
             this.calories_lbl.TabIndex = 19;
             this.calories_lbl.Text = "Waiting on you...";
-            // 
-            // del_feeding_txt
-            // 
-            this.del_feeding_txt.AutoSize = true;
-            this.del_feeding_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.del_feeding_txt.Depth = 0;
-            this.del_feeding_txt.Location = new System.Drawing.Point(4, 250);
-            this.del_feeding_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.del_feeding_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.del_feeding_txt.Name = "del_feeding_txt";
-            this.del_feeding_txt.Primary = false;
-            this.del_feeding_txt.Size = new System.Drawing.Size(60, 36);
-            this.del_feeding_txt.TabIndex = 16;
-            this.del_feeding_txt.Text = "Delete";
-            this.del_feeding_txt.UseVisualStyleBackColor = true;
-            this.del_feeding_txt.Click += new System.EventHandler(this.del_feeding_txt_Click);
             // 
             // delete_meal_btn
             // 
@@ -520,22 +757,6 @@
             this.delete_meal_btn.Text = "Delete";
             this.delete_meal_btn.UseVisualStyleBackColor = true;
             this.delete_meal_btn.Click += new System.EventHandler(this.delete_meal_btn_Click);
-            // 
-            // update_feeding_txt
-            // 
-            this.update_feeding_txt.AutoSize = true;
-            this.update_feeding_txt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.update_feeding_txt.Depth = 0;
-            this.update_feeding_txt.Location = new System.Drawing.Point(72, 250);
-            this.update_feeding_txt.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.update_feeding_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.update_feeding_txt.Name = "update_feeding_txt";
-            this.update_feeding_txt.Primary = false;
-            this.update_feeding_txt.Size = new System.Drawing.Size(64, 36);
-            this.update_feeding_txt.TabIndex = 17;
-            this.update_feeding_txt.Text = "Update";
-            this.update_feeding_txt.UseVisualStyleBackColor = true;
-            this.update_feeding_txt.Click += new System.EventHandler(this.update_feeding_txt_Click);
             // 
             // update_meal_btn
             // 
@@ -662,36 +883,6 @@
             this.meal_txt.TabIndex = 11;
             this.meal_txt.UseSystemPasswordChar = false;
             // 
-            // mealDataGrid
-            // 
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Roboto", 11.25F);
-            this.mealDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.mealDataGrid.BackgroundColor = System.Drawing.Color.White;
-            this.mealDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mealDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.mealDataGrid.GridColor = System.Drawing.Color.White;
-            this.mealDataGrid.Location = new System.Drawing.Point(10, 25);
-            this.mealDataGrid.Name = "mealDataGrid";
-            this.mealDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.mealDataGrid.Size = new System.Drawing.Size(444, 164);
-            this.mealDataGrid.TabIndex = 1;
-            this.mealDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mealDataGrid_CellClick);
-            // 
-            // feedingDataGrid
-            // 
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feedingDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.feedingDataGrid.BackgroundColor = System.Drawing.Color.White;
-            this.feedingDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.feedingDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.feedingDataGrid.GridColor = System.Drawing.Color.White;
-            this.feedingDataGrid.Location = new System.Drawing.Point(4, 25);
-            this.feedingDataGrid.Name = "feedingDataGrid";
-            this.feedingDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.feedingDataGrid.Size = new System.Drawing.Size(450, 216);
-            this.feedingDataGrid.TabIndex = 1;
-            this.feedingDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.feedingDataGrid_CellClick);
-            // 
             // exercise_page
             // 
             this.exercise_page.BackColor = System.Drawing.Color.White;
@@ -710,9 +901,22 @@
             this.exercise_page.Location = new System.Drawing.Point(4, 22);
             this.exercise_page.Name = "exercise_page";
             this.exercise_page.Padding = new System.Windows.Forms.Padding(3);
-            this.exercise_page.Size = new System.Drawing.Size(844, 443);
+            this.exercise_page.Size = new System.Drawing.Size(844, 504);
             this.exercise_page.TabIndex = 2;
             this.exercise_page.Text = "Exercise";
+            // 
+            // calories_burnt_txt
+            // 
+            this.calories_burnt_txt.AutoSize = true;
+            this.calories_burnt_txt.Depth = 0;
+            this.calories_burnt_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.calories_burnt_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.calories_burnt_txt.Location = new System.Drawing.Point(22, 214);
+            this.calories_burnt_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.calories_burnt_txt.Name = "calories_burnt_txt";
+            this.calories_burnt_txt.Size = new System.Drawing.Size(71, 19);
+            this.calories_burnt_txt.TabIndex = 26;
+            this.calories_burnt_txt.Text = "Waiting...";
             // 
             // del_exercise_btn
             // 
@@ -854,35 +1058,35 @@
             // 
             this.exerciseDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.exerciseDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.exerciseDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.exerciseDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.exerciseDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.exerciseDataGrid.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.exerciseDataGrid.DefaultCellStyle = dataGridViewCellStyle16;
             this.exerciseDataGrid.GridColor = System.Drawing.Color.White;
             this.exerciseDataGrid.Location = new System.Drawing.Point(190, 7);
             this.exerciseDataGrid.Name = "exerciseDataGrid";
             this.exerciseDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.exerciseDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.exerciseDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.exerciseDataGrid.Size = new System.Drawing.Size(650, 430);
             this.exerciseDataGrid.TabIndex = 2;
             this.exerciseDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.exerciseDataGrid_CellClick);
@@ -904,7 +1108,7 @@
             this.activity_page.Location = new System.Drawing.Point(4, 22);
             this.activity_page.Name = "activity_page";
             this.activity_page.Padding = new System.Windows.Forms.Padding(3);
-            this.activity_page.Size = new System.Drawing.Size(844, 443);
+            this.activity_page.Size = new System.Drawing.Size(844, 504);
             this.activity_page.TabIndex = 3;
             this.activity_page.Text = "Activity";
             // 
@@ -1017,7 +1221,7 @@
             this.materialLabel16.Location = new System.Drawing.Point(21, 7);
             this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel16.Name = "materialLabel16";
-            this.materialLabel16.Size = new System.Drawing.Size(117, 38);
+            this.materialLabel16.Size = new System.Drawing.Size(116, 38);
             this.materialLabel16.TabIndex = 31;
             this.materialLabel16.Text = "Activity level for\r\nthe day";
             // 
@@ -1040,7 +1244,7 @@
             this.materialLabel13.Location = new System.Drawing.Point(21, 70);
             this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel13.Size = new System.Drawing.Size(73, 19);
             this.materialLabel13.TabIndex = 24;
             this.materialLabel13.Text = "Animal ID";
             // 
@@ -1053,7 +1257,7 @@
             this.materialLabel15.Location = new System.Drawing.Point(21, 118);
             this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel15.Name = "materialLabel15";
-            this.materialLabel15.Size = new System.Drawing.Size(98, 19);
+            this.materialLabel15.Size = new System.Drawing.Size(97, 19);
             this.materialLabel15.TabIndex = 26;
             this.materialLabel15.Text = "Activity Level";
             // 
@@ -1061,35 +1265,35 @@
             // 
             this.activityDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.activityDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.activityDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.activityDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.activityDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.activityDataGrid.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.activityDataGrid.DefaultCellStyle = dataGridViewCellStyle19;
             this.activityDataGrid.GridColor = System.Drawing.Color.White;
             this.activityDataGrid.Location = new System.Drawing.Point(190, 7);
             this.activityDataGrid.Name = "activityDataGrid";
             this.activityDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.activityDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.activityDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.activityDataGrid.Size = new System.Drawing.Size(650, 430);
             this.activityDataGrid.TabIndex = 3;
             this.activityDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.activityDataGrid_CellClick);
@@ -1112,7 +1316,7 @@
             this.weight_page.Location = new System.Drawing.Point(4, 22);
             this.weight_page.Name = "weight_page";
             this.weight_page.Padding = new System.Windows.Forms.Padding(3);
-            this.weight_page.Size = new System.Drawing.Size(844, 443);
+            this.weight_page.Size = new System.Drawing.Size(844, 504);
             this.weight_page.TabIndex = 4;
             this.weight_page.Text = "Weight";
             // 
@@ -1173,7 +1377,7 @@
             this.materialLabel17.Location = new System.Drawing.Point(21, 7);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(68, 19);
+            this.materialLabel17.Size = new System.Drawing.Size(67, 19);
             this.materialLabel17.TabIndex = 40;
             this.materialLabel17.Text = "AnimalId";
             // 
@@ -1216,7 +1420,7 @@
             this.materialLabel18.Location = new System.Drawing.Point(24, 128);
             this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel18.Name = "materialLabel18";
-            this.materialLabel18.Size = new System.Drawing.Size(111, 19);
+            this.materialLabel18.Size = new System.Drawing.Size(110, 19);
             this.materialLabel18.TabIndex = 35;
             this.materialLabel18.Text = "Evening Weight";
             // 
@@ -1229,7 +1433,7 @@
             this.avg_weight_lbl.Location = new System.Drawing.Point(24, 227);
             this.avg_weight_lbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.avg_weight_lbl.Name = "avg_weight_lbl";
-            this.avg_weight_lbl.Size = new System.Drawing.Size(96, 19);
+            this.avg_weight_lbl.Size = new System.Drawing.Size(95, 19);
             this.avg_weight_lbl.TabIndex = 35;
             this.avg_weight_lbl.Text = "Calculating...";
             // 
@@ -1242,7 +1446,7 @@
             this.materialLabel19.Location = new System.Drawing.Point(24, 194);
             this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel19.Name = "materialLabel19";
-            this.materialLabel19.Size = new System.Drawing.Size(113, 19);
+            this.materialLabel19.Size = new System.Drawing.Size(112, 19);
             this.materialLabel19.TabIndex = 35;
             this.materialLabel19.Text = "Average Weight";
             // 
@@ -1255,7 +1459,7 @@
             this.materialLabel20.Location = new System.Drawing.Point(21, 70);
             this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel20.Name = "materialLabel20";
-            this.materialLabel20.Size = new System.Drawing.Size(114, 19);
+            this.materialLabel20.Size = new System.Drawing.Size(113, 19);
             this.materialLabel20.TabIndex = 35;
             this.materialLabel20.Text = "Morning Weight";
             // 
@@ -1263,35 +1467,35 @@
             // 
             this.weightDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.weightDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.weightDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.weightDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.weightDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.weightDataGrid.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.weightDataGrid.DefaultCellStyle = dataGridViewCellStyle22;
             this.weightDataGrid.GridColor = System.Drawing.Color.White;
             this.weightDataGrid.Location = new System.Drawing.Point(190, 7);
             this.weightDataGrid.Name = "weightDataGrid";
             this.weightDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.weightDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.weightDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.weightDataGrid.Size = new System.Drawing.Size(650, 430);
             this.weightDataGrid.TabIndex = 4;
             this.weightDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.weightDataGrid_CellClick);
@@ -1313,7 +1517,7 @@
             this.waist_page.Location = new System.Drawing.Point(4, 22);
             this.waist_page.Name = "waist_page";
             this.waist_page.Padding = new System.Windows.Forms.Padding(3);
-            this.waist_page.Size = new System.Drawing.Size(844, 443);
+            this.waist_page.Size = new System.Drawing.Size(844, 504);
             this.waist_page.TabIndex = 5;
             this.waist_page.Text = "Waist";
             this.waist_page.UseVisualStyleBackColor = true;
@@ -1375,7 +1579,7 @@
             this.materialLabel22.Location = new System.Drawing.Point(21, 7);
             this.materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel22.Name = "materialLabel22";
-            this.materialLabel22.Size = new System.Drawing.Size(68, 19);
+            this.materialLabel22.Size = new System.Drawing.Size(67, 19);
             this.materialLabel22.TabIndex = 51;
             this.materialLabel22.Text = "AnimalId";
             // 
@@ -1418,7 +1622,7 @@
             this.materialLabel23.Location = new System.Drawing.Point(24, 128);
             this.materialLabel23.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel23.Name = "materialLabel23";
-            this.materialLabel23.Size = new System.Drawing.Size(103, 19);
+            this.materialLabel23.Size = new System.Drawing.Size(102, 19);
             this.materialLabel23.TabIndex = 44;
             this.materialLabel23.Text = "Evening Waist";
             // 
@@ -1431,7 +1635,7 @@
             this.avg_waist_txt.Location = new System.Drawing.Point(24, 227);
             this.avg_waist_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.avg_waist_txt.Name = "avg_waist_txt";
-            this.avg_waist_txt.Size = new System.Drawing.Size(96, 19);
+            this.avg_waist_txt.Size = new System.Drawing.Size(95, 19);
             this.avg_waist_txt.TabIndex = 45;
             this.avg_waist_txt.Text = "Calculating...";
             // 
@@ -1444,7 +1648,7 @@
             this.materialLabel25.Location = new System.Drawing.Point(24, 194);
             this.materialLabel25.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel25.Name = "materialLabel25";
-            this.materialLabel25.Size = new System.Drawing.Size(140, 19);
+            this.materialLabel25.Size = new System.Drawing.Size(139, 19);
             this.materialLabel25.TabIndex = 46;
             this.materialLabel25.Text = "Average Waist (cm)";
             // 
@@ -1457,7 +1661,7 @@
             this.materialLabel26.Location = new System.Drawing.Point(21, 70);
             this.materialLabel26.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel26.Name = "materialLabel26";
-            this.materialLabel26.Size = new System.Drawing.Size(106, 19);
+            this.materialLabel26.Size = new System.Drawing.Size(105, 19);
             this.materialLabel26.TabIndex = 47;
             this.materialLabel26.Text = "Morning Waist";
             // 
@@ -1465,100 +1669,43 @@
             // 
             this.waistDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.waistDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.waistDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.waistDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.waistDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.waistDataGrid.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.waistDataGrid.DefaultCellStyle = dataGridViewCellStyle25;
             this.waistDataGrid.GridColor = System.Drawing.Color.White;
             this.waistDataGrid.Location = new System.Drawing.Point(190, 7);
             this.waistDataGrid.Name = "waistDataGrid";
             this.waistDataGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.waistDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.waistDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.waistDataGrid.Size = new System.Drawing.Size(650, 430);
             this.waistDataGrid.TabIndex = 5;
             this.waistDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.waistDataGrid_CellClick);
             // 
-            // calories_burnt_txt
+            // animalDataGrid
             // 
-            this.calories_burnt_txt.AutoSize = true;
-            this.calories_burnt_txt.Depth = 0;
-            this.calories_burnt_txt.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calories_burnt_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.calories_burnt_txt.Location = new System.Drawing.Point(22, 214);
-            this.calories_burnt_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.calories_burnt_txt.Name = "calories_burnt_txt";
-            this.calories_burnt_txt.Size = new System.Drawing.Size(71, 18);
-            this.calories_burnt_txt.TabIndex = 26;
-            this.calories_burnt_txt.Text = "Waiting...";
-            // 
-            // animalTabs
-            // 
-            this.animalTabs.Controls.Add(this.lionTab);
-            this.animalTabs.Controls.Add(this.monkeyTab);
-            this.animalTabs.Controls.Add(this.rabbitTab);
-            this.animalTabs.Location = new System.Drawing.Point(191, 7);
-            this.animalTabs.Name = "animalTabs";
-            this.animalTabs.SelectedIndex = 0;
-            this.animalTabs.Size = new System.Drawing.Size(650, 259);
-            this.animalTabs.TabIndex = 12;
-            // 
-            // lionTab
-            // 
-            this.lionTab.BackColor = System.Drawing.Color.White;
-            this.lionTab.Controls.Add(this.lionDataGrid);
-            this.lionTab.Location = new System.Drawing.Point(4, 22);
-            this.lionTab.Name = "lionTab";
-            this.lionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.lionTab.Size = new System.Drawing.Size(642, 233);
-            this.lionTab.TabIndex = 0;
-            this.lionTab.Text = "Lion";
-            // 
-            // monkeyTab
-            // 
-            this.monkeyTab.BackColor = System.Drawing.Color.White;
-            this.monkeyTab.Controls.Add(this.monkeyDataGrid);
-            this.monkeyTab.Location = new System.Drawing.Point(4, 22);
-            this.monkeyTab.Name = "monkeyTab";
-            this.monkeyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.monkeyTab.Size = new System.Drawing.Size(642, 233);
-            this.monkeyTab.TabIndex = 1;
-            this.monkeyTab.Text = "Monkey";
-            // 
-            // rabbitTab
-            // 
-            this.rabbitTab.BackColor = System.Drawing.Color.White;
-            this.rabbitTab.Controls.Add(this.rabbitDataGrid);
-            this.rabbitTab.Location = new System.Drawing.Point(4, 22);
-            this.rabbitTab.Name = "rabbitTab";
-            this.rabbitTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rabbitTab.Size = new System.Drawing.Size(642, 233);
-            this.rabbitTab.TabIndex = 2;
-            this.rabbitTab.Text = "Rabbit";
-            // 
-            // lionDataGrid
-            // 
-            this.lionDataGrid.BackgroundColor = System.Drawing.Color.White;
-            this.lionDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.animalDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.animalDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1566,8 +1713,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lionDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.lionDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.animalDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.animalDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1575,9 +1722,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lionDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            this.lionDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.lionDataGrid.Name = "lionDataGrid";
+            this.animalDataGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.animalDataGrid.Location = new System.Drawing.Point(191, 272);
+            this.animalDataGrid.Name = "animalDataGrid";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1585,140 +1732,47 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lionDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.lionDataGrid.Size = new System.Drawing.Size(639, 233);
-            this.lionDataGrid.TabIndex = 0;
-            this.lionDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lionDataGrid_CellClick);
-            // 
-            // monkeyDataGrid
-            // 
-            this.monkeyDataGrid.BackgroundColor = System.Drawing.Color.White;
-            this.monkeyDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.monkeyDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.monkeyDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.monkeyDataGrid.DefaultCellStyle = dataGridViewCellStyle5;
-            this.monkeyDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.monkeyDataGrid.Name = "monkeyDataGrid";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.monkeyDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.monkeyDataGrid.Size = new System.Drawing.Size(639, 233);
-            this.monkeyDataGrid.TabIndex = 1;
-            this.monkeyDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.monkeyDataGrid_CellClick);
-            // 
-            // rabbitDataGrid
-            // 
-            this.rabbitDataGrid.BackgroundColor = System.Drawing.Color.White;
-            this.rabbitDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.rabbitDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.rabbitDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.rabbitDataGrid.DefaultCellStyle = dataGridViewCellStyle8;
-            this.rabbitDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.rabbitDataGrid.Name = "rabbitDataGrid";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.rabbitDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.rabbitDataGrid.Size = new System.Drawing.Size(639, 233);
-            this.rabbitDataGrid.TabIndex = 1;
-            this.rabbitDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rabbitDataGrid_CellClick);
-            // 
-            // genderBox
-            // 
-            this.genderBox.Controls.Add(this.female_radio_btn);
-            this.genderBox.Controls.Add(this.male_radio_btn);
-            this.genderBox.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderBox.Location = new System.Drawing.Point(16, 188);
-            this.genderBox.Name = "genderBox";
-            this.genderBox.Size = new System.Drawing.Size(153, 60);
-            this.genderBox.TabIndex = 13;
-            this.genderBox.TabStop = false;
-            this.genderBox.Text = "Gender";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.mealDataGrid);
-            this.groupBox1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(190, 333);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(460, 195);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Saved Meals";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.feedingDataGrid);
-            this.groupBox2.Controls.Add(this.del_feeding_txt);
-            this.groupBox2.Controls.Add(this.update_feeding_txt);
-            this.groupBox2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(190, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(460, 300);
-            this.groupBox2.TabIndex = 21;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Feedings";
+            this.animalDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.animalDataGrid.Size = new System.Drawing.Size(646, 215);
+            this.animalDataGrid.TabIndex = 0;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 700);
+            this.ClientSize = new System.Drawing.Size(850, 670);
             this.Controls.Add(this.materialTabControl);
             this.Controls.Add(this.materialTabSelector);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.Name = "Home";
             this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AnimalTracker";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Home_FormClosed);
             this.Load += new System.EventHandler(this.Home_Load);
             this.materialTabControl.ResumeLayout(false);
             this.animal_page.ResumeLayout(false);
             this.animal_page.PerformLayout();
+            this.genderBox.ResumeLayout(false);
+            this.genderBox.PerformLayout();
+            this.animalTabs.ResumeLayout(false);
+            this.lionTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lionDataGrid)).EndInit();
+            this.monkeyTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.monkeyDataGrid)).EndInit();
+            this.rabbitTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rabbitDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).EndInit();
             this.meal_page.ResumeLayout(false);
             this.meal_page.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.feedingDataGrid)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mealDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AnimalId_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.portion_txt)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mealDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.feedingDataGrid)).EndInit();
             this.exercise_page.ResumeLayout(false);
             this.exercise_page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.exercise_AnimalId_txt)).EndInit();
@@ -1740,18 +1794,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.waist_AnimalId_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mor_waist_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).EndInit();
-            this.animalTabs.ResumeLayout(false);
-            this.lionTab.ResumeLayout(false);
-            this.monkeyTab.ResumeLayout(false);
-            this.rabbitTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lionDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.monkeyDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rabbitDataGrid)).EndInit();
-            this.genderBox.ResumeLayout(false);
-            this.genderBox.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.animalDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1858,6 +1901,7 @@
         private System.Windows.Forms.GroupBox genderBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView animalDataGrid;
     }
 }
 

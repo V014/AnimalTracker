@@ -24,6 +24,11 @@ namespace AnimalTracker
             
         }
 
+        private void Home_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         /* ======== Pulls data from the database and fills the datagrids ======== */
         // Returns all data from requested tables
         private void LoadData(string query, DataGridView dataGrid)
@@ -54,12 +59,15 @@ namespace AnimalTracker
             string queryRabbit = "SELECT * FROM Rabbit";
             LoadData(queryRabbit, rabbitDataGrid);
 
+            // Load all animals
+            string queryAnimals = "SELECT * FROM Animal";
+            LoadData(queryAnimals, animalDataGrid);
+
             //animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
         }
-
-        // fill textboxes with data when user clicks a cell
         private void lionDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             try
             {
                 DataGridViewRow row = lionDataGrid.Rows[e.RowIndex];
@@ -280,6 +288,7 @@ namespace AnimalTracker
             }
         }
 
+        // =========================== Radio Buttons ================== //
         // Create a gender variable
         string gender = "Male";
 
@@ -368,8 +377,19 @@ namespace AnimalTracker
                     string queryLion = "INSERT INTO Lion (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
                     Text + "','" + DateTime.Now.ToString("s") + "')";
                     AnimalControls.Querydb(queryLion);
-                    string queryList = "SELECT * FROM Lion";
-                    LoadData(queryList, lionDataGrid);
+                    
+                    // pull the animal's Id to reference to in the animal table
+                    string queryAnimallId = "SELECT Id FROM Lion WHERE Name = '" + name_txt.Text + "'";
+                    string AnimalId = Connection.ReadString(queryAnimallId);
+                    string queryAnimal = "INSERT INTO Animal (AnimalId, Registered) VALUES ('" + AnimalId.ToString() +"', '" + DateTime.Now.ToString("s") + "')";
+                    AnimalControls.Querydb(queryAnimal);
+
+                    // refresh the data grids
+                    string queryLions = "SELECT * FROM Lion";
+                    LoadData(queryLions, lionDataGrid);
+
+                    string queryAnimals = "SELECT * FROM Animal";
+                    LoadData(queryAnimals, animalDataGrid);
                 }
 
                 // if the Monkey tab is in view, insert into the Monkey database
@@ -378,18 +398,39 @@ namespace AnimalTracker
                     string queryLion = "INSERT INTO Monkey (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
                     Text + "','" + DateTime.Now.ToString("s") + "')";
                     AnimalControls.Querydb(queryLion);
-                    string queryList = "SELECT * FROM Monkey";
-                    LoadData(queryList, monkeyDataGrid);
+
+                    // pull the animal's Id to reference to in the animal table
+                    string queryAnimallId = "SELECT Id FROM Monkey WHERE Name = '" + name_txt.Text + "'";
+                    string AnimalId = Connection.ReadString(queryAnimallId);
+                    string queryAnimal = "INSERT INTO Animal (AnimalId, Registered) VALUES ('" + AnimalId.ToString() + "', '" + DateTime.Now.ToString("s") + "')";
+                    AnimalControls.Querydb(queryAnimal);
+
+                    string queryMonkeys = "SELECT * FROM Monkey";
+                    LoadData(queryMonkeys, monkeyDataGrid);
+
+                    string queryAnimals = "SELECT * FROM Animal";
+                    LoadData(queryAnimals, animalDataGrid);
                 }
 
                 // if the Rabbit tab is in view, insert into the Rabbit database
                 if (animalTabs.SelectedTab == rabbitTab)
                 {
-                    string queryLion = "INSERT INTO Rabbit (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
+                    string queryRabbit = "INSERT INTO Rabbit (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
                     Text + "','" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(queryLion);
-                    string queryList = "SELECT * FROM Rabbit";
-                    LoadData(queryList, rabbitDataGrid);
+                    AnimalControls.Querydb(queryRabbit);
+
+                    // pull the animal's Id to reference to in the animal table
+                    string queryAnimallId = "SELECT Id FROM Rabbit WHERE Name = '" + name_txt.Text + "'";
+                    string AnimalId = Connection.ReadString(queryAnimallId);
+                    string queryAnimal = "INSERT INTO Animal (AnimalId, Registered) VALUES ('" + AnimalId.ToString() + "', '" + DateTime.Now.ToString("s") + "')";
+                    AnimalControls.Querydb(queryAnimal);
+
+                    // refresh the data grids
+                    string queryRabbits = "SELECT * FROM Rabbit";
+                    LoadData(queryRabbits, rabbitDataGrid);
+
+                    string queryAnimals = "SELECT * FROM Animal";
+                    LoadData(queryAnimals, animalDataGrid);
                 }
                 
                 // refresh fields
