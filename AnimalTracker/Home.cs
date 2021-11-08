@@ -108,13 +108,17 @@ namespace AnimalTracker
 
         void styleTabs(TabControl page)
         {
-            page.BackColor = Color.FromArgb(37, 37, 39);
-            page.ForeColor = Color.White;
+            page.BackColor = Color.FromArgb(51, 51, 51);
+            
         }
 
         void styleDarkDataGridView(DataGridView dataGrid)
         {
-            dataGrid.BackgroundColor = Color.FromArgb(37, 37, 39);
+            dataGrid.BackgroundColor = Color.FromArgb(51, 51, 51);
+            dataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(51, 51, 51);
+            dataGrid.AlternatingRowsDefaultCellStyle.ForeColor = Color.White;
+            dataGrid.RowsDefaultCellStyle.BackColor = Color.FromArgb(34, 34, 34);
+            dataGrid.RowsDefaultCellStyle.ForeColor = Color.White;
         }
 
         // close application and all hidden forms

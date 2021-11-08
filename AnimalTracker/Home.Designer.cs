@@ -73,7 +73,6 @@
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.animal_page = new System.Windows.Forms.TabPage();
-            this.genderBox = new System.Windows.Forms.GroupBox();
             this.female_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
             this.male_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
             this.age_txt = new System.Windows.Forms.NumericUpDown();
@@ -157,9 +156,9 @@
             this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
-            this.genderBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).BeginInit();
             this.animalTabs.SuspendLayout();
             this.lionTab.SuspendLayout();
@@ -267,9 +266,11 @@
             // animal_page
             // 
             this.animal_page.BackColor = System.Drawing.Color.White;
-            this.animal_page.Controls.Add(this.genderBox);
+            this.animal_page.Controls.Add(this.male_radio_btn);
+            this.animal_page.Controls.Add(this.female_radio_btn);
             this.animal_page.Controls.Add(this.age_txt);
             this.animal_page.Controls.Add(this.materialLabel5);
+            this.animal_page.Controls.Add(this.materialLabel3);
             this.animal_page.Controls.Add(this.materialLabel4);
             this.animal_page.Controls.Add(this.materialLabel2);
             this.animal_page.Controls.Add(this.species_txt);
@@ -285,24 +286,12 @@
             this.animal_page.TabIndex = 0;
             this.animal_page.Text = "Animals";
             // 
-            // genderBox
-            // 
-            this.genderBox.Controls.Add(this.female_radio_btn);
-            this.genderBox.Controls.Add(this.male_radio_btn);
-            this.genderBox.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.genderBox.Location = new System.Drawing.Point(3, 187);
-            this.genderBox.Name = "genderBox";
-            this.genderBox.Size = new System.Drawing.Size(153, 60);
-            this.genderBox.TabIndex = 27;
-            this.genderBox.TabStop = false;
-            this.genderBox.Text = "Gender";
-            // 
             // female_radio_btn
             // 
             this.female_radio_btn.AutoSize = true;
             this.female_radio_btn.Depth = 0;
             this.female_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
-            this.female_radio_btn.Location = new System.Drawing.Point(76, 27);
+            this.female_radio_btn.Location = new System.Drawing.Point(79, 206);
             this.female_radio_btn.Margin = new System.Windows.Forms.Padding(0);
             this.female_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
             this.female_radio_btn.MouseState = MaterialSkin.MouseState.HOVER;
@@ -320,7 +309,7 @@
             this.male_radio_btn.Checked = true;
             this.male_radio_btn.Depth = 0;
             this.male_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
-            this.male_radio_btn.Location = new System.Drawing.Point(3, 27);
+            this.male_radio_btn.Location = new System.Drawing.Point(5, 206);
             this.male_radio_btn.Margin = new System.Windows.Forms.Padding(0);
             this.male_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
             this.male_radio_btn.MouseState = MaterialSkin.MouseState.HOVER;
@@ -1684,6 +1673,19 @@
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(8, 187);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel3.TabIndex = 24;
+            this.materialLabel3.Text = "Gender";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1704,8 +1706,6 @@
             this.materialTabControl.ResumeLayout(false);
             this.animal_page.ResumeLayout(false);
             this.animal_page.PerformLayout();
-            this.genderBox.ResumeLayout(false);
-            this.genderBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).EndInit();
             this.animalTabs.ResumeLayout(false);
             this.lionTab.ResumeLayout(false);
@@ -1768,7 +1768,6 @@
         private System.Windows.Forms.TabPage physique_page;
         private System.Windows.Forms.TabPage settings_page;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
-        private System.Windows.Forms.GroupBox genderBox;
         private MaterialSkin.Controls.MaterialRadioButton female_radio_btn;
         private MaterialSkin.Controls.MaterialRadioButton male_radio_btn;
         private System.Windows.Forms.NumericUpDown age_txt;
@@ -1846,6 +1845,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel20;
         private MaterialSkin.Controls.MaterialRaisedButton theme_btn;
         private MaterialSkin.Controls.MaterialRaisedButton scheme_btn;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
     }
 }
 
