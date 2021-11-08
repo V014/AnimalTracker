@@ -117,7 +117,7 @@ namespace AnimalTracker
             dataGrid.BackgroundColor = Color.FromArgb(51, 51, 51);
             dataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(51, 51, 51);
             dataGrid.AlternatingRowsDefaultCellStyle.ForeColor = Color.White;
-            dataGrid.RowsDefaultCellStyle.BackColor = Color.FromArgb(34, 34, 34);
+            dataGrid.RowsDefaultCellStyle.BackColor = Color.FromArgb(51, 51, 51);
             dataGrid.RowsDefaultCellStyle.ForeColor = Color.White;
         }
 
@@ -459,7 +459,7 @@ namespace AnimalTracker
 
         /* ========== this section queries the database after user interaction ======== */
         
-            void resetAnimalFields()
+        void resetAnimalFields()
         {
             name_txt.Text = "";
             name_txt.Focus();
@@ -724,13 +724,12 @@ namespace AnimalTracker
 
                         string loadFeedings = "SELECT * FROM Feeding";
                         LoadData(loadFeedings, feedingDataGrid);
+
+                        MessageBox.Show("Recorded new meal!");
+
+                        // refresh fields
+                        resetMealFields();
                     }
-
-
-                    // refresh fields
-                    resetMealFields();
-
-                    MessageBox.Show("Recorded new meal!");
                 }
             }
             catch (Exception)
@@ -743,24 +742,35 @@ namespace AnimalTracker
         {
             try
             {
-                // calculate calories per gram, 4 being the multiple digit to calculate protein
-                var calories = portion_txt.Value * 4;
-                // we build our query in the form page which has references to its controls
-                int id = Convert.ToInt32(mealDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Meal SET Name = '" + @meal_txt.Text + "', Calories = '" + @calories + "', Portion = '" + @portion_txt.Value + "' WHERE Id ='" + id + "'";
+                if (mealTabs.SelectedTab == meal_page)
+                {
+                    // calculate calories per gram, 4 being the multiple digit to calculate protein
+                    var calories = portion_txt.Value * 4;
+                    // we build our query in the form page which has references to its controls
+                    int id = Convert.ToInt32(mealDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "UPDATE Meal SET Name = '" + @meal_txt.Text + "', Calories = '" + @calories + "', Portion = '" + @portion_txt.Value + "' WHERE Id ='" + id + "'";
 
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Meal record updated!");
-                string query = "SELECT * FROM Meal";
-                LoadData(query, mealDataGrid);
+                    // we push the query to the AnimalControl class to process the query which links back to the connection class
+                    AnimalControls.Querydb(txtQuery);
+                    MessageBox.Show("Meal record updated!");
+                    string query = "SELECT * FROM Meal";
+                    LoadData(query, mealDataGrid);
+                    resetMealFields();
+                }
 
-                // refresh fields
-                meal_txt.Text = " ";
-                meal_txt.Focus();
-                calories_lbl.Text = "Waiting on you";
-                portion_txt.Value = 0;
-                AnimalId_txt.Value = 0;
+                if (mealTabs.SelectedTab == feeding_page)
+                {
+                    // we build our query in the form page which has references to its controls
+                    int id = Convert.ToInt32(feedingDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "UPDATE Feeding SET AnimalId = '" + AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+
+                    // we push the query to the AnimalControl class to process the query which links back to the connection class
+                    AnimalControls.Querydb(txtQuery);
+                    MessageBox.Show("Feeding record updated!");
+                    string query = "SELECT * FROM Feeding";
+                    LoadData(query, feedingDataGrid);
+                    resetMealFields();
+                }
             }
             catch (Exception)
             {
@@ -774,70 +784,34 @@ namespace AnimalTracker
             {
                 try
                 {
-                    // we build our query in the form page which has references to the its controls.
-                    int id = Convert.ToInt32(mealDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "DELETE FROM Meal WHERE ID = '" + id + "' ";
+                    DialogResult dialogResult = MessageBox.Show("Delete record?", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (mealTabs.SelectedTab == meal_page)
+                        {
+                            // we build our query in the form page which has references to the its controls.
+                            int id = Convert.ToInt32(mealDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                            string txtQuery = "DELETE FROM Meal WHERE ID = '" + id + "' ";
 
-                    // we push the query to the AnimalControl class to process the query which links back to the connection class
-                    AnimalControls.Querydb(txtQuery);
-                    string query = "SELECT * FROM Meal";
-                    LoadData(query, mealDataGrid);
-                    MessageBox.Show("Meal deleted!");
-                }
-                catch (Exception)
-                {
-                    // this happens when we have an error
-                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+                            // we push the query to the AnimalControl class to process the query which links back to the connection class
+                            AnimalControls.Querydb(txtQuery);
+                            string query = "SELECT * FROM Meal";
+                            LoadData(query, mealDataGrid);
+                            MessageBox.Show("Meal deleted!");
+                        }
 
-        private void update_feeding_txt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // we build our query in the form page which has references to its controls
-                int id = Convert.ToInt32(feedingDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Feeding SET AnimalId = '" + AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+                        if (mealTabs.SelectedTab == feeding_page)
+                        {
+                            int id = Convert.ToInt32(feedingDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                            string txtQuery = "DELETE FROM Feeding WHERE ID = '" + id + "' ";
 
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Feeding record updated!");
-                string query = "SELECT * FROM Feeding";
-                LoadData(query, feedingDataGrid);
-
-                // refresh fields
-                meal_txt.Text = " ";
-                meal_txt.Focus();
-                calories_lbl.Text = "Waiting on you";
-                portion_txt.Value = 0;
-                AnimalId_txt.Value = 0;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to update feeding record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void del_feeding_txt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                try
-                {
-                    // we build our query in the form page which has references to the its controls.
-                    int id = Convert.ToInt32(feedingDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "DELETE FROM Feeding WHERE ID = '" + id + "' ";
-
-                    // we push the query to the AnimalControl class to process the query which links back to the connection class
-                    AnimalControls.Querydb(txtQuery);
-                    string query = "SELECT * FROM Feeding";
-                    LoadData(query, feedingDataGrid);
-                    MessageBox.Show("Feeding deleted!");
+                            // we push the query to the AnimalControl class to process the query which links back to the connection class
+                            AnimalControls.Querydb(txtQuery);
+                            string query = "SELECT * FROM Feeding";
+                            LoadData(query, feedingDataGrid);
+                            resetMealFields();
+                        }
+                    }
                 }
                 catch (Exception)
                 {
