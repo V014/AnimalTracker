@@ -4,6 +4,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Data.SQLite;
 using System.Data;
+using System.Drawing;
 
 namespace AnimalTracker
 {
@@ -20,10 +21,70 @@ namespace AnimalTracker
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
-            // style datagrind
-            
+            // style 
+            // animal page
+            styleDataGridView(animalDataGrid);
+            styleDataGridView(lionDataGrid);
+            styleDataGridView(monkeyDataGrid);
+            styleDataGridView(rabbitDataGrid);
+            // meal page
+            styleDataGridView(mealDataGrid);
+            styleDataGridView(feedingDataGrid);
+            // exercise page
+            styleDataGridView(exerciseDataGrid);
+            // activity page
+            styleDataGridView(activityDataGrid);
+            // physique page
+            styleDataGridView(weightDataGrid);
+            styleDataGridView(waistDataGrid);
         }
 
+        // change theme
+        private void theme_btn_Click(object sender, EventArgs e)
+        {
+            materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialSkinManager.Themes.LIGHT : MaterialSkinManager.Themes.DARK;
+        }
+
+        // change color scheme
+        private int colorSchemeIndex;
+        private void scheme_btn_Click(object sender, EventArgs e)
+        {
+            colorSchemeIndex++;
+            if (colorSchemeIndex > 2) colorSchemeIndex = 0;
+
+            //These are just example color schemes
+            switch (colorSchemeIndex)
+            {
+                case 0:
+                    materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+                    break;
+                case 1:
+                    materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700, Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
+                    break;
+                case 2:
+                    materialSkinManager.ColorScheme = new ColorScheme(Primary.Green600, Primary.Green700, Primary.Green200, Accent.Red100, TextShade.WHITE);
+                    break;
+            }
+        }
+
+        // styling the data grid views
+        void styleDataGridView(DataGridView dataGrid)
+        {
+            dataGrid.BorderStyle = BorderStyle.None;
+            dataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dataGrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(55, 71, 79);
+            dataGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dataGrid.BackgroundColor = Color.White;
+            dataGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGrid.EnableHeadersVisualStyles = false;
+            dataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Roboto", 11);
+            dataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+            dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+        }
+
+        // close application and all hidden forms
         private void Home_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -67,7 +128,6 @@ namespace AnimalTracker
         }
         private void lionDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             try
             {
                 DataGridViewRow row = lionDataGrid.Rows[e.RowIndex];
@@ -166,7 +226,7 @@ namespace AnimalTracker
                 meal_txt.Text = row.Cells[1].Value.ToString();
                 calories_lbl.Text = row.Cells[2].Value.ToString();
                 portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-                
+
             }
             catch (Exception) // reset textboxes
             {
@@ -203,19 +263,19 @@ namespace AnimalTracker
             try
             {
                 DataGridViewRow row = weightDataGrid.Rows[e.RowIndex];
-                weight_AnimalId.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
-                mor_weight_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
-                eve_weight_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-                avg_weight_lbl.Text = row.Cells[4].Value.ToString();
+                physique_AnimalId_txt.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
+                morning_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
+                evening_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                average_txt.Text = row.Cells[4].Value.ToString();
             }
             catch (Exception) // reset textboxes
             {
                 MessageBox.Show("Empty field");
                 // refresh fields
-                weight_AnimalId.Value = 0;
-                mor_weight_txt.Value = 0;
-                eve_weight_txt.Value = 0;
-                avg_weight_lbl.Text = "Calculating...";
+                physique_AnimalId_txt.Value = 0;
+                morning_txt.Value = 0;
+                evening_txt.Value = 0;
+                average_txt.Text = "Calculating...";
             }
         }
 
@@ -224,19 +284,19 @@ namespace AnimalTracker
             try
             {
                 DataGridViewRow row = waistDataGrid.Rows[e.RowIndex];
-                waist_AnimalId_txt.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
-                mor_waist_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
-                eve_waist_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-                avg_waist_txt.Text = row.Cells[4].Value.ToString();
+                physique_AnimalId_txt.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
+                morning_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
+                evening_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
+                average_txt.Text = row.Cells[4].Value.ToString();
             }
             catch (Exception) // reset textboxes
             {
                 MessageBox.Show("Empty field");
                 // refresh fields
-                waist_AnimalId_txt.Value = 0;
-                mor_waist_txt.Value = 0;
-                eve_waist_txt.Value = 0;
-                avg_waist_txt.Text = "Calculating...";
+                physique_AnimalId_txt.Value = 0;
+                morning_txt.Value = 0;
+                evening_txt.Value = 0;
+                average_txt.Text = "Calculating...";
             }
         }
 
@@ -347,25 +407,41 @@ namespace AnimalTracker
             }
 
             // this displays the data in the weight table after weight tab selected
-            if (materialTabControl.SelectedTab == weight_page)
+            if (materialTabControl.SelectedTab == physique_page)
             {
                 // Returns all data from the meals table
-                string query = "SELECT * FROM Weight";
-                LoadData(query, weightDataGrid);
-                //weightDataGrid.Columns[0].Visible = false; // hide ID column during runtime
-            }
+                string queryWeight = "SELECT * FROM Weight";
+                LoadData(queryWeight, weightDataGrid);
 
-            // this displays the data in the activity table after activity tab selected
-            if (materialTabControl.SelectedTab == waist_page)
-            {
                 // Returns all data from the meals table
-                string query = "SELECT * FROM Waist";
-                LoadData(query, waistDataGrid);
-                //waistDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+                string queryWaist = "SELECT * FROM Waist";
+                LoadData(queryWaist, waistDataGrid);
+                //weightDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
         }
 
         /* ========== this section queries the database after user interaction ======== */
+        
+            void resetAnimalFields()
+        {
+            name_txt.Text = "";
+            name_txt.Focus();
+            gender = "Male";
+            male_radio_btn.Checked = true;
+            age_txt.Value = 0;
+            species_txt.Text = "";
+        }
+
+        void resetMealFields()
+        {
+            // refresh fields
+            meal_txt.Text = "";
+            meal_txt.Focus();
+            calories_lbl.Text = "Waiting on you";
+            portion_txt.Value = 0;
+            AnimalId_txt.Value = 0;
+        }
+            
         // adds animal to database
         private void add_ani_btn_Click(object sender, EventArgs e)
         {
@@ -377,11 +453,11 @@ namespace AnimalTracker
                     string queryLion = "INSERT INTO Lion (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
                     Text + "','" + DateTime.Now.ToString("s") + "')";
                     AnimalControls.Querydb(queryLion);
-                    
+
                     // pull the animal's Id to reference to in the animal table
                     string queryAnimallId = "SELECT Id FROM Lion WHERE Name = '" + name_txt.Text + "'";
                     string AnimalId = Connection.ReadString(queryAnimallId);
-                    string queryAnimal = "INSERT INTO Animal (AnimalId, Registered) VALUES ('" + AnimalId.ToString() +"', '" + DateTime.Now.ToString("s") + "')";
+                    string queryAnimal = "INSERT INTO Animal (AnimalId, Registered) VALUES ('" + AnimalId.ToString() + "', '" + DateTime.Now.ToString("s") + "')";
                     AnimalControls.Querydb(queryAnimal);
 
                     // refresh the data grids
@@ -432,14 +508,9 @@ namespace AnimalTracker
                     string queryAnimals = "SELECT * FROM Animal";
                     LoadData(queryAnimals, animalDataGrid);
                 }
-                
+
                 // refresh fields
-                name_txt.Text = "";
-                name_txt.Focus();
-                gender = "Male";
-                male_radio_btn.Checked = true;
-                age_txt.Value = 0;
-                species_txt.Text = "";
+                resetAnimalFields();
             }
             catch (Exception)
             {
@@ -483,12 +554,7 @@ namespace AnimalTracker
                 }
 
                 // refresh fields
-                name_txt.Text = " ";
-                name_txt.Focus();
-                age_txt.Value = 0;
-                gender = "Male";
-                male_radio_btn.Checked = true;
-                species_txt.Text = " ";
+                resetAnimalFields();
             }
             catch (Exception)
             {
@@ -536,6 +602,8 @@ namespace AnimalTracker
                             string query = "SELECT * FROM Rabbit";
                             LoadData(query, rabbitDataGrid);
                         }
+                         // refresh fields
+                        resetAnimalFields();
                     } // edd of dialogue
                 }
                 catch (Exception)
@@ -562,62 +630,59 @@ namespace AnimalTracker
                 // meal is not in the system. Insert meal into meal table and use those values
                 // instead
                 // check to see if meal has alredy been recorded before
-
-                // pull the meal name to compare it to the user input
-                string queryMealName = "SELECT Name FROM Meal WHERE Name = '"+ meal_txt.Text +"'";
-                string MealName = Connection.ReadString(queryMealName);
-
-                // pull the meal Id to reference to the meal
-                string queryMealId = "SELECT Id FROM Meal WHERE Name = '" + meal_txt.Text + "'";
-                string mealId = Connection.ReadString(queryMealId);
-
-                // if the meal's name already exists then add the feeding only
-                if (MealName.ToString() == meal_txt.Text)
+                
+                if (mealTabs.SelectedTab == feeding_page)
                 {
-                    string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + AnimalId_txt.Value + "', '" + mealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(feedingQuery);
-
-                    string loadMeals = "SELECT * FROM Meal";
-                    LoadData(loadMeals, mealDataGrid);
-
-                    string loadFeedings = "SELECT * FROM Feeding";
-                    LoadData(loadFeedings, feedingDataGrid);
-
-                    // refresh fields
-                    meal_txt.Text = "";
-                    meal_txt.Focus();
-                    calories_lbl.Text = "Waiting on you";
-                    portion_txt.Value = 0;
-                    AnimalId_txt.Value = 0;
-         
-                } else
-                {
-                    // calculate calories per gram, 4 being the multiple digit to calculate protein
-                    var calories = portion_txt.Value * 4;
-                    // if the meal didn't exist, add the feeding and the meal details to the database
-                    // we build our query in the form page which has references to the its controls.
-                    string mealQuery = "INSERT INTO Meal (Name, Calories, Portion, Date) VALUES ('" + meal_txt.Text + "','" + calories + "','" + portion_txt.Value + "','" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(mealQuery);
+                    // pull the meal name to compare it to the user input
+                    string queryMealName = "SELECT Name FROM Meal WHERE Name = '" + meal_txt.Text + "'";
+                    string MealName = Connection.ReadString(queryMealName);
 
                     // pull the meal Id to reference to the meal
-                    string queryNewMealId = "SELECT Id FROM Meal WHERE Name = '" + meal_txt.Text + "'";
-                    string newMealId = Connection.ReadString(queryNewMealId);
+                    string queryMealId = "SELECT Id FROM Meal WHERE Name = '" + meal_txt.Text + "'";
+                    string mealId = Connection.ReadString(queryMealId);
 
-                    string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + AnimalId_txt.Value + "', '" + newMealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(feedingQuery);
+                    // if the meal's name already exists then add the feeding only
+                    if (MealName.ToString() == meal_txt.Text)
+                    {
+                        string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + AnimalId_txt.Value + "', '" + mealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
+                        AnimalControls.Querydb(feedingQuery);
 
-                    string loadMeals = "SELECT * FROM Meal";
-                    LoadData(loadMeals, mealDataGrid);
+                        string loadMeals = "SELECT * FROM Meal";
+                        LoadData(loadMeals, mealDataGrid);
 
-                    string loadFeedings = "SELECT * FROM Feeding";
-                    LoadData(loadFeedings, feedingDataGrid);
+                        string loadFeedings = "SELECT * FROM Feeding";
+                        LoadData(loadFeedings, feedingDataGrid);
+
+                        // refresh fields
+                        resetMealFields();
+
+                    }
+                    else
+                    {
+                        // calculate calories per gram, 4 being the multiple digit to calculate protein
+                        var calories = portion_txt.Value * 4;
+                        // if the meal didn't exist, add the feeding and the meal details to the database
+                        // we build our query in the form page which has references to the its controls.
+                        string mealQuery = "INSERT INTO Meal (Name, Calories, Portion, Date) VALUES ('" + meal_txt.Text + "','" + calories + "','" + portion_txt.Value + "','" + DateTime.Now.ToString("s") + "')";
+                        AnimalControls.Querydb(mealQuery);
+
+                        // pull the meal Id to reference to the meal
+                        string queryNewMealId = "SELECT Id FROM Meal WHERE Name = '" + meal_txt.Text + "'";
+                        string newMealId = Connection.ReadString(queryNewMealId);
+
+                        string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + AnimalId_txt.Value + "', '" + newMealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
+                        AnimalControls.Querydb(feedingQuery);
+
+                        string loadMeals = "SELECT * FROM Meal";
+                        LoadData(loadMeals, mealDataGrid);
+
+                        string loadFeedings = "SELECT * FROM Feeding";
+                        LoadData(loadFeedings, feedingDataGrid);
+                    }
+
 
                     // refresh fields
-                    meal_txt.Text = " ";
-                    meal_txt.Focus();
-                    calories_lbl.Text = "Waiting on you";
-                    portion_txt.Value = 0;
-                    AnimalId_txt.Value = 0;
+                    resetMealFields();
 
                     MessageBox.Show("Recorded new meal!");
                 }
@@ -827,52 +892,79 @@ namespace AnimalTracker
             }
         }
 
-        /* Weight tab */
-        private void rec_weight_txt_Click(object sender, EventArgs e)
+        /* physique tab */
+        private void rec_physique_btn_Click(object sender, EventArgs e)
         {
             try
             {
                 // calculate average of weight before entry into the db
-                var average = (mor_weight_txt.Value + eve_weight_txt.Value) / 2;
-                // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Weight (AnimalId, WeightMorning, WeightEvening, WeightAverage,  Date) VALUES ('" + weight_AnimalId.Value + "','" + mor_weight_txt.Value + "','" + eve_weight_txt.Value + "','" + average + "','" + DateTime.Now.ToString("s") + "')";
-                AnimalControls.Querydb(txtQuery);
+                var average = (morning_txt.Value + evening_txt.Value) / 2;
 
-                string query = "SELECT * FROM Weight";
-                LoadData(query, weightDataGrid);
+                if (physiqueTabs.SelectedTab == weight_page)
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    string txtQuery = "INSERT INTO Weight (AnimalId, WeightMorning, WeightEvening, WeightAverage,  Date) VALUES ('" + physique_AnimalId_txt.Value + "','" + morning_txt.Value + "','" + evening_txt.Value + "','" + average + "','" + DateTime.Now.ToString("s") + "')";
+                    AnimalControls.Querydb(txtQuery);
 
+                    string query = "SELECT * FROM Weight";
+                    LoadData(query, weightDataGrid);
+                }
+
+                if (physiqueTabs.SelectedTab == waist_page)
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    string txtQuery = "INSERT INTO Waist (AnimalId, WaistMorning, WaistEvening, WaistAverage,  Date) VALUES ('" + physique_AnimalId_txt.Value + "','" + morning_txt.Value + "','" + evening_txt.Value + "','" + average + "','" + DateTime.Now.ToString("s") + "')";
+                    AnimalControls.Querydb(txtQuery);
+
+                    string query = "SELECT * FROM Waist";
+                    LoadData(query, waistDataGrid);
+                }
+                
                 // refresh fields
-                weight_AnimalId.Value = 0;
-                mor_weight_txt.Value = 0;
-                eve_weight_txt.Value = 0;
-                avg_weight_lbl.Text = "Waiting...";
+                physique_AnimalId_txt.Value = 0;
+                morning_txt.Value = 0;
+                evening_txt.Value = 0;
+                average_txt.Text = "Waiting...";
             }
             catch (Exception)
             {
-                MessageBox.Show("Failed to record Weight!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void update_weight_txt_Click(object sender, EventArgs e)
+        private void update_physique_btn_Click(object sender, EventArgs e)
         {
             try
             {
                 // calculate average of weight before entry into the db
-                var average = (mor_weight_txt.Value + eve_weight_txt.Value) / 2;
-                // we build our query in the form page which has references to its controls
-                int id = Convert.ToInt32(weightDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Weight SET AnimalId = '" + @weight_AnimalId.Value + "', WeightMorning = '" + @mor_weight_txt.Value + "', WeightEvening = '" + @eve_weight_txt.Value + "', WeightAverage = '" + average + "' WHERE Id ='" + id + "'";
-                AnimalControls.Querydb(txtQuery);
-                string query = "SELECT * FROM Weight";
-                LoadData(query, weightDataGrid);
+                var average = (morning_txt.Value + evening_txt.Value) / 2;
 
-                MessageBox.Show("Weight record updated!");
+                if (physiqueTabs.SelectedTab == weight_page)
+                {
+                    // we build our query in the form page which has references to its controls
+                    int id = Convert.ToInt32(weightDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "UPDATE Weight SET AnimalId = '" + physique_AnimalId_txt.Value + "', WeightMorning = '" + morning_txt.Value + "', WeightEvening = '" + evening_txt.Value + "', WeightAverage = '" + average + "' WHERE Id ='" + id + "'";
+                    AnimalControls.Querydb(txtQuery);
+                    string query = "SELECT * FROM Weight";
+                    LoadData(query, weightDataGrid);
+                }
+
+                if (physiqueTabs.SelectedTab == waist_page)
+                {
+                    // we build our query in the form page which has references to its controls
+                    int id = Convert.ToInt32(waistDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "UPDATE Waist SET AnimalId = '" + @physique_AnimalId_txt.Value + "', WaistMorning = '" + @morning_txt.Value + "', WaistEvening = '" + @evening_txt.Value + "', WaistAverage = '" + average + "' WHERE Id ='" + id + "'";
+                    AnimalControls.Querydb(txtQuery);
+                    string query = "SELECT * FROM Waist";
+                    LoadData(query, waistDataGrid);
+                }
+                
 
                 // refresh fields
-                weight_AnimalId.Value = 0;
-                mor_weight_txt.Value = 0;
-                eve_weight_txt.Value = 0;
-                avg_weight_lbl.Text = "Waiting...";
+                physique_AnimalId_txt.Value = 0;
+                morning_txt.Value = 0;
+                evening_txt.Value = 0;
+                average_txt.Text = "Waiting...";
             }
             catch (Exception)
             {
@@ -880,113 +972,43 @@ namespace AnimalTracker
             }
         }
 
-        private void del_weight_txt_Click(object sender, EventArgs e)
+        private void del_physique_btn_Click(object sender, EventArgs e)
         {
             try
             {
                 try
                 {
-                    // we build our query in the form page which has references to the its controls.
-                    int id = Convert.ToInt32(weightDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "DELETE FROM Weight WHERE ID = '" + id + "' ";
-
-                    DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @weight_AnimalId.Value + "' weight reading?", "Are you sure?", MessageBoxButtons.YesNo);
-                    if(dialogResult == DialogResult.Yes)
+                    if (physiqueTabs.SelectedTab == weight_page)
                     {
-                        // we push the query to the AnimalControl class to process the query which links back to the connection class
-                        AnimalControls.Querydb(txtQuery);
-                        string query = "SELECT * FROM Weight";
-                        LoadData(query, weightDataGrid);
-                        // MessageBox.Show("Weight Reading deleted!");
+                        // we build our query in the form page which has references to the its controls.
+                        int id = Convert.ToInt32(weightDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                        string txtQuery = "DELETE FROM Weight WHERE ID = '" + id + "' ";
+
+                        DialogResult dialogResult = MessageBox.Show("Delete Animal '" + physique_AnimalId_txt.Value + "' weight reading?", "Are you sure?", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            // we push the query to the AnimalControl class to process the query which links back to the connection class
+                            AnimalControls.Querydb(txtQuery);
+                            string query = "SELECT * FROM Weight";
+                            LoadData(query, weightDataGrid);
+                        }
                     }
-                    
-                }
-                catch (Exception)
-                {
-                    // this happens when we have an error
-                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
-        /* Waist tab */
-        private void rec_waist_txt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // calculate average of weight before entry into the db
-                var average = (mor_waist_txt.Value + eve_waist_txt.Value) / 2;
-                // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Waist (AnimalId, WaistMorning, WaistEvening, WaistAverage,  Date) VALUES ('" + waist_AnimalId_txt.Value + "','" + mor_waist_txt.Value + "','" + eve_waist_txt.Value + "','" + average + "','" + DateTime.Now.ToString("s") + "')";
-                AnimalControls.Querydb(txtQuery);
-
-                string query = "SELECT * FROM Waist";
-                LoadData(query, waistDataGrid);
-
-                // refresh fields
-                waist_AnimalId_txt.Value = 0;
-                mor_waist_txt.Value = 0;
-                eve_waist_txt.Value = 0;
-                avg_waist_txt.Text = "Waiting...";
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to record Waist!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void update_waist_txt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // calculate average of weight before entry into the db
-                var average = (mor_waist_txt.Value + eve_waist_txt.Value) / 2;
-               
-                DialogResult dialogResult = MessageBox.Show("Update Animal '" + @waist_AnimalId_txt.Value + "' waist reading?", "Are you sure?", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    // we build our query in the form page which has references to its controls
-                    int id = Convert.ToInt32(waistDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "UPDATE Waist SET AnimalId = '" + @waist_AnimalId_txt.Value + "', WaistMorning = '" + @mor_waist_txt.Value + "', WaistEvening = '" + @eve_waist_txt.Value + "', WaistAverage = '" + average + "' WHERE Id ='" + id + "'";
-                    AnimalControls.Querydb(txtQuery);
-                    string query = "SELECT * FROM Waist";
-                    LoadData(query, waistDataGrid);
-                }
-
-                // refresh fields
-                waist_AnimalId_txt.Value = 0;
-                mor_waist_txt.Value = 0;
-                eve_waist_txt.Value = 0;
-                avg_waist_txt.Text = "Waiting...";
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to update waist record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void del_waist_txt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                try
-                {
-                    // we build our query in the form page which has references to the its controls.
-                    int id = Convert.ToInt32(waistDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "DELETE FROM Waist WHERE ID = '" + id + "' ";
-
-                    DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @waist_AnimalId_txt.Value + "' waist reading?", "Are you sure?", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
+                    if (physiqueTabs.SelectedTab == waist_page)
                     {
-                        // we push the query to the AnimalControl class to process the query which links back to the connection class
-                        AnimalControls.Querydb(txtQuery);
-                        string query = "SELECT * FROM Waist";
-                        LoadData(query, waistDataGrid);
-                        // MessageBox.Show("Weight Reading deleted!");
+                        // we build our query in the form page which has references to the its controls.
+                        int id = Convert.ToInt32(waistDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                        string txtQuery = "DELETE FROM Waist WHERE ID = '" + id + "' ";
+
+                        DialogResult dialogResult = MessageBox.Show("Delete Animal '" + @physique_AnimalId_txt.Value + "' waist reading?", "Are you sure?", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            // we push the query to the AnimalControl class to process the query which links back to the connection class
+                            AnimalControls.Querydb(txtQuery);
+                            string query = "SELECT * FROM Waist";
+                            LoadData(query, waistDataGrid);
+                            // MessageBox.Show("Weight Reading deleted!");
+                        }
                     }
 
                 }
@@ -1081,5 +1103,6 @@ namespace AnimalTracker
                 MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

@@ -21,7 +21,7 @@ namespace AnimalTracker
         private void SplashScreen_Shown(object sender, EventArgs e)
         {
             time = new Timer();
-            time.Interval = 3000;
+            time.Interval = 1000;
             time.Start();
             time.Tick += new EventHandler(time_Tick);
         }

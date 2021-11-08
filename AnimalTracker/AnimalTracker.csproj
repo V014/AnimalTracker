@@ -55,7 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animal.cs" />
     <Compile Include="AnimalControls.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Home.cs">
