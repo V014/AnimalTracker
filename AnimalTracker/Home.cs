@@ -21,7 +21,7 @@ namespace AnimalTracker
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
-            // style 
+            // style datagrids
             // animal page
             styleDataGridView(animalDataGrid);
             styleDataGridView(lionDataGrid);
@@ -43,6 +43,28 @@ namespace AnimalTracker
         private void theme_btn_Click(object sender, EventArgs e)
         {
             materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialSkinManager.Themes.LIGHT : MaterialSkinManager.Themes.DARK;
+
+            // style tabs
+            styleTabs(animalTabs);
+            styleTabs(mealTabs);
+            styleTabs(physiqueTabs);
+
+            // style datagrids
+            // animal page
+            styleDarkDataGridView(animalDataGrid);
+            styleDarkDataGridView(lionDataGrid);
+            styleDarkDataGridView(monkeyDataGrid);
+            styleDarkDataGridView(rabbitDataGrid);
+            // meal page
+            styleDarkDataGridView(mealDataGrid);
+            styleDarkDataGridView(feedingDataGrid);
+            // exercise page
+            styleDarkDataGridView(exerciseDataGrid);
+            // activity page
+            styleDarkDataGridView(activityDataGrid);
+            // physique page
+            styleDarkDataGridView(weightDataGrid);
+            styleDarkDataGridView(waistDataGrid);
         }
 
         // change color scheme
@@ -82,6 +104,17 @@ namespace AnimalTracker
             dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Roboto", 11);
             dataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
             dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+        }
+
+        void styleTabs(TabControl page)
+        {
+            page.BackColor = Color.FromArgb(37, 37, 39);
+            page.ForeColor = Color.White;
+        }
+
+        void styleDarkDataGridView(DataGridView dataGrid)
+        {
+            dataGrid.BackgroundColor = Color.FromArgb(37, 37, 39);
         }
 
         // close application and all hidden forms
@@ -441,6 +474,15 @@ namespace AnimalTracker
             portion_txt.Value = 0;
             AnimalId_txt.Value = 0;
         }
+
+        void resetExerciseFields()
+        {
+            exercise_txt.Text = "";
+            exercise_txt.Focus();
+            calories_burnt_txt.Text = "";
+            duration_txt.Value = 0;
+            exercise_AnimalId_txt.Value = 0;
+        }
             
         // adds animal to database
         private void add_ani_btn_Click(object sender, EventArgs e)
@@ -693,7 +735,6 @@ namespace AnimalTracker
             }
         }
 
-        // we build our query in the form page which has references to its controls
         private void update_meal_btn_Click(object sender, EventArgs e)
         {
             try
@@ -811,22 +852,30 @@ namespace AnimalTracker
         {
             try
             {
-                // we build our query in the form page which has references to the its controls.
-                string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt_txt.Text + "','" + exercise_AnimalId_txt.
-                Value + "','" + DateTime.Now.ToString("s") + "')";
+                // pull the animal list to compare it to the user input
+                string queryWeightAverage = "SELECT WeightAverage FROM Weight WHERE Id = '" + physique_AnimalId_txt.Value + "'";
+                string Average = Connection.ReadString(queryWeightAverage);
 
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Exercise Recorded!");
-                string query = "SELECT * FROM Exercise";
-                LoadData(query, exerciseDataGrid);
+                int Weight = Convert.ToInt32(Average.ToString());
+                // if the meal's name already exists then add the feeding only
+                if (Weight > 0)
+                {
+                    // we build our query in the form page which has references to the its controls.
+                    string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt_txt.Text + "','" + exercise_AnimalId_txt.
+                    Value + "','" + DateTime.Now.ToString("s") + "')";
 
+                    // we push the query to the AnimalControl class to process the query which links back to the connection class
+                    AnimalControls.Querydb(txtQuery);
+                    MessageBox.Show("Exercise Recorded!");
+                    string query = "SELECT * FROM Exercise";
+                    LoadData(query, exerciseDataGrid);
+                }
+                else
+                {
+                    MessageBox.Show("The animal did not appear in the database!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 // refresh fields
-                exercise_txt.Text = "";
-                exercise_txt.Focus();
-                calories_burnt_txt.Text = "";
-                duration_txt.Value = 0;
-                exercise_AnimalId_txt.Value = 0;
+                resetExerciseFields();
             }
             catch (Exception)
             {
@@ -838,22 +887,32 @@ namespace AnimalTracker
         {
             try
             {
-                // we build our query in the form page which has references to its controls
-                int id = Convert.ToInt32(exerciseDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                string txtQuery = "UPDATE Exercise SET Name = '" + @exercise_txt.Text + "', Duration = '" + @duration_txt.Value + "', CaloriesBurnt = '" + @calories_burnt_txt.Text + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+                // pull the animal list to compare it to the user input
+                string queryWeightAverage = "SELECT AverageWeight FROM Weight WHERE Weight = '" + physique_AnimalId_txt.Value + "'";
+                string Average = Connection.ReadString(queryWeightAverage);
 
-                // we push the query to the AnimalControl class to process the query which links back to the connection class
-                AnimalControls.Querydb(txtQuery);
-                MessageBox.Show("Exercise record updated!");
-                string query = "SELECT * FROM Exercise";
-                LoadData(query, exerciseDataGrid);
+                int Weight = Convert.ToInt32(Average.ToString());
+
+                // if the meal's name already exists then add the feeding only
+                if (Weight  > 0)
+                {
+                    // we build our query in the form page which has references to its controls
+                    int id = Convert.ToInt32(exerciseDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
+                    string txtQuery = "UPDATE Exercise SET Name = '" + @exercise_txt.Text + "', Duration = '" + @duration_txt.Value + "', CaloriesBurnt = '" + @calories_burnt_txt.Text + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+
+                    // we push the query to the AnimalControl class to process the query which links back to the connection class
+                    AnimalControls.Querydb(txtQuery);
+                    MessageBox.Show("Exercise record updated!");
+                    string query = "SELECT * FROM Exercise";
+                    LoadData(query, exerciseDataGrid);
+                }
+                else
+                {
+                    MessageBox.Show("The animal did not appear in the database!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 // refresh fields
-                exercise_txt.Text = "";
-                exercise_txt.Focus();
-                calories_burnt_txt.Text = "";
-                duration_txt.Value = 0;
-                exercise_AnimalId_txt.Value = 0;
+                resetExerciseFields();
             }
             catch (Exception)
             {
@@ -1103,6 +1162,5 @@ namespace AnimalTracker
                 MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }
