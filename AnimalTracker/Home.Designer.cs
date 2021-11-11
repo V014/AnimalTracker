@@ -73,10 +73,11 @@
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.animal_page = new System.Windows.Forms.TabPage();
-            this.female_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
             this.male_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
+            this.female_radio_btn = new MaterialSkin.Controls.MaterialRadioButton();
             this.age_txt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.species_txt = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -156,7 +157,8 @@
             this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            this.weight_difference_txt = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).BeginInit();
@@ -286,23 +288,6 @@
             this.animal_page.TabIndex = 0;
             this.animal_page.Text = "Animals";
             // 
-            // female_radio_btn
-            // 
-            this.female_radio_btn.AutoSize = true;
-            this.female_radio_btn.Depth = 0;
-            this.female_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
-            this.female_radio_btn.Location = new System.Drawing.Point(79, 206);
-            this.female_radio_btn.Margin = new System.Windows.Forms.Padding(0);
-            this.female_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.female_radio_btn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.female_radio_btn.Name = "female_radio_btn";
-            this.female_radio_btn.Ripple = true;
-            this.female_radio_btn.Size = new System.Drawing.Size(74, 30);
-            this.female_radio_btn.TabIndex = 11;
-            this.female_radio_btn.Text = "Female";
-            this.female_radio_btn.UseVisualStyleBackColor = true;
-            this.female_radio_btn.CheckedChanged += new System.EventHandler(this.female_radio_btn_CheckedChanged);
-            // 
             // male_radio_btn
             // 
             this.male_radio_btn.AutoSize = true;
@@ -320,6 +305,23 @@
             this.male_radio_btn.TabStop = true;
             this.male_radio_btn.Text = "Male";
             this.male_radio_btn.UseVisualStyleBackColor = true;
+            // 
+            // female_radio_btn
+            // 
+            this.female_radio_btn.AutoSize = true;
+            this.female_radio_btn.Depth = 0;
+            this.female_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
+            this.female_radio_btn.Location = new System.Drawing.Point(79, 206);
+            this.female_radio_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.female_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.female_radio_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.female_radio_btn.Name = "female_radio_btn";
+            this.female_radio_btn.Ripple = true;
+            this.female_radio_btn.Size = new System.Drawing.Size(74, 30);
+            this.female_radio_btn.TabIndex = 11;
+            this.female_radio_btn.Text = "Female";
+            this.female_radio_btn.UseVisualStyleBackColor = true;
+            this.female_radio_btn.CheckedChanged += new System.EventHandler(this.female_radio_btn_CheckedChanged);
             // 
             // age_txt
             // 
@@ -343,6 +345,19 @@
             this.materialLabel5.Size = new System.Drawing.Size(62, 19);
             this.materialLabel5.TabIndex = 25;
             this.materialLabel5.Text = "Species";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(8, 187);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel3.TabIndex = 24;
+            this.materialLabel3.Text = "Gender";
             // 
             // materialLabel4
             // 
@@ -1367,6 +1382,8 @@
             this.physique_page.Controls.Add(this.physique_AnimalId_txt);
             this.physique_page.Controls.Add(this.morning_txt);
             this.physique_page.Controls.Add(this.materialLabel18);
+            this.physique_page.Controls.Add(this.weight_difference_txt);
+            this.physique_page.Controls.Add(this.materialLabel14);
             this.physique_page.Controls.Add(this.average_txt);
             this.physique_page.Controls.Add(this.materialLabel19);
             this.physique_page.Controls.Add(this.materialLabel20);
@@ -1556,6 +1573,7 @@
             // physique_AnimalId_txt
             // 
             this.physique_AnimalId_txt.BackColor = System.Drawing.Color.White;
+            this.physique_AnimalId_txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.physique_AnimalId_txt.ForeColor = System.Drawing.Color.Black;
             this.physique_AnimalId_txt.Location = new System.Drawing.Point(18, 23);
             this.physique_AnimalId_txt.Name = "physique_AnimalId_txt";
@@ -1673,18 +1691,31 @@
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // materialLabel3
+            // materialLabel14
             // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(8, 187);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(56, 19);
-            this.materialLabel3.TabIndex = 24;
-            this.materialLabel3.Text = "Gender";
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Depth = 0;
+            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel14.Location = new System.Drawing.Point(17, 261);
+            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(128, 19);
+            this.materialLabel14.TabIndex = 47;
+            this.materialLabel14.Text = "Weight Difference";
+            // 
+            // weight_difference_txt
+            // 
+            this.weight_difference_txt.AutoSize = true;
+            this.weight_difference_txt.Depth = 0;
+            this.weight_difference_txt.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weight_difference_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.weight_difference_txt.Location = new System.Drawing.Point(17, 294);
+            this.weight_difference_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.weight_difference_txt.Name = "weight_difference_txt";
+            this.weight_difference_txt.Size = new System.Drawing.Size(96, 19);
+            this.weight_difference_txt.TabIndex = 46;
+            this.weight_difference_txt.Text = "Calculating...";
             // 
             // Home
             // 
@@ -1846,6 +1877,8 @@
         private MaterialSkin.Controls.MaterialRaisedButton theme_btn;
         private MaterialSkin.Controls.MaterialRaisedButton scheme_btn;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel weight_difference_txt;
+        private MaterialSkin.Controls.MaterialLabel materialLabel14;
     }
 }
 

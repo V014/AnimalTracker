@@ -94,9 +94,11 @@ namespace AnimalTracker
         {
             dataGrid.BorderStyle = BorderStyle.None;
             dataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dataGrid.AlternatingRowsDefaultCellStyle.Font = new Font("Roboto", 11);
             dataGrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(55, 71, 79);
             dataGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dataGrid.DefaultCellStyle.Font = new Font("Roboto", 11);
             dataGrid.BackgroundColor = Color.White;
             dataGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGrid.EnableHeadersVisualStyles = false;
@@ -304,6 +306,11 @@ namespace AnimalTracker
                 morning_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
                 evening_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
                 average_txt.Text = row.Cells[4].Value.ToString();
+                // calculate weight difference
+                string weightAverage = "SELECT avg(WeightAverage)FROM Weight WHERE AnimalId = '" + physique_AnimalId_txt.Value + "'";
+                string Average = Connection.ReadString(weightAverage);
+                //int Weight = Convert.ToInt32(Average);
+                
             }
             catch (Exception) // reset textboxes
             {
@@ -830,21 +837,23 @@ namespace AnimalTracker
         {
             try
             {
-                // pull the animal list to compare it to the user input
-                string queryWeightAverage = "SELECT WeightAverage FROM Weight WHERE Id = '" + physique_AnimalId_txt.Value + "'";
+                // pull the animal's weight average
+                string queryWeightAverage = "SELECT WeightAverage FROM Weight WHERE AnimalId = '" + exercise_AnimalId_txt.Value + "'";
                 string Average = Connection.ReadString(queryWeightAverage);
+                int Weight = Convert.ToInt32(Average);
 
-                int Weight = Convert.ToInt32(Average.ToString());
-                // if the meal's name already exists then add the feeding only
+                // if the weight is beyond zero as a check
                 if (Weight > 0)
                 {
-                    // we build our query in the form page which has references to the its controls.
-                    string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurnt, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + calories_burnt_txt.Text + "','" + exercise_AnimalId_txt.
-                    Value + "','" + DateTime.Now.ToString("s") + "')";
+                    var caloriesBurned = 70 + Convert.ToInt32(duration_txt.Value) * (Weight * 0.75);
 
+                    // we build our query in the form page which has references to the its controls.
+                    string txtQuery = "INSERT INTO Exercise (Name, Duration, CaloriesBurned, AnimalId, Date) VALUES ('" + exercise_txt.Text + "','" + duration_txt.Value + "','" + caloriesBurned + "','" + exercise_AnimalId_txt.
+                    Value + "','" + DateTime.Now.ToString("s") + "')";
+                    
                     // we push the query to the AnimalControl class to process the query which links back to the connection class
                     AnimalControls.Querydb(txtQuery);
-                    MessageBox.Show("Exercise Recorded!");
+                    
                     string query = "SELECT * FROM Exercise";
                     LoadData(query, exerciseDataGrid);
                 }
@@ -854,6 +863,7 @@ namespace AnimalTracker
                 }
                 // refresh fields
                 resetExerciseFields();
+                
             }
             catch (Exception)
             {
@@ -865,18 +875,18 @@ namespace AnimalTracker
         {
             try
             {
-                // pull the animal list to compare it to the user input
-                string queryWeightAverage = "SELECT AverageWeight FROM Weight WHERE Weight = '" + physique_AnimalId_txt.Value + "'";
+                // pull the animal's weight average
+                string queryWeightAverage = "SELECT WeightAverage FROM Weight WHERE AnimalId = '" + exercise_AnimalId_txt.Value + "'";
                 string Average = Connection.ReadString(queryWeightAverage);
-
-                int Weight = Convert.ToInt32(Average.ToString());
+                int Weight = Convert.ToInt32(Average);
 
                 // if the meal's name already exists then add the feeding only
                 if (Weight  > 0)
                 {
+                    var caloriesBurned = 70 + Convert.ToUInt32(duration_txt.Value) * (Weight * 0.75);
                     // we build our query in the form page which has references to its controls
                     int id = Convert.ToInt32(exerciseDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "UPDATE Exercise SET Name = '" + @exercise_txt.Text + "', Duration = '" + @duration_txt.Value + "', CaloriesBurnt = '" + @calories_burnt_txt.Text + "', AnimalId = '" + @AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
+                    string txtQuery = "UPDATE Exercise SET Name = '" + @exercise_txt.Text + "', Duration = '" + @duration_txt.Value + "', CaloriesBurned = '" + @caloriesBurned + "', AnimalId = '" + @exercise_AnimalId_txt.Value + "' WHERE Id ='" + id + "'";
 
                     // we push the query to the AnimalControl class to process the query which links back to the connection class
                     AnimalControls.Querydb(txtQuery);
