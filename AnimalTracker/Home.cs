@@ -5,6 +5,7 @@ using MaterialSkin.Controls;
 using System.Data.SQLite;
 using System.Data;
 using System.Drawing;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AnimalTracker
 {
@@ -140,6 +141,19 @@ namespace AnimalTracker
             DB.Fill(DS);
             DT = DS.Tables[0];
             dataGrid.DataSource = DT;
+            con.Close();
+        }
+
+        private void LoadChart(string query, Chart chart)
+        {
+            var con = Connection.GetConnection();
+            var DB = new SQLiteDataAdapter(query, con);
+            var DS = new DataSet();
+            var DT = new DataTable();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            chart.DataSource = DT;
+            chart.DataBind();
             con.Close();
         }
 
@@ -461,6 +475,15 @@ namespace AnimalTracker
                 string queryWaist = "SELECT * FROM Waist";
                 LoadData(queryWaist, waistDataGrid);
                 //weightDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            }
+
+            // this pulls data for the weight chart
+            if (physiqueTabs.SelectedTab == chart_page)
+            {
+                weight_chart.Series[0].XValueMember = "Weight";
+                weight_chart.Series[0].YValueMembers = "Weight";
+                string weightTrend = "SELECT * FROM Weight";
+                LoadChart(weightTrend, weight_chart);
             }
         }
 

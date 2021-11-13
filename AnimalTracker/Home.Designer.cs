@@ -60,6 +60,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -150,6 +153,8 @@
             this.physique_AnimalId_txt = new System.Windows.Forms.NumericUpDown();
             this.morning_txt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
+            this.weight_difference_txt = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             this.average_txt = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
@@ -157,8 +162,8 @@
             this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
-            this.weight_difference_txt = new MaterialSkin.Controls.MaterialLabel();
+            this.chart_page = new System.Windows.Forms.TabPage();
+            this.weight_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).BeginInit();
@@ -196,6 +201,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.physique_AnimalId_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morning_txt)).BeginInit();
             this.settings_page.SuspendLayout();
+            this.chart_page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).BeginInit();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -1397,6 +1404,7 @@
             // 
             this.physiqueTabs.Controls.Add(this.weight_page);
             this.physiqueTabs.Controls.Add(this.waist_page);
+            this.physiqueTabs.Controls.Add(this.chart_page);
             this.physiqueTabs.Location = new System.Drawing.Point(184, 1);
             this.physiqueTabs.Name = "physiqueTabs";
             this.physiqueTabs.SelectedIndex = 0;
@@ -1604,6 +1612,32 @@
             this.materialLabel18.TabIndex = 45;
             this.materialLabel18.Text = "Evening";
             // 
+            // weight_difference_txt
+            // 
+            this.weight_difference_txt.AutoSize = true;
+            this.weight_difference_txt.Depth = 0;
+            this.weight_difference_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.weight_difference_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.weight_difference_txt.Location = new System.Drawing.Point(17, 294);
+            this.weight_difference_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.weight_difference_txt.Name = "weight_difference_txt";
+            this.weight_difference_txt.Size = new System.Drawing.Size(96, 19);
+            this.weight_difference_txt.TabIndex = 46;
+            this.weight_difference_txt.Text = "Calculating...";
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Depth = 0;
+            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel14.Location = new System.Drawing.Point(17, 261);
+            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(128, 19);
+            this.materialLabel14.TabIndex = 47;
+            this.materialLabel14.Text = "Weight Difference";
+            // 
             // average_txt
             // 
             this.average_txt.AutoSize = true;
@@ -1691,31 +1725,32 @@
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // materialLabel14
+            // chart_page
             // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Depth = 0;
-            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(17, 261);
-            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(128, 19);
-            this.materialLabel14.TabIndex = 47;
-            this.materialLabel14.Text = "Weight Difference";
+            this.chart_page.Controls.Add(this.weight_chart);
+            this.chart_page.Location = new System.Drawing.Point(4, 22);
+            this.chart_page.Name = "chart_page";
+            this.chart_page.Size = new System.Drawing.Size(639, 385);
+            this.chart_page.TabIndex = 2;
+            this.chart_page.Text = "Chart";
+            this.chart_page.UseVisualStyleBackColor = true;
             // 
-            // weight_difference_txt
+            // weight_chart
             // 
-            this.weight_difference_txt.AutoSize = true;
-            this.weight_difference_txt.Depth = 0;
-            this.weight_difference_txt.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weight_difference_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.weight_difference_txt.Location = new System.Drawing.Point(17, 294);
-            this.weight_difference_txt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.weight_difference_txt.Name = "weight_difference_txt";
-            this.weight_difference_txt.Size = new System.Drawing.Size(96, 19);
-            this.weight_difference_txt.TabIndex = 46;
-            this.weight_difference_txt.Text = "Calculating...";
+            chartArea1.Name = "ChartArea1";
+            this.weight_chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.weight_chart.Legends.Add(legend1);
+            this.weight_chart.Location = new System.Drawing.Point(0, 0);
+            this.weight_chart.Name = "weight_chart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.weight_chart.Series.Add(series1);
+            this.weight_chart.Size = new System.Drawing.Size(639, 385);
+            this.weight_chart.TabIndex = 0;
+            this.weight_chart.Text = "chart1";
             // 
             // Home
             // 
@@ -1776,6 +1811,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.physique_AnimalId_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.morning_txt)).EndInit();
             this.settings_page.ResumeLayout(false);
+            this.chart_page.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1879,6 +1916,8 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel weight_difference_txt;
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
+        private System.Windows.Forms.TabPage chart_page;
+        private System.Windows.Forms.DataVisualization.Charting.Chart weight_chart;
     }
 }
 
