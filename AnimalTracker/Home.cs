@@ -475,15 +475,15 @@ namespace AnimalTracker
                 string queryWaist = "SELECT * FROM Waist";
                 LoadData(queryWaist, waistDataGrid);
                 //weightDataGrid.Columns[0].Visible = false; // hide ID column during runtime
-            }
 
-            // this pulls data for the weight chart
-            if (physiqueTabs.SelectedTab == chart_page)
-            {
-                weight_chart.Series[0].XValueMember = "Weight";
-                weight_chart.Series[0].YValueMembers = "Weight";
-                string weightTrend = "SELECT * FROM Weight";
-                LoadChart(weightTrend, weight_chart);
+                // this pulls data for the weight chart
+                if (physiqueTabs.SelectedTab == chart_page)
+                {
+                    weight_chart.Series[0].XValueMember = "Weight";
+                    weight_chart.Series[0].YValueMembers = "Weight";
+                    string weightTrend = "SELECT * FROM Weight";
+                    LoadChart(weightTrend, weight_chart);
+                }
             }
         }
 

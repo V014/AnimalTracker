@@ -145,6 +145,8 @@
             this.weightDataGrid = new System.Windows.Forms.DataGridView();
             this.waist_page = new System.Windows.Forms.TabPage();
             this.waistDataGrid = new System.Windows.Forms.DataGridView();
+            this.chart_page = new System.Windows.Forms.TabPage();
+            this.weight_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.del_physique_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.update_physique_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rec_physique_btn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -162,8 +164,6 @@
             this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.chart_page = new System.Windows.Forms.TabPage();
-            this.weight_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).BeginInit();
@@ -197,12 +197,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.weightDataGrid)).BeginInit();
             this.waist_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).BeginInit();
+            this.chart_page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.evening_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.physique_AnimalId_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morning_txt)).BeginInit();
             this.settings_page.SuspendLayout();
-            this.chart_page.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).BeginInit();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -1507,6 +1507,33 @@
             this.waistDataGrid.TabIndex = 6;
             this.waistDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.waistDataGrid_CellClick);
             // 
+            // chart_page
+            // 
+            this.chart_page.Controls.Add(this.weight_chart);
+            this.chart_page.Location = new System.Drawing.Point(4, 22);
+            this.chart_page.Name = "chart_page";
+            this.chart_page.Size = new System.Drawing.Size(639, 385);
+            this.chart_page.TabIndex = 2;
+            this.chart_page.Text = "Chart";
+            this.chart_page.UseVisualStyleBackColor = true;
+            // 
+            // weight_chart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.weight_chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.weight_chart.Legends.Add(legend1);
+            this.weight_chart.Location = new System.Drawing.Point(0, 0);
+            this.weight_chart.Name = "weight_chart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.weight_chart.Series.Add(series1);
+            this.weight_chart.Size = new System.Drawing.Size(639, 385);
+            this.weight_chart.TabIndex = 0;
+            this.weight_chart.Text = "chart1";
+            // 
             // del_physique_btn
             // 
             this.del_physique_btn.AutoSize = true;
@@ -1725,33 +1752,6 @@
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // chart_page
-            // 
-            this.chart_page.Controls.Add(this.weight_chart);
-            this.chart_page.Location = new System.Drawing.Point(4, 22);
-            this.chart_page.Name = "chart_page";
-            this.chart_page.Size = new System.Drawing.Size(639, 385);
-            this.chart_page.TabIndex = 2;
-            this.chart_page.Text = "Chart";
-            this.chart_page.UseVisualStyleBackColor = true;
-            // 
-            // weight_chart
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.weight_chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.weight_chart.Legends.Add(legend1);
-            this.weight_chart.Location = new System.Drawing.Point(0, 0);
-            this.weight_chart.Name = "weight_chart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.weight_chart.Series.Add(series1);
-            this.weight_chart.Size = new System.Drawing.Size(639, 385);
-            this.weight_chart.TabIndex = 0;
-            this.weight_chart.Text = "chart1";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1807,12 +1807,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.weightDataGrid)).EndInit();
             this.waist_page.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).EndInit();
+            this.chart_page.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.evening_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.physique_AnimalId_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.morning_txt)).EndInit();
             this.settings_page.ResumeLayout(false);
-            this.chart_page.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).EndInit();
             this.ResumeLayout(false);
 
         }
