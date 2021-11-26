@@ -146,6 +146,11 @@
             this.waist_page = new System.Windows.Forms.TabPage();
             this.waistDataGrid = new System.Windows.Forms.DataGridView();
             this.chart_page = new System.Windows.Forms.TabPage();
+            this.loadChart_btn = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialLabel23 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
+            this.chart_AnimalId_num = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel21 = new MaterialSkin.Controls.MaterialLabel();
             this.weight_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.del_physique_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.update_physique_btn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -164,6 +169,8 @@
             this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.fromDate = new System.Windows.Forms.DateTimePicker();
+            this.toDate = new System.Windows.Forms.DateTimePicker();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).BeginInit();
@@ -198,6 +205,7 @@
             this.waist_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).BeginInit();
             this.chart_page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_AnimalId_num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.evening_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.physique_AnimalId_txt)).BeginInit();
@@ -1509,6 +1517,13 @@
             // 
             // chart_page
             // 
+            this.chart_page.Controls.Add(this.toDate);
+            this.chart_page.Controls.Add(this.fromDate);
+            this.chart_page.Controls.Add(this.loadChart_btn);
+            this.chart_page.Controls.Add(this.materialLabel23);
+            this.chart_page.Controls.Add(this.materialLabel22);
+            this.chart_page.Controls.Add(this.chart_AnimalId_num);
+            this.chart_page.Controls.Add(this.materialLabel21);
             this.chart_page.Controls.Add(this.weight_chart);
             this.chart_page.Location = new System.Drawing.Point(4, 22);
             this.chart_page.Name = "chart_page";
@@ -1516,6 +1531,70 @@
             this.chart_page.TabIndex = 2;
             this.chart_page.Text = "Chart";
             this.chart_page.UseVisualStyleBackColor = true;
+            // 
+            // loadChart_btn
+            // 
+            this.loadChart_btn.Depth = 0;
+            this.loadChart_btn.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadChart_btn.Location = new System.Drawing.Point(540, 238);
+            this.loadChart_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.loadChart_btn.Name = "loadChart_btn";
+            this.loadChart_btn.Primary = true;
+            this.loadChart_btn.Size = new System.Drawing.Size(81, 30);
+            this.loadChart_btn.TabIndex = 53;
+            this.loadChart_btn.Text = "Load";
+            this.loadChart_btn.UseVisualStyleBackColor = true;
+            this.loadChart_btn.Click += new System.EventHandler(this.loadChart_btn_Click);
+            // 
+            // materialLabel23
+            // 
+            this.materialLabel23.AutoSize = true;
+            this.materialLabel23.Depth = 0;
+            this.materialLabel23.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel23.Location = new System.Drawing.Point(536, 187);
+            this.materialLabel23.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel23.Name = "materialLabel23";
+            this.materialLabel23.Size = new System.Drawing.Size(27, 19);
+            this.materialLabel23.TabIndex = 52;
+            this.materialLabel23.Text = "To";
+            // 
+            // materialLabel22
+            // 
+            this.materialLabel22.AutoSize = true;
+            this.materialLabel22.Depth = 0;
+            this.materialLabel22.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel22.Location = new System.Drawing.Point(536, 122);
+            this.materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel22.Name = "materialLabel22";
+            this.materialLabel22.Size = new System.Drawing.Size(44, 19);
+            this.materialLabel22.TabIndex = 52;
+            this.materialLabel22.Text = "From";
+            // 
+            // chart_AnimalId_num
+            // 
+            this.chart_AnimalId_num.BackColor = System.Drawing.Color.White;
+            this.chart_AnimalId_num.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chart_AnimalId_num.ForeColor = System.Drawing.Color.Black;
+            this.chart_AnimalId_num.Location = new System.Drawing.Point(540, 85);
+            this.chart_AnimalId_num.Name = "chart_AnimalId_num";
+            this.chart_AnimalId_num.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chart_AnimalId_num.Size = new System.Drawing.Size(81, 20);
+            this.chart_AnimalId_num.TabIndex = 50;
+            // 
+            // materialLabel21
+            // 
+            this.materialLabel21.AutoSize = true;
+            this.materialLabel21.Depth = 0;
+            this.materialLabel21.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel21.Location = new System.Drawing.Point(536, 63);
+            this.materialLabel21.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel21.Name = "materialLabel21";
+            this.materialLabel21.Size = new System.Drawing.Size(68, 19);
+            this.materialLabel21.TabIndex = 52;
+            this.materialLabel21.Text = "AnimalId";
             // 
             // weight_chart
             // 
@@ -1526,9 +1605,8 @@
             this.weight_chart.Location = new System.Drawing.Point(0, 0);
             this.weight_chart.Name = "weight_chart";
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "WeightAverage";
             this.weight_chart.Series.Add(series1);
             this.weight_chart.Size = new System.Drawing.Size(639, 385);
             this.weight_chart.TabIndex = 0;
@@ -1752,6 +1830,20 @@
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
+            // fromDate
+            // 
+            this.fromDate.Location = new System.Drawing.Point(540, 144);
+            this.fromDate.Name = "fromDate";
+            this.fromDate.Size = new System.Drawing.Size(96, 20);
+            this.fromDate.TabIndex = 54;
+            // 
+            // toDate
+            // 
+            this.toDate.Location = new System.Drawing.Point(540, 209);
+            this.toDate.Name = "toDate";
+            this.toDate.Size = new System.Drawing.Size(96, 20);
+            this.toDate.TabIndex = 54;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1808,6 +1900,8 @@
             this.waist_page.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).EndInit();
             this.chart_page.ResumeLayout(false);
+            this.chart_page.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_AnimalId_num)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.evening_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.physique_AnimalId_txt)).EndInit();
@@ -1918,6 +2012,13 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
         private System.Windows.Forms.TabPage chart_page;
         private System.Windows.Forms.DataVisualization.Charting.Chart weight_chart;
+        private MaterialSkin.Controls.MaterialRaisedButton loadChart_btn;
+        private System.Windows.Forms.NumericUpDown chart_AnimalId_num;
+        private MaterialSkin.Controls.MaterialLabel materialLabel21;
+        private MaterialSkin.Controls.MaterialLabel materialLabel23;
+        private MaterialSkin.Controls.MaterialLabel materialLabel22;
+        private System.Windows.Forms.DateTimePicker fromDate;
+        private System.Windows.Forms.DateTimePicker toDate;
     }
 }
 

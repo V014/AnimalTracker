@@ -12,6 +12,7 @@ namespace AnimalTracker
     public partial class Home : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+
         public Home()
         {
             InitializeComponent();
@@ -144,18 +145,6 @@ namespace AnimalTracker
             con.Close();
         }
 
-        private void LoadChart(string query, Chart chart)
-        {
-            var con = Connection.GetConnection();
-            var DB = new SQLiteDataAdapter(query, con);
-            var DS = new DataSet();
-            var DT = new DataTable();
-            DB.Fill(DS);
-            DT = DS.Tables[0];
-            chart.DataSource = DT;
-            chart.DataBind();
-            con.Close();
-        }
 
         /* ======== this section loads the data from the pull function on runtime ========= */
         // load animal table when program starts
@@ -475,20 +464,11 @@ namespace AnimalTracker
                 string queryWaist = "SELECT * FROM Waist";
                 LoadData(queryWaist, waistDataGrid);
                 //weightDataGrid.Columns[0].Visible = false; // hide ID column during runtime
-
-                // this pulls data for the weight chart
-                if (physiqueTabs.SelectedTab == chart_page)
-                {
-                    weight_chart.Series[0].XValueMember = "Weight";
-                    weight_chart.Series[0].YValueMembers = "Weight";
-                    string weightTrend = "SELECT * FROM Weight";
-                    LoadChart(weightTrend, weight_chart);
-                }
             }
         }
 
         /* ========== this section queries the database after user interaction ======== */
-        
+
         void resetAnimalFields()
         {
             name_txt.Text = "";
@@ -1094,6 +1074,33 @@ namespace AnimalTracker
             }
         }
 
+        // loads data into the chart
+        private void LoadChart(int Avg, Chart chart)
+        {
+            var con = Connection.GetConnection();
+            var DB = new SQLiteDataAdapter(Avg.ToString(), con);
+            var DS = new DataSet();
+            var DT = new DataTable();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            chart.DataSource = DT;
+            chart.DataBind();
+            con.Close();
+        }
+
+        private void loadChart_btn_Click(object sender, EventArgs e)
+        {
+            weight_chart.Series[0].XValueMember = "Weight";
+            weight_chart.Series[0].YValueMembers = "Weight";
+
+            // pull the weight Id to reference to the weight
+            //string queryChartWeight = "SELECT AVG(WeightAverage) AS avg_weight FROM Weight WHERE AnimalId = '" + chart_AnimalId_num + "' AND Date BETWEEN '" + fromDate + "' AND '" + toDate + "'";
+            string queryChartWeight = "SELECT AVG(WeightAverage) AS avg_weight FROM Weight WHERE AnimalId = '" + chart_AnimalId_num +"'";
+            string weight = Connection.ReadString(queryChartWeight);
+            int weightAvg = Convert.ToInt32((weight).ToString());
+            LoadChart(weightAvg, weight_chart);
+        }
+
         /* Activity tab */
         private void rec_activity_btn_Click(object sender, EventArgs e)
         {
@@ -1173,5 +1180,6 @@ namespace AnimalTracker
                 MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
