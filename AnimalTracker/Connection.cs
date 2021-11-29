@@ -15,8 +15,7 @@ namespace AnimalTracker
         // connection to database file
         private static void setConnection()
         {
-            con = new SQLiteConnection
-                ("Data Source=Animaldb.db;Version=3;New=Flase;Compress=True;");
+            con = new SQLiteConnection("Data Source=Animaldb.db;Version=3;New=Flase;Compress=True;");
         }
 
         // execute query function
