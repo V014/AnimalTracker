@@ -1074,31 +1074,24 @@ namespace AnimalTracker
             }
         }
 
-        // loads data into the chart
-        private void LoadChart(int Avg, Chart chart)
-        {
-            var con = Connection.GetConnection();
-            var DB = new SQLiteDataAdapter(Avg.ToString(), con);
-            var DS = new DataSet();
-            var DT = new DataTable();
-            DB.Fill(DS);
-            DT = DS.Tables[0];
-            chart.DataSource = DT;
-            chart.DataBind();
-            con.Close();
-        }
-
         private void loadChart_btn_Click(object sender, EventArgs e)
         {
-            weight_chart.Series[0].XValueMember = "Weight";
-            weight_chart.Series[0].YValueMembers = "Weight";
-
-            // pull the weight Id to reference to the weight
-            //string queryChartWeight = "SELECT AVG(WeightAverage) AS avg_weight FROM Weight WHERE AnimalId = '" + chart_AnimalId_num + "' AND Date BETWEEN '" + fromDate + "' AND '" + toDate + "'";
-            string queryChartWeight = "SELECT AVG(WeightAverage) AS avg_weight FROM Weight WHERE AnimalId = '" + chart_AnimalId_num +"'";
-            string weight = Connection.ReadString(queryChartWeight);
-            int weightAvg = Convert.ToInt32((weight).ToString());
-            LoadChart(weightAvg, weight_chart);
+            SQLiteConnection con = Connection.GetConnection();
+            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(AVG(WeightAverage) AS INT) AS avg_weight FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Value +"'", con);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            Series sr = new Series();
+            try
+            {
+                while (reader.Read())
+                {
+                    weight_chart.Series[0].Points.AddY(reader.GetInt32(0));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Select AnimalId or record weight fist!");
+                con.Close();
+            }
         }
 
         /* Activity tab */
