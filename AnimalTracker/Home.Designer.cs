@@ -171,6 +171,8 @@
             this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.materialLabel24 = new MaterialSkin.Controls.MaterialLabel();
+            this.meal_calories_burn_lbl = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).BeginInit();
@@ -690,6 +692,7 @@
             // 
             this.meal_page.BackColor = System.Drawing.Color.White;
             this.meal_page.Controls.Add(this.mealTabs);
+            this.meal_page.Controls.Add(this.meal_calories_burn_lbl);
             this.meal_page.Controls.Add(this.calories_lbl);
             this.meal_page.Controls.Add(this.delete_meal_btn);
             this.meal_page.Controls.Add(this.update_meal_btn);
@@ -697,6 +700,7 @@
             this.meal_page.Controls.Add(this.AnimalId_txt);
             this.meal_page.Controls.Add(this.materialLabel8);
             this.meal_page.Controls.Add(this.portion_txt);
+            this.meal_page.Controls.Add(this.materialLabel24);
             this.meal_page.Controls.Add(this.materialLabel7);
             this.meal_page.Controls.Add(this.materialLabel1);
             this.meal_page.Controls.Add(this.materialLabel6);
@@ -939,9 +943,9 @@
             this.materialLabel1.Location = new System.Drawing.Point(14, 180);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(96, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(133, 19);
             this.materialLabel1.TabIndex = 27;
-            this.materialLabel1.Text = "Calories (KJ)";
+            this.materialLabel1.Text = "Caloric intake (KJ)";
             // 
             // materialLabel6
             // 
@@ -1619,6 +1623,7 @@
             this.weight_chart.Location = new System.Drawing.Point(0, 0);
             this.weight_chart.Name = "weight_chart";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "Weight Average";
             this.weight_chart.Series.Add(series1);
@@ -1844,6 +1849,32 @@
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
+            // materialLabel24
+            // 
+            this.materialLabel24.AutoSize = true;
+            this.materialLabel24.Depth = 0;
+            this.materialLabel24.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel24.Location = new System.Drawing.Point(14, 244);
+            this.materialLabel24.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel24.Name = "materialLabel24";
+            this.materialLabel24.Size = new System.Drawing.Size(145, 19);
+            this.materialLabel24.TabIndex = 27;
+            this.materialLabel24.Text = "Caloric intake / burn";
+            // 
+            // meal_calories_burn_lbl
+            // 
+            this.meal_calories_burn_lbl.AutoSize = true;
+            this.meal_calories_burn_lbl.Depth = 0;
+            this.meal_calories_burn_lbl.Font = new System.Drawing.Font("Roboto", 11F);
+            this.meal_calories_burn_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.meal_calories_burn_lbl.Location = new System.Drawing.Point(18, 273);
+            this.meal_calories_burn_lbl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.meal_calories_burn_lbl.Name = "meal_calories_burn_lbl";
+            this.meal_calories_burn_lbl.Size = new System.Drawing.Size(120, 19);
+            this.meal_calories_burn_lbl.TabIndex = 33;
+            this.meal_calories_burn_lbl.Text = "Waiting on you...";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2019,6 +2050,8 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel22;
         private System.Windows.Forms.DateTimePicker fromDate;
         private System.Windows.Forms.DateTimePicker toDate;
+        private MaterialSkin.Controls.MaterialLabel meal_calories_burn_lbl;
+        private MaterialSkin.Controls.MaterialLabel materialLabel24;
     }
 }
 

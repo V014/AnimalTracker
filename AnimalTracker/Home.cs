@@ -265,6 +265,8 @@ namespace AnimalTracker
             try
             {
                 DataGridViewRow row = mealDataGrid.Rows[e.RowIndex];
+
+
                 meal_txt.Text = row.Cells[1].Value.ToString();
                 calories_lbl.Text = row.Cells[2].Value.ToString();
                 portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
@@ -305,19 +307,20 @@ namespace AnimalTracker
             try
             {
                 DataGridViewRow row = weightDataGrid.Rows[e.RowIndex];
+                // calculate weight difference
+                var weightAverage = Convert.ToInt32(row.Cells[4].Value.ToString());
+                var initialWeight = Convert.ToInt32(row.Cells[2].Value.ToString());
+                var difference = weightAverage - initialWeight;
+                // display readings
                 physique_AnimalId_txt.Value = Convert.ToInt32(row.Cells[1].Value.ToString());
                 morning_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
                 evening_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
-                average_txt.Text = row.Cells[4].Value.ToString();
-                // calculate weight difference
-                string weightAverage = "SELECT avg(WeightAverage)FROM Weight WHERE AnimalId = '" + physique_AnimalId_txt.Value + "'";
-                string Average = Connection.ReadString(weightAverage);
-                //int Weight = Convert.ToInt32(Average);
-                
+                average_txt.Text = row.Cells[4].Value.ToString() + "KG";
+                weight_difference_txt.Text = difference.ToString() + "KG";
             }
             catch (Exception) // reset textboxes
             {
-                MessageBox.Show("Empty field");
+                MessageBox.Show(weight_difference_txt.Text);
                 // refresh fields
                 physique_AnimalId_txt.Value = 0;
                 morning_txt.Value = 0;
@@ -1074,14 +1077,15 @@ namespace AnimalTracker
             }
         }
 
+        // load weight trend into chart
         private void loadChart_btn_Click(object sender, EventArgs e)
         {
             SQLiteConnection con = Connection.GetConnection();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(AVG(WeightAverage) AS INT) AS avg_weight FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Value +"'", con);
+            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT) FROM Weight WHERE AnimalId = '"+ chart_AnimalId_num.Value +"'", con);
             SQLiteDataReader reader = cmd.ExecuteReader();
-            Series sr = new Series();
             try
             {
+                weight_chart.Series[0].Points.Clear(); // clear previous trend
                 while (reader.Read())
                 {
                     weight_chart.Series[0].Points.AddY(reader.GetInt32(0));
