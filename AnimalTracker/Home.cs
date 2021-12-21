@@ -391,7 +391,14 @@ namespace AnimalTracker
                 duration_txt.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
                 calories_burnt_txt.Text = row.Cells[3].Value.ToString();
                 exercise_AnimalId_txt.Value = Convert.ToInt32(row.Cells[4].Value.ToString());
-
+                // collect the amount of calories consumed that day.
+                string queryCalories = "SELECT SUM(calories) From Feeding AS f INNER JOIN Meal AS m ON f.MealId = m.Id WHERE f.AnimalId = '"+ exercise_AnimalId_txt.Value + "' AND f.date LIKE '2021-11-08%'";
+                string calories = Connection.ReadString(queryCalories);
+                calories_eaten_txt.Text = calories;
+                // calculate the difference
+                int calorieBurnt = Convert.ToInt32(row.Cells[3].Value.ToString());
+                int caloricDiff = Convert.ToInt32(calories) - calorieBurnt;
+                average_gain_txt.Text = caloricDiff.ToString();
             }
             catch (Exception) // reset textboxes
             {

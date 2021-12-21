@@ -1994,7 +1994,7 @@
             // 
             this.average_gain_txt.AutoSize = true;
             this.average_gain_txt.Depth = 0;
-            this.average_gain_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.average_gain_txt.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.average_gain_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.average_gain_txt.Location = new System.Drawing.Point(14, 352);
             this.average_gain_txt.MouseState = MaterialSkin.MouseState.HOVER;
