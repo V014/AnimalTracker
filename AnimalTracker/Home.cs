@@ -1201,10 +1201,10 @@ namespace AnimalTracker
             SQLiteDataReader reader = cmd.ExecuteReader();
             try
             {
-                chart.Series[0].Points.Clear(); // clear previous trend
+                weightChart.Series[0].Values.Clear(); // clear previous trend
                 while (reader.Read())
                 {
-                    chart.Series[0].Points.Add(reader.GetInt32(0));
+                    weightChart.Series[0].Values.Add(reader.GetInt32(0));
                 }
             }
             catch (Exception)

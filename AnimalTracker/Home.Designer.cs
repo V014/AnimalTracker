@@ -148,10 +148,8 @@
             this.waist_page = new System.Windows.Forms.TabPage();
             this.waistDataGrid = new System.Windows.Forms.DataGridView();
             this.chart_page = new System.Windows.Forms.TabPage();
-            this.toDate = new System.Windows.Forms.DateTimePicker();
             this.fromDate = new System.Windows.Forms.DateTimePicker();
             this.loadGraph_btn = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialLabel23 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
             this.chart_AnimalId_num = new System.Windows.Forms.NumericUpDown();
             this.materialLabel21 = new MaterialSkin.Controls.MaterialLabel();
@@ -1563,10 +1561,8 @@
             // 
             // chart_page
             // 
-            this.chart_page.Controls.Add(this.toDate);
             this.chart_page.Controls.Add(this.fromDate);
             this.chart_page.Controls.Add(this.loadGraph_btn);
-            this.chart_page.Controls.Add(this.materialLabel23);
             this.chart_page.Controls.Add(this.materialLabel22);
             this.chart_page.Controls.Add(this.chart_AnimalId_num);
             this.chart_page.Controls.Add(this.materialLabel21);
@@ -1578,16 +1574,9 @@
             this.chart_page.Text = "Chart";
             this.chart_page.UseVisualStyleBackColor = true;
             // 
-            // toDate
-            // 
-            this.toDate.Location = new System.Drawing.Point(495, 209);
-            this.toDate.Name = "toDate";
-            this.toDate.Size = new System.Drawing.Size(126, 20);
-            this.toDate.TabIndex = 54;
-            // 
             // fromDate
             // 
-            this.fromDate.Location = new System.Drawing.Point(495, 144);
+            this.fromDate.Location = new System.Drawing.Point(496, 121);
             this.fromDate.Name = "fromDate";
             this.fromDate.Size = new System.Drawing.Size(126, 20);
             this.fromDate.TabIndex = 54;
@@ -1596,7 +1585,7 @@
             // 
             this.loadGraph_btn.Depth = 0;
             this.loadGraph_btn.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadGraph_btn.Location = new System.Drawing.Point(495, 238);
+            this.loadGraph_btn.Location = new System.Drawing.Point(496, 165);
             this.loadGraph_btn.MouseState = MaterialSkin.MouseState.HOVER;
             this.loadGraph_btn.Name = "loadGraph_btn";
             this.loadGraph_btn.Primary = true;
@@ -1606,26 +1595,13 @@
             this.loadGraph_btn.UseVisualStyleBackColor = true;
             this.loadGraph_btn.Click += new System.EventHandler(this.loadGraph_btn_Click);
             // 
-            // materialLabel23
-            // 
-            this.materialLabel23.AutoSize = true;
-            this.materialLabel23.Depth = 0;
-            this.materialLabel23.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel23.Location = new System.Drawing.Point(491, 187);
-            this.materialLabel23.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel23.Name = "materialLabel23";
-            this.materialLabel23.Size = new System.Drawing.Size(27, 19);
-            this.materialLabel23.TabIndex = 52;
-            this.materialLabel23.Text = "To";
-            // 
             // materialLabel22
             // 
             this.materialLabel22.AutoSize = true;
             this.materialLabel22.Depth = 0;
             this.materialLabel22.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel22.Location = new System.Drawing.Point(491, 122);
+            this.materialLabel22.Location = new System.Drawing.Point(492, 99);
             this.materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel22.Name = "materialLabel22";
             this.materialLabel22.Size = new System.Drawing.Size(44, 19);
@@ -1637,7 +1613,7 @@
             this.chart_AnimalId_num.BackColor = System.Drawing.Color.White;
             this.chart_AnimalId_num.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.chart_AnimalId_num.ForeColor = System.Drawing.Color.Black;
-            this.chart_AnimalId_num.Location = new System.Drawing.Point(495, 85);
+            this.chart_AnimalId_num.Location = new System.Drawing.Point(496, 63);
             this.chart_AnimalId_num.Name = "chart_AnimalId_num";
             this.chart_AnimalId_num.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chart_AnimalId_num.Size = new System.Drawing.Size(126, 20);
@@ -1649,7 +1625,7 @@
             this.materialLabel21.Depth = 0;
             this.materialLabel21.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel21.Location = new System.Drawing.Point(491, 63);
+            this.materialLabel21.Location = new System.Drawing.Point(492, 41);
             this.materialLabel21.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel21.Name = "materialLabel21";
             this.materialLabel21.Size = new System.Drawing.Size(68, 19);
@@ -1662,14 +1638,14 @@
             this.chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(0, 0);
+            this.chart.Location = new System.Drawing.Point(3, 3);
             this.chart.Name = "chart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "Weight Average";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(639, 385);
+            this.chart.Size = new System.Drawing.Size(633, 379);
             this.chart.TabIndex = 0;
             this.chart.Text = "chart1";
             // 
@@ -1917,7 +1893,7 @@
             // theme_btn
             // 
             this.theme_btn.Depth = 0;
-            this.theme_btn.Location = new System.Drawing.Point(520, 418);
+            this.theme_btn.Location = new System.Drawing.Point(359, 28);
             this.theme_btn.MouseState = MaterialSkin.MouseState.HOVER;
             this.theme_btn.Name = "theme_btn";
             this.theme_btn.Primary = true;
@@ -1930,13 +1906,13 @@
             // scheme_btn
             // 
             this.scheme_btn.Depth = 0;
-            this.scheme_btn.Location = new System.Drawing.Point(656, 418);
+            this.scheme_btn.Location = new System.Drawing.Point(359, 92);
             this.scheme_btn.MouseState = MaterialSkin.MouseState.HOVER;
             this.scheme_btn.Name = "scheme_btn";
             this.scheme_btn.Primary = true;
-            this.scheme_btn.Size = new System.Drawing.Size(185, 36);
+            this.scheme_btn.Size = new System.Drawing.Size(130, 36);
             this.scheme_btn.TabIndex = 2;
-            this.scheme_btn.Text = "Change color scheme";
+            this.scheme_btn.Text = "Change Color ";
             this.scheme_btn.UseVisualStyleBackColor = true;
             this.scheme_btn.Click += new System.EventHandler(this.scheme_btn_Click);
             // 
@@ -2177,10 +2153,8 @@
         private MaterialSkin.Controls.MaterialRaisedButton loadGraph_btn;
         private System.Windows.Forms.NumericUpDown chart_AnimalId_num;
         private MaterialSkin.Controls.MaterialLabel materialLabel21;
-        private MaterialSkin.Controls.MaterialLabel materialLabel23;
         private MaterialSkin.Controls.MaterialLabel materialLabel22;
         private System.Windows.Forms.DateTimePicker fromDate;
-        private System.Windows.Forms.DateTimePicker toDate;
         private MaterialSkin.Controls.MaterialLabel meal_calories_burn_lbl;
         private MaterialSkin.Controls.MaterialLabel materialLabel24;
         private System.Windows.Forms.TabPage trend_page;
