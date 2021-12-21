@@ -18,3 +18,12 @@ C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker
 C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\obj\Debug\AnimalTracker.csproj.GenerateResource.Cache
 C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\obj\Debug\AnimalTracker.exe
 C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\obj\Debug\AnimalTracker.pdb
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.dll
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.pdb
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.xml
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\AnimalTracker\AnimalTracker\bin\Debug\LiveCharts.Wpf.xml

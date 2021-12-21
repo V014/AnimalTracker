@@ -265,10 +265,15 @@ namespace AnimalTracker
             try
             {
                 DataGridViewRow row = mealDataGrid.Rows[e.RowIndex];
+                calories_lbl.Text = row.Cells[2].Value.ToString();
+
+                var calories = Convert.ToInt32(row.Cells[2].Value.ToString());
+                string queryWeight = "SELECT Calories FROM Meal WHERE Id ='" + mealDataGrid.Rows[e.RowIndex] + "'";
+                var weight = Convert.ToInt32(Connection.ReadString(queryWeight).ToString());
+                var weightDifference = 
 
 
                 meal_txt.Text = row.Cells[1].Value.ToString();
-                calories_lbl.Text = row.Cells[2].Value.ToString();
                 portion_txt.Value = Convert.ToInt32(row.Cells[3].Value.ToString());
 
             }
@@ -1081,14 +1086,18 @@ namespace AnimalTracker
         private void loadChart_btn_Click(object sender, EventArgs e)
         {
             SQLiteConnection con = Connection.GetConnection();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT) FROM Weight WHERE AnimalId = '"+ chart_AnimalId_num.Value +"'", con);
+            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT) FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Value + "'", con);
             SQLiteDataReader reader = cmd.ExecuteReader();
             try
             {
-                weight_chart.Series[0].Points.Clear(); // clear previous trend
+                weightChart.Series[0].Values.Clear(); // clear previous trend
                 while (reader.Read())
                 {
-                    weight_chart.Series[0].Points.AddY(reader.GetInt32(0));
+                    weightChart.Series[0].Values.Add(reader.GetInt32(0));
+                    weightChart.AxisX.Add(new LiveCharts.Wpf.Axis
+                    {
+                       
+                    });
                 }
             }
             catch (Exception)
@@ -1178,5 +1187,24 @@ namespace AnimalTracker
             }
         }
 
+        private void loadGraph_btn_Click(object sender, EventArgs e)
+        {
+            SQLiteConnection con = Connection.GetConnection();
+            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT), date FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Value + "'", con);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            try
+            {
+                chart.Series[0].Points.Clear(); // clear previous trend
+                while (reader.Read())
+                {
+                    chart.Series[0].Points.Add(reader.GetInt32(0));
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Select AnimalId or record weight fist!");
+                con.Close();
+            }
+        }
     }
 }

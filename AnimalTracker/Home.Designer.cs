@@ -103,6 +103,7 @@
             this.feedingDataGrid = new System.Windows.Forms.DataGridView();
             this.mealPage = new System.Windows.Forms.TabPage();
             this.mealDataGrid = new System.Windows.Forms.DataGridView();
+            this.meal_calories_burn_lbl = new MaterialSkin.Controls.MaterialLabel();
             this.calories_lbl = new MaterialSkin.Controls.MaterialLabel();
             this.delete_meal_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.update_meal_btn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -110,6 +111,7 @@
             this.AnimalId_txt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.portion_txt = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel24 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
@@ -148,12 +150,17 @@
             this.chart_page = new System.Windows.Forms.TabPage();
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.fromDate = new System.Windows.Forms.DateTimePicker();
-            this.loadChart_btn = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.loadGraph_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel23 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
             this.chart_AnimalId_num = new System.Windows.Forms.NumericUpDown();
             this.materialLabel21 = new MaterialSkin.Controls.MaterialLabel();
-            this.weight_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.trend_page = new System.Windows.Forms.TabPage();
+            this.loadChart_btn = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            this.weightChart = new LiveCharts.WinForms.CartesianChart();
             this.del_physique_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.update_physique_btn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rec_physique_btn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -163,16 +170,18 @@
             this.morning_txt = new System.Windows.Forms.NumericUpDown();
             this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
             this.weight_difference_txt = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            this.difference_lbl = new MaterialSkin.Controls.MaterialLabel();
             this.average_txt = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
+            this.average_lbl = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             this.settings_page = new System.Windows.Forms.TabPage();
             this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.materialLabel24 = new MaterialSkin.Controls.MaterialLabel();
-            this.meal_calories_burn_lbl = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
+            this.calories_eaten_txt = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel25 = new MaterialSkin.Controls.MaterialLabel();
+            this.average_gain_txt = new MaterialSkin.Controls.MaterialLabel();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age_txt)).BeginInit();
@@ -208,7 +217,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).BeginInit();
             this.chart_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_AnimalId_num)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
+            this.trend_page.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.evening_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.physique_AnimalId_txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.morning_txt)).BeginInit();
@@ -822,6 +833,19 @@
             this.mealDataGrid.TabIndex = 1;
             this.mealDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mealDataGrid_CellClick);
             // 
+            // meal_calories_burn_lbl
+            // 
+            this.meal_calories_burn_lbl.AutoSize = true;
+            this.meal_calories_burn_lbl.Depth = 0;
+            this.meal_calories_burn_lbl.Font = new System.Drawing.Font("Roboto", 11F);
+            this.meal_calories_burn_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.meal_calories_burn_lbl.Location = new System.Drawing.Point(18, 273);
+            this.meal_calories_burn_lbl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.meal_calories_burn_lbl.Name = "meal_calories_burn_lbl";
+            this.meal_calories_burn_lbl.Size = new System.Drawing.Size(120, 19);
+            this.meal_calories_burn_lbl.TabIndex = 33;
+            this.meal_calories_burn_lbl.Text = "Waiting on you...";
+            // 
             // calories_lbl
             // 
             this.calories_lbl.AutoSize = true;
@@ -921,6 +945,19 @@
             this.portion_txt.Size = new System.Drawing.Size(120, 20);
             this.portion_txt.TabIndex = 29;
             // 
+            // materialLabel24
+            // 
+            this.materialLabel24.AutoSize = true;
+            this.materialLabel24.Depth = 0;
+            this.materialLabel24.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel24.Location = new System.Drawing.Point(14, 244);
+            this.materialLabel24.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel24.Name = "materialLabel24";
+            this.materialLabel24.Size = new System.Drawing.Size(145, 19);
+            this.materialLabel24.TabIndex = 27;
+            this.materialLabel24.Text = "Caloric intake / burn";
+            // 
             // materialLabel7
             // 
             this.materialLabel7.AutoSize = true;
@@ -979,11 +1016,15 @@
             // exercise_page
             // 
             this.exercise_page.BackColor = System.Drawing.Color.White;
+            this.exercise_page.Controls.Add(this.average_gain_txt);
+            this.exercise_page.Controls.Add(this.calories_eaten_txt);
             this.exercise_page.Controls.Add(this.calories_burnt_txt);
             this.exercise_page.Controls.Add(this.del_exercise_btn);
             this.exercise_page.Controls.Add(this.update_exe_btn);
             this.exercise_page.Controls.Add(this.rec_exe_btn);
+            this.exercise_page.Controls.Add(this.materialLabel25);
             this.exercise_page.Controls.Add(this.exercise_AnimalId_txt);
+            this.exercise_page.Controls.Add(this.materialLabel19);
             this.exercise_page.Controls.Add(this.materialLabel9);
             this.exercise_page.Controls.Add(this.materialLabel12);
             this.exercise_page.Controls.Add(this.duration_txt);
@@ -1402,9 +1443,9 @@
             this.physique_page.Controls.Add(this.morning_txt);
             this.physique_page.Controls.Add(this.materialLabel18);
             this.physique_page.Controls.Add(this.weight_difference_txt);
-            this.physique_page.Controls.Add(this.materialLabel14);
+            this.physique_page.Controls.Add(this.difference_lbl);
             this.physique_page.Controls.Add(this.average_txt);
-            this.physique_page.Controls.Add(this.materialLabel19);
+            this.physique_page.Controls.Add(this.average_lbl);
             this.physique_page.Controls.Add(this.materialLabel20);
             this.physique_page.Location = new System.Drawing.Point(4, 22);
             this.physique_page.Name = "physique_page";
@@ -1417,6 +1458,7 @@
             this.physiqueTabs.Controls.Add(this.weight_page);
             this.physiqueTabs.Controls.Add(this.waist_page);
             this.physiqueTabs.Controls.Add(this.chart_page);
+            this.physiqueTabs.Controls.Add(this.trend_page);
             this.physiqueTabs.Location = new System.Drawing.Point(184, 1);
             this.physiqueTabs.Name = "physiqueTabs";
             this.physiqueTabs.SelectedIndex = 0;
@@ -1523,12 +1565,12 @@
             // 
             this.chart_page.Controls.Add(this.toDate);
             this.chart_page.Controls.Add(this.fromDate);
-            this.chart_page.Controls.Add(this.loadChart_btn);
+            this.chart_page.Controls.Add(this.loadGraph_btn);
             this.chart_page.Controls.Add(this.materialLabel23);
             this.chart_page.Controls.Add(this.materialLabel22);
             this.chart_page.Controls.Add(this.chart_AnimalId_num);
             this.chart_page.Controls.Add(this.materialLabel21);
-            this.chart_page.Controls.Add(this.weight_chart);
+            this.chart_page.Controls.Add(this.chart);
             this.chart_page.Location = new System.Drawing.Point(4, 22);
             this.chart_page.Name = "chart_page";
             this.chart_page.Size = new System.Drawing.Size(639, 385);
@@ -1550,19 +1592,19 @@
             this.fromDate.Size = new System.Drawing.Size(126, 20);
             this.fromDate.TabIndex = 54;
             // 
-            // loadChart_btn
+            // loadGraph_btn
             // 
-            this.loadChart_btn.Depth = 0;
-            this.loadChart_btn.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadChart_btn.Location = new System.Drawing.Point(495, 238);
-            this.loadChart_btn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.loadChart_btn.Name = "loadChart_btn";
-            this.loadChart_btn.Primary = true;
-            this.loadChart_btn.Size = new System.Drawing.Size(126, 30);
-            this.loadChart_btn.TabIndex = 53;
-            this.loadChart_btn.Text = "Load";
-            this.loadChart_btn.UseVisualStyleBackColor = true;
-            this.loadChart_btn.Click += new System.EventHandler(this.loadChart_btn_Click);
+            this.loadGraph_btn.Depth = 0;
+            this.loadGraph_btn.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadGraph_btn.Location = new System.Drawing.Point(495, 238);
+            this.loadGraph_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.loadGraph_btn.Name = "loadGraph_btn";
+            this.loadGraph_btn.Primary = true;
+            this.loadGraph_btn.Size = new System.Drawing.Size(126, 30);
+            this.loadGraph_btn.TabIndex = 53;
+            this.loadGraph_btn.Text = "Load";
+            this.loadGraph_btn.UseVisualStyleBackColor = true;
+            this.loadGraph_btn.Click += new System.EventHandler(this.loadGraph_btn_Click);
             // 
             // materialLabel23
             // 
@@ -1614,22 +1656,82 @@
             this.materialLabel21.TabIndex = 52;
             this.materialLabel21.Text = "AnimalId";
             // 
-            // weight_chart
+            // chart
             // 
             chartArea1.Name = "ChartArea1";
-            this.weight_chart.ChartAreas.Add(chartArea1);
+            this.chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.weight_chart.Legends.Add(legend1);
-            this.weight_chart.Location = new System.Drawing.Point(0, 0);
-            this.weight_chart.Name = "weight_chart";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(0, 0);
+            this.chart.Name = "chart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "Weight Average";
-            this.weight_chart.Series.Add(series1);
-            this.weight_chart.Size = new System.Drawing.Size(639, 385);
-            this.weight_chart.TabIndex = 0;
-            this.weight_chart.Text = "chart1";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(639, 385);
+            this.chart.TabIndex = 0;
+            this.chart.Text = "chart1";
+            // 
+            // trend_page
+            // 
+            this.trend_page.Controls.Add(this.loadChart_btn);
+            this.trend_page.Controls.Add(this.numericUpDown1);
+            this.trend_page.Controls.Add(this.materialLabel14);
+            this.trend_page.Controls.Add(this.weightChart);
+            this.trend_page.Location = new System.Drawing.Point(4, 22);
+            this.trend_page.Name = "trend_page";
+            this.trend_page.Padding = new System.Windows.Forms.Padding(3);
+            this.trend_page.Size = new System.Drawing.Size(639, 385);
+            this.trend_page.TabIndex = 3;
+            this.trend_page.Text = "Trend";
+            this.trend_page.UseVisualStyleBackColor = true;
+            // 
+            // loadChart_btn
+            // 
+            this.loadChart_btn.Depth = 0;
+            this.loadChart_btn.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadChart_btn.Location = new System.Drawing.Point(27, 53);
+            this.loadChart_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.loadChart_btn.Name = "loadChart_btn";
+            this.loadChart_btn.Primary = true;
+            this.loadChart_btn.Size = new System.Drawing.Size(126, 30);
+            this.loadChart_btn.TabIndex = 56;
+            this.loadChart_btn.Text = "Load";
+            this.loadChart_btn.UseVisualStyleBackColor = true;
+            this.loadChart_btn.Click += new System.EventHandler(this.loadChart_btn_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.White;
+            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown1.ForeColor = System.Drawing.Color.Black;
+            this.numericUpDown1.Location = new System.Drawing.Point(27, 27);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.numericUpDown1.Size = new System.Drawing.Size(126, 20);
+            this.numericUpDown1.TabIndex = 54;
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Depth = 0;
+            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel14.Location = new System.Drawing.Point(23, 5);
+            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(68, 19);
+            this.materialLabel14.TabIndex = 55;
+            this.materialLabel14.Text = "AnimalId";
+            // 
+            // weightChart
+            // 
+            this.weightChart.Location = new System.Drawing.Point(3, 90);
+            this.weightChart.Name = "weightChart";
+            this.weightChart.Size = new System.Drawing.Size(643, 295);
+            this.weightChart.TabIndex = 0;
+            this.weightChart.Text = "cartesianChart1";
             // 
             // del_physique_btn
             // 
@@ -1749,18 +1851,18 @@
             this.weight_difference_txt.TabIndex = 46;
             this.weight_difference_txt.Text = "Calculating...";
             // 
-            // materialLabel14
+            // difference_lbl
             // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Depth = 0;
-            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(17, 261);
-            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(128, 19);
-            this.materialLabel14.TabIndex = 47;
-            this.materialLabel14.Text = "Weight Difference";
+            this.difference_lbl.AutoSize = true;
+            this.difference_lbl.Depth = 0;
+            this.difference_lbl.Font = new System.Drawing.Font("Roboto", 11F);
+            this.difference_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.difference_lbl.Location = new System.Drawing.Point(17, 261);
+            this.difference_lbl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.difference_lbl.Name = "difference_lbl";
+            this.difference_lbl.Size = new System.Drawing.Size(128, 19);
+            this.difference_lbl.TabIndex = 47;
+            this.difference_lbl.Text = "Weight Difference";
             // 
             // average_txt
             // 
@@ -1775,18 +1877,18 @@
             this.average_txt.TabIndex = 46;
             this.average_txt.Text = "Calculating...";
             // 
-            // materialLabel19
+            // average_lbl
             // 
-            this.materialLabel19.AutoSize = true;
-            this.materialLabel19.Depth = 0;
-            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel19.Location = new System.Drawing.Point(17, 188);
-            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel19.Name = "materialLabel19";
-            this.materialLabel19.Size = new System.Drawing.Size(63, 19);
-            this.materialLabel19.TabIndex = 47;
-            this.materialLabel19.Text = "Average";
+            this.average_lbl.AutoSize = true;
+            this.average_lbl.Depth = 0;
+            this.average_lbl.Font = new System.Drawing.Font("Roboto", 11F);
+            this.average_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.average_lbl.Location = new System.Drawing.Point(17, 188);
+            this.average_lbl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.average_lbl.Name = "average_lbl";
+            this.average_lbl.Size = new System.Drawing.Size(63, 19);
+            this.average_lbl.TabIndex = 47;
+            this.average_lbl.Text = "Average";
             // 
             // materialLabel20
             // 
@@ -1849,31 +1951,57 @@
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
             // 
-            // materialLabel24
+            // materialLabel19
             // 
-            this.materialLabel24.AutoSize = true;
-            this.materialLabel24.Depth = 0;
-            this.materialLabel24.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel24.Location = new System.Drawing.Point(14, 244);
-            this.materialLabel24.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel24.Name = "materialLabel24";
-            this.materialLabel24.Size = new System.Drawing.Size(145, 19);
-            this.materialLabel24.TabIndex = 27;
-            this.materialLabel24.Text = "Caloric intake / burn";
+            this.materialLabel19.AutoSize = true;
+            this.materialLabel19.Depth = 0;
+            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel19.Location = new System.Drawing.Point(13, 258);
+            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel19.Name = "materialLabel19";
+            this.materialLabel19.Size = new System.Drawing.Size(106, 19);
+            this.materialLabel19.TabIndex = 31;
+            this.materialLabel19.Text = "Calories eaten";
             // 
-            // meal_calories_burn_lbl
+            // calories_eaten_txt
             // 
-            this.meal_calories_burn_lbl.AutoSize = true;
-            this.meal_calories_burn_lbl.Depth = 0;
-            this.meal_calories_burn_lbl.Font = new System.Drawing.Font("Roboto", 11F);
-            this.meal_calories_burn_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.meal_calories_burn_lbl.Location = new System.Drawing.Point(18, 273);
-            this.meal_calories_burn_lbl.MouseState = MaterialSkin.MouseState.HOVER;
-            this.meal_calories_burn_lbl.Name = "meal_calories_burn_lbl";
-            this.meal_calories_burn_lbl.Size = new System.Drawing.Size(120, 19);
-            this.meal_calories_burn_lbl.TabIndex = 33;
-            this.meal_calories_burn_lbl.Text = "Waiting on you...";
+            this.calories_eaten_txt.AutoSize = true;
+            this.calories_eaten_txt.Depth = 0;
+            this.calories_eaten_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.calories_eaten_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.calories_eaten_txt.Location = new System.Drawing.Point(14, 286);
+            this.calories_eaten_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.calories_eaten_txt.Name = "calories_eaten_txt";
+            this.calories_eaten_txt.Size = new System.Drawing.Size(71, 19);
+            this.calories_eaten_txt.TabIndex = 38;
+            this.calories_eaten_txt.Text = "Waiting...";
+            // 
+            // materialLabel25
+            // 
+            this.materialLabel25.AutoSize = true;
+            this.materialLabel25.Depth = 0;
+            this.materialLabel25.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel25.Location = new System.Drawing.Point(13, 324);
+            this.materialLabel25.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel25.Name = "materialLabel25";
+            this.materialLabel25.Size = new System.Drawing.Size(95, 19);
+            this.materialLabel25.TabIndex = 31;
+            this.materialLabel25.Text = "Average gain";
+            // 
+            // average_gain_txt
+            // 
+            this.average_gain_txt.AutoSize = true;
+            this.average_gain_txt.Depth = 0;
+            this.average_gain_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.average_gain_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.average_gain_txt.Location = new System.Drawing.Point(14, 352);
+            this.average_gain_txt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.average_gain_txt.Name = "average_gain_txt";
+            this.average_gain_txt.Size = new System.Drawing.Size(71, 19);
+            this.average_gain_txt.TabIndex = 38;
+            this.average_gain_txt.Text = "Waiting...";
             // 
             // Home
             // 
@@ -1933,7 +2061,10 @@
             this.chart_page.ResumeLayout(false);
             this.chart_page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_AnimalId_num)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.weight_chart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
+            this.trend_page.ResumeLayout(false);
+            this.trend_page.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.evening_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.physique_AnimalId_txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.morning_txt)).EndInit();
@@ -2034,16 +2165,16 @@
         private System.Windows.Forms.NumericUpDown morning_txt;
         private MaterialSkin.Controls.MaterialLabel materialLabel18;
         private MaterialSkin.Controls.MaterialLabel average_txt;
-        private MaterialSkin.Controls.MaterialLabel materialLabel19;
+        private MaterialSkin.Controls.MaterialLabel average_lbl;
         private MaterialSkin.Controls.MaterialLabel materialLabel20;
         private MaterialSkin.Controls.MaterialRaisedButton theme_btn;
         private MaterialSkin.Controls.MaterialRaisedButton scheme_btn;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel weight_difference_txt;
-        private MaterialSkin.Controls.MaterialLabel materialLabel14;
+        private MaterialSkin.Controls.MaterialLabel difference_lbl;
         private System.Windows.Forms.TabPage chart_page;
-        private System.Windows.Forms.DataVisualization.Charting.Chart weight_chart;
-        private MaterialSkin.Controls.MaterialRaisedButton loadChart_btn;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private MaterialSkin.Controls.MaterialRaisedButton loadGraph_btn;
         private System.Windows.Forms.NumericUpDown chart_AnimalId_num;
         private MaterialSkin.Controls.MaterialLabel materialLabel21;
         private MaterialSkin.Controls.MaterialLabel materialLabel23;
@@ -2052,6 +2183,15 @@
         private System.Windows.Forms.DateTimePicker toDate;
         private MaterialSkin.Controls.MaterialLabel meal_calories_burn_lbl;
         private MaterialSkin.Controls.MaterialLabel materialLabel24;
+        private System.Windows.Forms.TabPage trend_page;
+        private LiveCharts.WinForms.CartesianChart weightChart;
+        private MaterialSkin.Controls.MaterialRaisedButton loadChart_btn;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel14;
+        private MaterialSkin.Controls.MaterialLabel average_gain_txt;
+        private MaterialSkin.Controls.MaterialLabel calories_eaten_txt;
+        private MaterialSkin.Controls.MaterialLabel materialLabel25;
+        private MaterialSkin.Controls.MaterialLabel materialLabel19;
     }
 }
 
