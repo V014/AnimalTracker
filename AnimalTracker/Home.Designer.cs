@@ -148,9 +148,7 @@
             this.waist_page = new System.Windows.Forms.TabPage();
             this.waistDataGrid = new System.Windows.Forms.DataGridView();
             this.chart_page = new System.Windows.Forms.TabPage();
-            this.fromDate = new System.Windows.Forms.DateTimePicker();
             this.loadGraph_btn = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
             this.chart_AnimalId_num = new System.Windows.Forms.NumericUpDown();
             this.materialLabel21 = new MaterialSkin.Controls.MaterialLabel();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -1561,9 +1559,7 @@
             // 
             // chart_page
             // 
-            this.chart_page.Controls.Add(this.fromDate);
             this.chart_page.Controls.Add(this.loadGraph_btn);
-            this.chart_page.Controls.Add(this.materialLabel22);
             this.chart_page.Controls.Add(this.chart_AnimalId_num);
             this.chart_page.Controls.Add(this.materialLabel21);
             this.chart_page.Controls.Add(this.chart);
@@ -1574,18 +1570,11 @@
             this.chart_page.Text = "Chart";
             this.chart_page.UseVisualStyleBackColor = true;
             // 
-            // fromDate
-            // 
-            this.fromDate.Location = new System.Drawing.Point(496, 121);
-            this.fromDate.Name = "fromDate";
-            this.fromDate.Size = new System.Drawing.Size(126, 20);
-            this.fromDate.TabIndex = 54;
-            // 
             // loadGraph_btn
             // 
             this.loadGraph_btn.Depth = 0;
             this.loadGraph_btn.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadGraph_btn.Location = new System.Drawing.Point(496, 165);
+            this.loadGraph_btn.Location = new System.Drawing.Point(496, 99);
             this.loadGraph_btn.MouseState = MaterialSkin.MouseState.HOVER;
             this.loadGraph_btn.Name = "loadGraph_btn";
             this.loadGraph_btn.Primary = true;
@@ -1594,19 +1583,6 @@
             this.loadGraph_btn.Text = "Load";
             this.loadGraph_btn.UseVisualStyleBackColor = true;
             this.loadGraph_btn.Click += new System.EventHandler(this.loadGraph_btn_Click);
-            // 
-            // materialLabel22
-            // 
-            this.materialLabel22.AutoSize = true;
-            this.materialLabel22.Depth = 0;
-            this.materialLabel22.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel22.Location = new System.Drawing.Point(492, 99);
-            this.materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel22.Name = "materialLabel22";
-            this.materialLabel22.Size = new System.Drawing.Size(44, 19);
-            this.materialLabel22.TabIndex = 52;
-            this.materialLabel22.Text = "From";
             // 
             // chart_AnimalId_num
             // 
@@ -2153,8 +2129,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton loadGraph_btn;
         private System.Windows.Forms.NumericUpDown chart_AnimalId_num;
         private MaterialSkin.Controls.MaterialLabel materialLabel21;
-        private MaterialSkin.Controls.MaterialLabel materialLabel22;
-        private System.Windows.Forms.DateTimePicker fromDate;
         private MaterialSkin.Controls.MaterialLabel meal_calories_burn_lbl;
         private MaterialSkin.Controls.MaterialLabel materialLabel24;
         private System.Windows.Forms.TabPage trend_page;
