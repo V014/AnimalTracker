@@ -23,52 +23,65 @@ namespace AnimalTracker
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
-            // style datagrids
-            // animal page
-            styleDataGridView(animalDataGrid);
-            styleDataGridView(lionDataGrid);
-            styleDataGridView(monkeyDataGrid);
-            styleDataGridView(rabbitDataGrid);
-            // meal page
-            styleDataGridView(mealDataGrid);
-            styleDataGridView(feedingDataGrid);
-            // exercise page
-            styleDataGridView(exerciseDataGrid);
-            // activity page
-            styleDataGridView(activityDataGrid);
-            // physique page
-            styleDataGridView(weightDataGrid);
-            styleDataGridView(waistDataGrid);
+            // check current theme
+            try
+            {
+                string queryTheme = "SELECT Theme FROM Settings";
+                string Theme = Connection.ReadString(queryTheme);
+                if (Theme == "Dark")
+                {
+                    dark_btn.Checked = true;
+                    materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialSkinManager.Themes.DARK : MaterialSkinManager.Themes.DARK;
+                    // style tabs
+                    styleTabs(animalTabs);
+                    styleTabs(mealTabs);
+                    styleTabs(physiqueTabs);
+
+                    // style datagrids
+                    // animal page
+                    styleDarkDataGridView(animalDataGrid);
+                    styleDarkDataGridView(lionDataGrid);
+                    styleDarkDataGridView(monkeyDataGrid);
+                    styleDarkDataGridView(rabbitDataGrid);
+                    // meal page
+                    styleDarkDataGridView(mealDataGrid);
+                    styleDarkDataGridView(feedingDataGrid);
+                    // exercise page
+                    styleDarkDataGridView(exerciseDataGrid);
+                    // activity page
+                    styleDarkDataGridView(activityDataGrid);
+                    // physique page
+                    styleDarkDataGridView(weightDataGrid);
+                    styleDarkDataGridView(waistDataGrid);
+                }
+                else
+                {
+                    light_btn.Checked = true;
+                    materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+                    materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+                    // style datagrids
+                    // animal page
+                    styleDataGridView(animalDataGrid);
+                    styleDataGridView(lionDataGrid);
+                    styleDataGridView(monkeyDataGrid);
+                    styleDataGridView(rabbitDataGrid);
+                    // meal page
+                    styleDataGridView(mealDataGrid);
+                    styleDataGridView(feedingDataGrid);
+                    // exercise page
+                    styleDataGridView(exerciseDataGrid);
+                    // activity page
+                    styleDataGridView(activityDataGrid);
+                    // physique page
+                    styleDataGridView(weightDataGrid);
+                    styleDataGridView(waistDataGrid);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to detect theme!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-        // change theme
-        private void theme_btn_Click(object sender, EventArgs e)
-        {
-            materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialSkinManager.Themes.LIGHT : MaterialSkinManager.Themes.DARK;
-
-            // style tabs
-            styleTabs(animalTabs);
-            styleTabs(mealTabs);
-            styleTabs(physiqueTabs);
-
-            // style datagrids
-            // animal page
-            styleDarkDataGridView(animalDataGrid);
-            styleDarkDataGridView(lionDataGrid);
-            styleDarkDataGridView(monkeyDataGrid);
-            styleDarkDataGridView(rabbitDataGrid);
-            // meal page
-            styleDarkDataGridView(mealDataGrid);
-            styleDarkDataGridView(feedingDataGrid);
-            // exercise page
-            styleDarkDataGridView(exerciseDataGrid);
-            // activity page
-            styleDarkDataGridView(activityDataGrid);
-            // physique page
-            styleDarkDataGridView(weightDataGrid);
-            styleDarkDataGridView(waistDataGrid);
-        }
-
         // change color scheme
         private int colorSchemeIndex;
         private void scheme_btn_Click(object sender, EventArgs e)
@@ -110,6 +123,7 @@ namespace AnimalTracker
             dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
         }
 
+        // styling the tab controls
         void styleTabs(TabControl page)
         {
             page.BackColor = Color.FromArgb(51, 51, 51);
@@ -1089,31 +1103,6 @@ namespace AnimalTracker
             }
         }
 
-        // load weight trend into chart
-        private void loadChart_btn_Click(object sender, EventArgs e)
-        {
-            SQLiteConnection con = Connection.GetConnection();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT) FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Value + "'", con);
-            SQLiteDataReader reader = cmd.ExecuteReader();
-            try
-            {
-                weightChart.Series[0].Values.Clear(); // clear previous trend
-                while (reader.Read())
-                {
-                    weightChart.Series[0].Values.Add(reader.GetInt32(0));
-                    weightChart.AxisX.Add(new LiveCharts.Wpf.Axis
-                    {
-                       
-                    });
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Select AnimalId or record weight fist!");
-                con.Close();
-            }
-        }
-
         /* Activity tab */
         private void rec_activity_btn_Click(object sender, EventArgs e)
         {
@@ -1201,10 +1190,10 @@ namespace AnimalTracker
             SQLiteDataReader reader = cmd.ExecuteReader();
             try
             {
-                weightChart.Series[0].Values.Clear(); // clear previous trend
+                chart.Series[0].Points.Clear(); // clear previous trend
                 while (reader.Read())
                 {
-                    weightChart.Series[0].Values.Add(reader.GetInt32(0));
+                    chart.Series[0].Points.Add(reader.GetInt32(0));
                 }
             }
             catch (Exception)
@@ -1212,6 +1201,89 @@ namespace AnimalTracker
                 MessageBox.Show("Select AnimalId or record weight fist!");
                 con.Close();
             }
+        }
+
+        private void chart_AnimalId_num_ValueChanged(object sender, EventArgs e)
+        {
+            SQLiteConnection con = Connection.GetConnection();
+            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT), date FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Value + "'", con);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            try
+            {
+                chart.Series[0].Points.Clear(); // clear previous trend
+                while (reader.Read())
+                {
+                    chart.Series[0].Points.Add(reader.GetInt32(0));
+                }
+                if(chart_AnimalId_num.Value > 0)
+                {
+                    loadingAnimation.Hide();
+                    chart_lbl.Hide();
+                }
+                else
+                {
+                    loadingAnimation.Show();
+                    chart_lbl.Show();
+                }
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Select AnimalId or record weight fist!");
+                con.Close();
+            }
+        }
+
+        private void light_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            string queryTheme = "UPDATE Settings SET Theme = 'Light' WHERE Id = 1";
+            Connection.ExecuteQuery(queryTheme);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            // style datagrids
+            // animal page
+            styleDataGridView(animalDataGrid);
+            styleDataGridView(lionDataGrid);
+            styleDataGridView(monkeyDataGrid);
+            styleDataGridView(rabbitDataGrid);
+            // meal page
+            styleDataGridView(mealDataGrid);
+            styleDataGridView(feedingDataGrid);
+            // exercise page
+            styleDataGridView(exerciseDataGrid);
+            // activity page
+            styleDataGridView(activityDataGrid);
+            // physique page
+            styleDataGridView(weightDataGrid);
+            styleDataGridView(waistDataGrid);
+        }
+
+        private void dark_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            string queryTheme = "UPDATE Settings SET Theme = 'Dark' WHERE Id = 1";
+            Connection.ExecuteQuery(queryTheme);
+            materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialSkinManager.Themes.DARK : MaterialSkinManager.Themes.DARK;
+            // style tabs
+            styleTabs(animalTabs);
+            styleTabs(mealTabs);
+            styleTabs(physiqueTabs);
+
+            // style datagrids
+            // animal page
+            styleDarkDataGridView(animalDataGrid);
+            styleDarkDataGridView(lionDataGrid);
+            styleDarkDataGridView(monkeyDataGrid);
+            styleDarkDataGridView(rabbitDataGrid);
+            // meal page
+            styleDarkDataGridView(mealDataGrid);
+            styleDarkDataGridView(feedingDataGrid);
+            // exercise page
+            styleDarkDataGridView(exerciseDataGrid);
+            // activity page
+            styleDarkDataGridView(activityDataGrid);
+            // physique page
+            styleDarkDataGridView(weightDataGrid);
+            styleDarkDataGridView(waistDataGrid);
         }
     }
 }
