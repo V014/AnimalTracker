@@ -129,6 +129,8 @@ namespace AnimalTracker
             dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Roboto", 11);
             dataGrid.AlternatingRowsDefaultCellStyle.Font = new Font("Roboto", 11);
             dataGrid.DefaultCellStyle.Font = new Font("Roboto", 11);
+
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         void styleDarkDataGridView(DataGridView dataGrid)
@@ -154,6 +156,7 @@ namespace AnimalTracker
             dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Roboto", 11);
             dataGrid.AlternatingRowsDefaultCellStyle.Font = new Font("Roboto", 11);
 
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         // close application and all hidden forms
@@ -450,6 +453,12 @@ namespace AnimalTracker
 
         // Create an activity variable
         string activity = "Inactive";
+
+
+        private void inactive_radio_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            activity = "Inactive";
+        }
 
         // react to user input when they select the other avtivity buttons
         private void moderate_radio_btn_CheckedChanged(object sender, EventArgs e)
@@ -1211,18 +1220,34 @@ namespace AnimalTracker
             }
         }
 
+        string showmore = "less";
+
         private void loadGraph_btn_Click(object sender, EventArgs e)
         {
             SQLiteConnection con = Connection.GetConnection();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT), date FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Text + "'", con);
+            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT), WeightMorning, WeightEvening, date FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Text + "'", con);
             SQLiteDataReader reader = cmd.ExecuteReader();
             try
             {
-                chart.Series[0].Points.Clear(); // clear previous trend
-                while (reader.Read())
+                // clear previous trend
+                chart.Series[0].Points.Clear(); 
+                chart.Series[1].Points.Clear();
+                chart.Series[2].Points.Clear();
+                if (showmore == "less")
                 {
-                    chart.Series[0].Points.Add(reader.GetInt32(0));
+                    while (reader.Read())
+                    {
+                        chart.Series[0].Points.Add(reader.GetInt32(0));
+                    }
                 }
+                else
+                {
+                    while (reader.Read())
+                    {
+                        this.chart.Series["WeightAverage"].Points.AddXY(reader.GetInt32(0));
+                    }
+                }
+                
                 if (Convert.ToInt32(chart_AnimalId_num.Text) > 0)
                 {
                     chart_lbl.Hide();
@@ -1238,34 +1263,19 @@ namespace AnimalTracker
                 con.Close();
             }
         }
-
-        private void chart_AnimalId_num_ValueChanged(object sender, EventArgs e)
+        void showMore(string query, SQLiteDataReader reader)
         {
-            SQLiteConnection con = Connection.GetConnection();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT), date FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Text + "'", con);
-            SQLiteDataReader reader = cmd.ExecuteReader();
-            try
-            {
-                chart.Series[0].Points.Clear(); // clear previous trend
-                while (reader.Read())
-                {
-                    chart.Series[0].Points.Add(reader.GetInt32(0));
-                }
-                if(Convert.ToInt32(chart_AnimalId_num.Text) > 0)
-                {
-                    chart_lbl.Hide();
-                }
-                else
-                {
-                    chart_lbl.Show();
-                }
-                
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Select AnimalId or record weight fist!");
-                con.Close();
-            }
+            chart.Series[1].Points.Add(reader.GetInt32(0));
+            chart.Series[2].Points.Add(reader.GetInt32(0));
+        }
+
+        private void more_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            showmore = "more";
+        }
+        private void less_btn_CheckedChanged(object sender, EventArgs e)
+        {
+            showmore = "less";
         }
 
         /* Settings tab */

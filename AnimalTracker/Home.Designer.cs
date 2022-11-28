@@ -63,6 +63,8 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -163,16 +165,18 @@
             this.average_txt = new MaterialSkin.Controls.MaterialLabel();
             this.average_lbl = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
-            this.settings_page = new System.Windows.Forms.TabPage();
-            this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.chart_page = new System.Windows.Forms.TabPage();
-            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.less_btn = new MaterialSkin.Controls.MaterialRadioButton();
+            this.more_btn = new MaterialSkin.Controls.MaterialRadioButton();
+            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            this.chart_lbl = new System.Windows.Forms.Label();
             this.loadGraph_btn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.chart_AnimalId_num = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart_lbl = new System.Windows.Forms.Label();
-            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            this.settings_page = new System.Windows.Forms.TabPage();
+            this.theme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.scheme_btn = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl.SuspendLayout();
             this.animal_page.SuspendLayout();
             this.animalTabs.SuspendLayout();
@@ -200,9 +204,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.weightDataGrid)).BeginInit();
             this.waist_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).BeginInit();
-            this.settings_page.SuspendLayout();
             this.chart_page.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
+            this.settings_page.SuspendLayout();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -748,7 +752,7 @@
             // 
             this.mealTabs.Controls.Add(this.feeding_page);
             this.mealTabs.Controls.Add(this.mealPage);
-            this.mealTabs.Location = new System.Drawing.Point(183, 1);
+            this.mealTabs.Location = new System.Drawing.Point(188, 6);
             this.mealTabs.Name = "mealTabs";
             this.mealTabs.SelectedIndex = 0;
             this.mealTabs.Size = new System.Drawing.Size(648, 411);
@@ -1376,6 +1380,7 @@
             this.inactive_radio_btn.TabStop = true;
             this.inactive_radio_btn.Text = "Inactive";
             this.inactive_radio_btn.UseVisualStyleBackColor = true;
+            this.inactive_radio_btn.CheckedChanged += new System.EventHandler(this.inactive_radio_btn_CheckedChanged);
             // 
             // del_activity_btn
             // 
@@ -1567,7 +1572,7 @@
             // 
             this.physiqueTabs.Controls.Add(this.weight_page);
             this.physiqueTabs.Controls.Add(this.waist_page);
-            this.physiqueTabs.Location = new System.Drawing.Point(184, 1);
+            this.physiqueTabs.Location = new System.Drawing.Point(188, 6);
             this.physiqueTabs.Name = "physiqueTabs";
             this.physiqueTabs.SelectedIndex = 0;
             this.physiqueTabs.Size = new System.Drawing.Size(647, 411);
@@ -1810,6 +1815,145 @@
             this.materialLabel20.TabIndex = 48;
             this.materialLabel20.Text = "Morning";
             // 
+            // chart_page
+            // 
+            this.chart_page.BackColor = System.Drawing.Color.White;
+            this.chart_page.Controls.Add(this.less_btn);
+            this.chart_page.Controls.Add(this.more_btn);
+            this.chart_page.Controls.Add(this.materialLabel14);
+            this.chart_page.Controls.Add(this.chart_lbl);
+            this.chart_page.Controls.Add(this.loadGraph_btn);
+            this.chart_page.Controls.Add(this.chart_AnimalId_num);
+            this.chart_page.Controls.Add(this.chart);
+            this.chart_page.Location = new System.Drawing.Point(4, 22);
+            this.chart_page.Name = "chart_page";
+            this.chart_page.Size = new System.Drawing.Size(844, 459);
+            this.chart_page.TabIndex = 5;
+            this.chart_page.Text = "Chart";
+            // 
+            // less_btn
+            // 
+            this.less_btn.AutoSize = true;
+            this.less_btn.Checked = true;
+            this.less_btn.Depth = 0;
+            this.less_btn.Font = new System.Drawing.Font("Roboto", 10F);
+            this.less_btn.Location = new System.Drawing.Point(16, 211);
+            this.less_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.less_btn.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.less_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.less_btn.Name = "less_btn";
+            this.less_btn.Ripple = true;
+            this.less_btn.Size = new System.Drawing.Size(91, 30);
+            this.less_btn.TabIndex = 67;
+            this.less_btn.TabStop = true;
+            this.less_btn.Text = "Show less";
+            this.less_btn.UseVisualStyleBackColor = true;
+            this.less_btn.CheckedChanged += new System.EventHandler(this.less_btn_CheckedChanged);
+            // 
+            // more_btn
+            // 
+            this.more_btn.AutoSize = true;
+            this.more_btn.Depth = 0;
+            this.more_btn.Font = new System.Drawing.Font("Roboto", 10F);
+            this.more_btn.Location = new System.Drawing.Point(16, 163);
+            this.more_btn.Margin = new System.Windows.Forms.Padding(0);
+            this.more_btn.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.more_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.more_btn.Name = "more_btn";
+            this.more_btn.Ripple = true;
+            this.more_btn.Size = new System.Drawing.Size(98, 30);
+            this.more_btn.TabIndex = 67;
+            this.more_btn.Text = "Show more";
+            this.more_btn.UseVisualStyleBackColor = true;
+            this.more_btn.CheckedChanged += new System.EventHandler(this.more_btn_CheckedChanged);
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Depth = 0;
+            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel14.Location = new System.Drawing.Point(12, 14);
+            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel14.TabIndex = 66;
+            this.materialLabel14.Text = "Animal ID";
+            // 
+            // chart_lbl
+            // 
+            this.chart_lbl.AutoSize = true;
+            this.chart_lbl.BackColor = System.Drawing.Color.Transparent;
+            this.chart_lbl.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart_lbl.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.chart_lbl.Location = new System.Drawing.Point(11, 306);
+            this.chart_lbl.Name = "chart_lbl";
+            this.chart_lbl.Size = new System.Drawing.Size(134, 52);
+            this.chart_lbl.TabIndex = 65;
+            this.chart_lbl.Text = "Try changing\r\nthe animal ID\r\n";
+            // 
+            // loadGraph_btn
+            // 
+            this.loadGraph_btn.Depth = 0;
+            this.loadGraph_btn.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadGraph_btn.Location = new System.Drawing.Point(11, 97);
+            this.loadGraph_btn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.loadGraph_btn.Name = "loadGraph_btn";
+            this.loadGraph_btn.Primary = true;
+            this.loadGraph_btn.Size = new System.Drawing.Size(142, 30);
+            this.loadGraph_btn.TabIndex = 64;
+            this.loadGraph_btn.Text = "Load";
+            this.loadGraph_btn.UseVisualStyleBackColor = true;
+            this.loadGraph_btn.Click += new System.EventHandler(this.loadGraph_btn_Click);
+            // 
+            // chart_AnimalId_num
+            // 
+            this.chart_AnimalId_num.Depth = 0;
+            this.chart_AnimalId_num.ForeColor = System.Drawing.Color.White;
+            this.chart_AnimalId_num.Hint = "";
+            this.chart_AnimalId_num.Location = new System.Drawing.Point(10, 36);
+            this.chart_AnimalId_num.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chart_AnimalId_num.Name = "chart_AnimalId_num";
+            this.chart_AnimalId_num.PasswordChar = '\0';
+            this.chart_AnimalId_num.SelectedText = "";
+            this.chart_AnimalId_num.SelectionLength = 0;
+            this.chart_AnimalId_num.SelectionStart = 0;
+            this.chart_AnimalId_num.Size = new System.Drawing.Size(142, 23);
+            this.chart_AnimalId_num.TabIndex = 63;
+            this.chart_AnimalId_num.UseSystemPasswordChar = false;
+            // 
+            // chart
+            // 
+            this.chart.BackColor = System.Drawing.Color.Transparent;
+            this.chart.BorderlineWidth = 0;
+            this.chart.BorderSkin.BorderColor = System.Drawing.Color.Empty;
+            this.chart.BorderSkin.PageColor = System.Drawing.Color.Empty;
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(181, 33);
+            this.chart.Name = "chart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "WeightAverage";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "MorningWeight";
+            series2.YValuesPerPoint = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.Name = "EveningWeight";
+            this.chart.Series.Add(series1);
+            this.chart.Series.Add(series2);
+            this.chart.Series.Add(series3);
+            this.chart.Size = new System.Drawing.Size(652, 392);
+            this.chart.TabIndex = 61;
+            this.chart.Text = "chart1";
+            // 
             // settings_page
             // 
             this.settings_page.BackColor = System.Drawing.Color.White;
@@ -1848,20 +1992,6 @@
             this.scheme_btn.UseVisualStyleBackColor = true;
             this.scheme_btn.Click += new System.EventHandler(this.scheme_btn_Click);
             // 
-            // chart_page
-            // 
-            this.chart_page.BackColor = System.Drawing.Color.White;
-            this.chart_page.Controls.Add(this.materialLabel14);
-            this.chart_page.Controls.Add(this.chart_lbl);
-            this.chart_page.Controls.Add(this.loadGraph_btn);
-            this.chart_page.Controls.Add(this.chart_AnimalId_num);
-            this.chart_page.Controls.Add(this.chart);
-            this.chart_page.Location = new System.Drawing.Point(4, 22);
-            this.chart_page.Name = "chart_page";
-            this.chart_page.Size = new System.Drawing.Size(844, 459);
-            this.chart_page.TabIndex = 5;
-            this.chart_page.Text = "Chart";
-            // 
             // materialTabSelector1
             // 
             this.materialTabSelector1.BaseTabControl = this.materialTabControl;
@@ -1872,80 +2002,6 @@
             this.materialTabSelector1.Size = new System.Drawing.Size(852, 42);
             this.materialTabSelector1.TabIndex = 7;
             this.materialTabSelector1.Text = "materialTabSelector1";
-            // 
-            // loadGraph_btn
-            // 
-            this.loadGraph_btn.Depth = 0;
-            this.loadGraph_btn.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadGraph_btn.Location = new System.Drawing.Point(11, 97);
-            this.loadGraph_btn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.loadGraph_btn.Name = "loadGraph_btn";
-            this.loadGraph_btn.Primary = true;
-            this.loadGraph_btn.Size = new System.Drawing.Size(142, 30);
-            this.loadGraph_btn.TabIndex = 64;
-            this.loadGraph_btn.Text = "Load";
-            this.loadGraph_btn.UseVisualStyleBackColor = true;
-            this.loadGraph_btn.Click += new System.EventHandler(this.loadGraph_btn_Click);
-            // 
-            // chart_AnimalId_num
-            // 
-            this.chart_AnimalId_num.Depth = 0;
-            this.chart_AnimalId_num.ForeColor = System.Drawing.Color.White;
-            this.chart_AnimalId_num.Hint = "";
-            this.chart_AnimalId_num.Location = new System.Drawing.Point(10, 36);
-            this.chart_AnimalId_num.MouseState = MaterialSkin.MouseState.HOVER;
-            this.chart_AnimalId_num.Name = "chart_AnimalId_num";
-            this.chart_AnimalId_num.PasswordChar = '\0';
-            this.chart_AnimalId_num.SelectedText = "";
-            this.chart_AnimalId_num.SelectionLength = 0;
-            this.chart_AnimalId_num.SelectionStart = 0;
-            this.chart_AnimalId_num.Size = new System.Drawing.Size(142, 23);
-            this.chart_AnimalId_num.TabIndex = 63;
-            this.chart_AnimalId_num.UseSystemPasswordChar = false;
-            // 
-            // chart
-            // 
-            this.chart.BorderSkin.BorderColor = System.Drawing.Color.Empty;
-            this.chart.BorderSkin.PageColor = System.Drawing.Color.Empty;
-            chartArea1.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(181, 33);
-            this.chart.Name = "chart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Weight Average";
-            this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(652, 392);
-            this.chart.TabIndex = 61;
-            this.chart.Text = "chart1";
-            // 
-            // chart_lbl
-            // 
-            this.chart_lbl.AutoSize = true;
-            this.chart_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.chart_lbl.Font = new System.Drawing.Font("Roboto", 18F);
-            this.chart_lbl.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.chart_lbl.Location = new System.Drawing.Point(300, 173);
-            this.chart_lbl.Name = "chart_lbl";
-            this.chart_lbl.Size = new System.Drawing.Size(296, 29);
-            this.chart_lbl.TabIndex = 65;
-            this.chart_lbl.Text = "Try changing the animal ID";
-            // 
-            // materialLabel14
-            // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Depth = 0;
-            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(12, 14);
-            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(74, 19);
-            this.materialLabel14.TabIndex = 66;
-            this.materialLabel14.Text = "Animal ID";
             // 
             // Home
             // 
@@ -1996,10 +2052,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.weightDataGrid)).EndInit();
             this.waist_page.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.waistDataGrid)).EndInit();
-            this.settings_page.ResumeLayout(false);
             this.chart_page.ResumeLayout(false);
             this.chart_page.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
+            this.settings_page.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2114,6 +2170,8 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField chart_AnimalId_num;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
+        private MaterialSkin.Controls.MaterialRadioButton more_btn;
+        private MaterialSkin.Controls.MaterialRadioButton less_btn;
     }
 }
 
