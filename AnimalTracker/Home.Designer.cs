@@ -305,7 +305,7 @@
             this.male_radio_btn.AutoSize = true;
             this.male_radio_btn.Checked = true;
             this.male_radio_btn.Depth = 0;
-            this.male_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
+            this.male_radio_btn.Font = new System.Drawing.Font("Roboto", 9F);
             this.male_radio_btn.Location = new System.Drawing.Point(10, 234);
             this.male_radio_btn.Margin = new System.Windows.Forms.Padding(0);
             this.male_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -322,7 +322,7 @@
             // 
             this.female_radio_btn.AutoSize = true;
             this.female_radio_btn.Depth = 0;
-            this.female_radio_btn.Font = new System.Drawing.Font("Roboto", 10F);
+            this.female_radio_btn.Font = new System.Drawing.Font("Roboto", 9F);
             this.female_radio_btn.Location = new System.Drawing.Point(84, 234);
             this.female_radio_btn.Margin = new System.Windows.Forms.Padding(0);
             this.female_radio_btn.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -339,12 +339,12 @@
             // 
             this.materialLabel5.AutoSize = true;
             this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel5.Location = new System.Drawing.Point(11, 81);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(62, 19);
+            this.materialLabel5.Size = new System.Drawing.Size(48, 15);
             this.materialLabel5.TabIndex = 25;
             this.materialLabel5.Text = "Species";
             // 
@@ -352,12 +352,12 @@
             // 
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel3.Location = new System.Drawing.Point(13, 215);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(45, 15);
             this.materialLabel3.TabIndex = 24;
             this.materialLabel3.Text = "Gender";
             // 
@@ -365,12 +365,12 @@
             // 
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel4.Location = new System.Drawing.Point(13, 148);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(35, 19);
+            this.materialLabel4.Size = new System.Drawing.Size(28, 15);
             this.materialLabel4.TabIndex = 24;
             this.materialLabel4.Text = "Age";
             // 
@@ -378,12 +378,12 @@
             // 
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel2.Location = new System.Drawing.Point(12, 14);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(49, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(40, 15);
             this.materialLabel2.TabIndex = 23;
             this.materialLabel2.Text = "Name";
             // 
@@ -864,12 +864,12 @@
             // 
             this.meal_calories_burn_lbl.AutoSize = true;
             this.meal_calories_burn_lbl.Depth = 0;
-            this.meal_calories_burn_lbl.Font = new System.Drawing.Font("Roboto", 11F);
+            this.meal_calories_burn_lbl.Font = new System.Drawing.Font("Roboto", 9F);
             this.meal_calories_burn_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.meal_calories_burn_lbl.Location = new System.Drawing.Point(17, 320);
             this.meal_calories_burn_lbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.meal_calories_burn_lbl.Name = "meal_calories_burn_lbl";
-            this.meal_calories_burn_lbl.Size = new System.Drawing.Size(120, 19);
+            this.meal_calories_burn_lbl.Size = new System.Drawing.Size(98, 15);
             this.meal_calories_burn_lbl.TabIndex = 33;
             this.meal_calories_burn_lbl.Text = "Waiting on you...";
             // 
@@ -877,12 +877,12 @@
             // 
             this.calories_lbl.AutoSize = true;
             this.calories_lbl.Depth = 0;
-            this.calories_lbl.Font = new System.Drawing.Font("Roboto", 11F);
+            this.calories_lbl.Font = new System.Drawing.Font("Roboto", 9F);
             this.calories_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.calories_lbl.Location = new System.Drawing.Point(17, 256);
             this.calories_lbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.calories_lbl.Name = "calories_lbl";
-            this.calories_lbl.Size = new System.Drawing.Size(120, 19);
+            this.calories_lbl.Size = new System.Drawing.Size(98, 15);
             this.calories_lbl.TabIndex = 33;
             this.calories_lbl.Text = "Waiting on you...";
             // 
@@ -938,12 +938,12 @@
             // 
             this.materialLabel8.AutoSize = true;
             this.materialLabel8.Depth = 0;
-            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel8.Location = new System.Drawing.Point(12, 14);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel8.Size = new System.Drawing.Size(60, 15);
             this.materialLabel8.TabIndex = 25;
             this.materialLabel8.Text = "Animal ID";
             // 
@@ -951,12 +951,12 @@
             // 
             this.materialLabel24.AutoSize = true;
             this.materialLabel24.Depth = 0;
-            this.materialLabel24.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel24.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel24.Location = new System.Drawing.Point(13, 291);
             this.materialLabel24.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel24.Name = "materialLabel24";
-            this.materialLabel24.Size = new System.Drawing.Size(145, 19);
+            this.materialLabel24.Size = new System.Drawing.Size(117, 15);
             this.materialLabel24.TabIndex = 27;
             this.materialLabel24.Text = "Caloric intake / burn";
             // 
@@ -964,12 +964,12 @@
             // 
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel7.Location = new System.Drawing.Point(13, 148);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(80, 19);
+            this.materialLabel7.Size = new System.Drawing.Size(65, 15);
             this.materialLabel7.TabIndex = 26;
             this.materialLabel7.Text = "Portion (g)";
             // 
@@ -977,12 +977,12 @@
             // 
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(13, 227);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(133, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(107, 15);
             this.materialLabel1.TabIndex = 27;
             this.materialLabel1.Text = "Caloric intake (KJ)";
             // 
@@ -990,12 +990,12 @@
             // 
             this.materialLabel6.AutoSize = true;
             this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel6.Location = new System.Drawing.Point(11, 81);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(104, 19);
+            this.materialLabel6.Size = new System.Drawing.Size(83, 15);
             this.materialLabel6.TabIndex = 24;
             this.materialLabel6.Text = "Name of Meal";
             // 
@@ -1078,12 +1078,12 @@
             // 
             this.average_gain_txt.AutoSize = true;
             this.average_gain_txt.Depth = 0;
-            this.average_gain_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.average_gain_txt.Font = new System.Drawing.Font("Roboto", 9F);
             this.average_gain_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.average_gain_txt.Location = new System.Drawing.Point(14, 386);
             this.average_gain_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.average_gain_txt.Name = "average_gain_txt";
-            this.average_gain_txt.Size = new System.Drawing.Size(71, 19);
+            this.average_gain_txt.Size = new System.Drawing.Size(58, 15);
             this.average_gain_txt.TabIndex = 38;
             this.average_gain_txt.Text = "Waiting...";
             // 
@@ -1091,12 +1091,12 @@
             // 
             this.calories_eaten_txt.AutoSize = true;
             this.calories_eaten_txt.Depth = 0;
-            this.calories_eaten_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.calories_eaten_txt.Font = new System.Drawing.Font("Roboto", 9F);
             this.calories_eaten_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.calories_eaten_txt.Location = new System.Drawing.Point(14, 320);
             this.calories_eaten_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.calories_eaten_txt.Name = "calories_eaten_txt";
-            this.calories_eaten_txt.Size = new System.Drawing.Size(71, 19);
+            this.calories_eaten_txt.Size = new System.Drawing.Size(58, 15);
             this.calories_eaten_txt.TabIndex = 38;
             this.calories_eaten_txt.Text = "Waiting...";
             // 
@@ -1104,12 +1104,12 @@
             // 
             this.calories_burnt_txt.AutoSize = true;
             this.calories_burnt_txt.Depth = 0;
-            this.calories_burnt_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.calories_burnt_txt.Font = new System.Drawing.Font("Roboto", 9F);
             this.calories_burnt_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.calories_burnt_txt.Location = new System.Drawing.Point(14, 255);
             this.calories_burnt_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.calories_burnt_txt.Name = "calories_burnt_txt";
-            this.calories_burnt_txt.Size = new System.Drawing.Size(71, 19);
+            this.calories_burnt_txt.Size = new System.Drawing.Size(58, 15);
             this.calories_burnt_txt.TabIndex = 38;
             this.calories_burnt_txt.Text = "Waiting...";
             // 
@@ -1165,12 +1165,12 @@
             // 
             this.materialLabel25.AutoSize = true;
             this.materialLabel25.Depth = 0;
-            this.materialLabel25.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel25.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel25.Location = new System.Drawing.Point(13, 358);
             this.materialLabel25.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel25.Name = "materialLabel25";
-            this.materialLabel25.Size = new System.Drawing.Size(95, 19);
+            this.materialLabel25.Size = new System.Drawing.Size(78, 15);
             this.materialLabel25.TabIndex = 31;
             this.materialLabel25.Text = "Average gain";
             // 
@@ -1178,12 +1178,12 @@
             // 
             this.materialLabel19.AutoSize = true;
             this.materialLabel19.Depth = 0;
-            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel19.Location = new System.Drawing.Point(13, 292);
             this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel19.Name = "materialLabel19";
-            this.materialLabel19.Size = new System.Drawing.Size(106, 19);
+            this.materialLabel19.Size = new System.Drawing.Size(84, 15);
             this.materialLabel19.TabIndex = 31;
             this.materialLabel19.Text = "Calories eaten";
             // 
@@ -1191,12 +1191,12 @@
             // 
             this.materialLabel9.AutoSize = true;
             this.materialLabel9.Depth = 0;
-            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel9.Location = new System.Drawing.Point(12, 14);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel9.Size = new System.Drawing.Size(60, 15);
             this.materialLabel9.TabIndex = 30;
             this.materialLabel9.Text = "Animal ID";
             // 
@@ -1204,12 +1204,12 @@
             // 
             this.materialLabel12.AutoSize = true;
             this.materialLabel12.Depth = 0;
-            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel12.Location = new System.Drawing.Point(13, 227);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(103, 19);
+            this.materialLabel12.Size = new System.Drawing.Size(83, 15);
             this.materialLabel12.TabIndex = 31;
             this.materialLabel12.Text = "Calories burnt";
             // 
@@ -1217,12 +1217,12 @@
             // 
             this.materialLabel10.AutoSize = true;
             this.materialLabel10.Depth = 0;
-            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel10.Location = new System.Drawing.Point(13, 148);
             this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(105, 19);
+            this.materialLabel10.Size = new System.Drawing.Size(85, 15);
             this.materialLabel10.TabIndex = 32;
             this.materialLabel10.Text = "Duration (Min)";
             // 
@@ -1230,12 +1230,12 @@
             // 
             this.materialLabel11.AutoSize = true;
             this.materialLabel11.Depth = 0;
-            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel11.Location = new System.Drawing.Point(11, 81);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(128, 19);
+            this.materialLabel11.Size = new System.Drawing.Size(101, 15);
             this.materialLabel11.TabIndex = 29;
             this.materialLabel11.Text = "Name of Exercise";
             // 
@@ -1434,12 +1434,12 @@
             // 
             this.materialLabel13.AutoSize = true;
             this.materialLabel13.Depth = 0;
-            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel13.Location = new System.Drawing.Point(12, 14);
             this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel13.Size = new System.Drawing.Size(60, 15);
             this.materialLabel13.TabIndex = 39;
             this.materialLabel13.Text = "Animal ID";
             // 
@@ -1447,12 +1447,12 @@
             // 
             this.materialLabel15.AutoSize = true;
             this.materialLabel15.Depth = 0;
-            this.materialLabel15.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel15.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel15.Location = new System.Drawing.Point(8, 82);
             this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel15.Name = "materialLabel15";
-            this.materialLabel15.Size = new System.Drawing.Size(98, 19);
+            this.materialLabel15.Size = new System.Drawing.Size(77, 15);
             this.materialLabel15.TabIndex = 40;
             this.materialLabel15.Text = "Activity Level";
             // 
@@ -1728,12 +1728,12 @@
             // 
             this.materialLabel17.AutoSize = true;
             this.materialLabel17.Depth = 0;
-            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel17.Location = new System.Drawing.Point(12, 14);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel17.Size = new System.Drawing.Size(60, 15);
             this.materialLabel17.TabIndex = 52;
             this.materialLabel17.Text = "Animal ID";
             // 
@@ -1741,12 +1741,12 @@
             // 
             this.materialLabel18.AutoSize = true;
             this.materialLabel18.Depth = 0;
-            this.materialLabel18.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel18.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel18.Location = new System.Drawing.Point(13, 148);
             this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel18.Name = "materialLabel18";
-            this.materialLabel18.Size = new System.Drawing.Size(61, 19);
+            this.materialLabel18.Size = new System.Drawing.Size(50, 15);
             this.materialLabel18.TabIndex = 45;
             this.materialLabel18.Text = "Evening";
             // 
@@ -1754,12 +1754,12 @@
             // 
             this.weight_difference_txt.AutoSize = true;
             this.weight_difference_txt.Depth = 0;
-            this.weight_difference_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.weight_difference_txt.Font = new System.Drawing.Font("Roboto", 9F);
             this.weight_difference_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.weight_difference_txt.Location = new System.Drawing.Point(13, 329);
             this.weight_difference_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.weight_difference_txt.Name = "weight_difference_txt";
-            this.weight_difference_txt.Size = new System.Drawing.Size(96, 19);
+            this.weight_difference_txt.Size = new System.Drawing.Size(78, 15);
             this.weight_difference_txt.TabIndex = 46;
             this.weight_difference_txt.Text = "Calculating...";
             // 
@@ -1767,12 +1767,12 @@
             // 
             this.difference_lbl.AutoSize = true;
             this.difference_lbl.Depth = 0;
-            this.difference_lbl.Font = new System.Drawing.Font("Roboto", 11F);
+            this.difference_lbl.Font = new System.Drawing.Font("Roboto", 9F);
             this.difference_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.difference_lbl.Location = new System.Drawing.Point(13, 296);
             this.difference_lbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.difference_lbl.Name = "difference_lbl";
-            this.difference_lbl.Size = new System.Drawing.Size(128, 19);
+            this.difference_lbl.Size = new System.Drawing.Size(102, 15);
             this.difference_lbl.TabIndex = 47;
             this.difference_lbl.Text = "Weight Difference";
             // 
@@ -1780,12 +1780,12 @@
             // 
             this.average_txt.AutoSize = true;
             this.average_txt.Depth = 0;
-            this.average_txt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.average_txt.Font = new System.Drawing.Font("Roboto", 9F);
             this.average_txt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.average_txt.Location = new System.Drawing.Point(13, 256);
             this.average_txt.MouseState = MaterialSkin.MouseState.HOVER;
             this.average_txt.Name = "average_txt";
-            this.average_txt.Size = new System.Drawing.Size(96, 19);
+            this.average_txt.Size = new System.Drawing.Size(78, 15);
             this.average_txt.TabIndex = 46;
             this.average_txt.Text = "Calculating...";
             // 
@@ -1793,12 +1793,12 @@
             // 
             this.average_lbl.AutoSize = true;
             this.average_lbl.Depth = 0;
-            this.average_lbl.Font = new System.Drawing.Font("Roboto", 11F);
+            this.average_lbl.Font = new System.Drawing.Font("Roboto", 9F);
             this.average_lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.average_lbl.Location = new System.Drawing.Point(13, 223);
             this.average_lbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.average_lbl.Name = "average_lbl";
-            this.average_lbl.Size = new System.Drawing.Size(63, 19);
+            this.average_lbl.Size = new System.Drawing.Size(51, 15);
             this.average_lbl.TabIndex = 47;
             this.average_lbl.Text = "Average";
             // 
@@ -1806,12 +1806,12 @@
             // 
             this.materialLabel20.AutoSize = true;
             this.materialLabel20.Depth = 0;
-            this.materialLabel20.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel20.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel20.Location = new System.Drawing.Point(11, 81);
             this.materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel20.Name = "materialLabel20";
-            this.materialLabel20.Size = new System.Drawing.Size(64, 19);
+            this.materialLabel20.Size = new System.Drawing.Size(52, 15);
             this.materialLabel20.TabIndex = 48;
             this.materialLabel20.Text = "Morning";
             // 
@@ -1871,12 +1871,12 @@
             // 
             this.materialLabel14.AutoSize = true;
             this.materialLabel14.Depth = 0;
-            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 9F);
             this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel14.Location = new System.Drawing.Point(12, 14);
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel14.Size = new System.Drawing.Size(60, 15);
             this.materialLabel14.TabIndex = 66;
             this.materialLabel14.Text = "Animal ID";
             // 
@@ -1884,11 +1884,11 @@
             // 
             this.chart_lbl.AutoSize = true;
             this.chart_lbl.BackColor = System.Drawing.Color.Transparent;
-            this.chart_lbl.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart_lbl.Font = new System.Drawing.Font("Roboto", 14F);
             this.chart_lbl.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.chart_lbl.Location = new System.Drawing.Point(11, 306);
             this.chart_lbl.Name = "chart_lbl";
-            this.chart_lbl.Size = new System.Drawing.Size(134, 52);
+            this.chart_lbl.Size = new System.Drawing.Size(120, 48);
             this.chart_lbl.TabIndex = 65;
             this.chart_lbl.Text = "Try changing\r\nthe animal ID\r\n";
             // 
