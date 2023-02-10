@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System.Data.SQLite;
-
+using System.Windows.Forms;
 
 namespace AnimalTracker
 {
@@ -17,9 +17,15 @@ namespace AnimalTracker
         {
             con = new SQLiteConnection("Data Source=Animaldb.db;Version=3;New=Flase;Compress=True;");
         }
-
-        // execute query function
-        public static void ExecuteQuery(string txtQuery)
+        // get the connection
+        public SQLiteConnection GetConnection()
+        {
+            setConnection();
+            con.Open();
+            return con;
+        }
+        // execute query function with no returning values
+        public void ExecuteQuery(string txtQuery)
         {
             setConnection();
             con.Open();
@@ -28,15 +34,7 @@ namespace AnimalTracker
             cmd.ExecuteNonQuery();
             con.Close();
         }
-
-        public static SQLiteConnection GetConnection()
-        {
-            setConnection();
-            con.Open();
-            return con;
-        }
-
-        public static string ReadString(string txtQuery)
+        public string ReadString(string txtQuery)
         {
             using(SQLiteConnection con = GetConnection())
             using (SQLiteCommand cmd = new SQLiteCommand(txtQuery, con))
@@ -44,6 +42,18 @@ namespace AnimalTracker
                 object result = cmd.ExecuteScalar();
                 return (result == null ? "" : result.ToString());
             }
+        }
+        // pulls data from a table and fills it into a specified datagrid
+        public void LoadData(string query, DataGridView dataGrid)
+        {
+            var conn = GetConnection();
+            var DB = new SQLiteDataAdapter(query, con);
+            var DS = new DataSet();
+            var DT = new DataTable();
+            DB.Fill(DS);
+            DT = DS.Tables[0];
+            dataGrid.DataSource = DT;
+            con.Close();
         }
     }
 }
