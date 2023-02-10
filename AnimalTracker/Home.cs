@@ -9,7 +9,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AnimalTracker
 {
-    public partial class Home : MaterialForm
+    public partial class Home : Form
     {
         private readonly MaterialSkinManager materialSkinManager;
         public string checkTheme()
@@ -44,15 +44,15 @@ namespace AnimalTracker
         void LightTheme()
         {
             // Initialize MaterialSkinManager
-            materialSkinManager.AddFormToManage(this);
+            //materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
             // style datagrids
             // animal page
             styleDataGridView(animalDataGrid);
-            styleDataGridView(lionDataGrid);
-            styleDataGridView(monkeyDataGrid);
-            styleDataGridView(rabbitDataGrid);
+            //styleDataGridView(lionDataGrid);
+            //styleDataGridView(monkeyDataGrid);
+            //styleDataGridView(rabbitDataGrid);
             // meal page
             styleDataGridView(mealDataGrid);
             styleDataGridView(feedingDataGrid);
@@ -70,20 +70,20 @@ namespace AnimalTracker
         void DarkTheme()
         {
             // Initialize MaterialSkinManager
-            materialSkinManager.AddFormToManage(this);
+            //materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.Theme = materialSkinManager.Theme == MaterialSkinManager.Themes.DARK ? MaterialSkinManager.Themes.DARK : MaterialSkinManager.Themes.DARK;
             // style tabs
-            styleTabs(animalTabs);
+            //styleTabs(animalTabs);
             styleTabs(mealTabs);
             styleTabs(physiqueTabs);
 
             // style datagrids
             // animal page
             styleDarkDataGridView(animalDataGrid);
-            styleDarkDataGridView(lionDataGrid);
-            styleDarkDataGridView(monkeyDataGrid);
-            styleDarkDataGridView(rabbitDataGrid);
+            //styleDarkDataGridView(lionDataGrid);
+            //styleDarkDataGridView(monkeyDataGrid);
+            //styleDarkDataGridView(rabbitDataGrid);
             // meal page
             styleDarkDataGridView(mealDataGrid);
             styleDarkDataGridView(feedingDataGrid);
@@ -108,13 +108,16 @@ namespace AnimalTracker
         void styleDataGridView(DataGridView dataGrid)
         {
             dataGrid.BorderStyle = BorderStyle.None;
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGrid.EnableHeadersVisualStyles = false;
             dataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.EnableResizing;
             dataGrid.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            dataGrid.BackgroundColor = Color.White;
+            dataGrid.BackgroundColor = Color.FromArgb(238, 239, 249);
             dataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+
             dataGrid.AlternatingRowsDefaultCellStyle.ForeColor = Color.FromArgb(37,37,39);
 
             dataGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(55, 71, 79);
@@ -126,11 +129,12 @@ namespace AnimalTracker
             dataGrid.RowsDefaultCellStyle.BackColor = Color.White;
             dataGrid.RowsDefaultCellStyle.ForeColor = Color.FromArgb(37, 37, 39);
 
-            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Roboto", 11);
+            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Segeo UI", 11);
+
             dataGrid.AlternatingRowsDefaultCellStyle.Font = new Font("Roboto", 11);
             dataGrid.DefaultCellStyle.Font = new Font("Roboto", 11);
 
-            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
         }
 
         void styleDarkDataGridView(DataGridView dataGrid)
@@ -184,113 +188,11 @@ namespace AnimalTracker
         // load animal table when program starts
         private void Home_Load(object sender, EventArgs e)
         {
-            // Load lions
-            string queryLion = "SELECT * FROM Lion";
-            LoadData(queryLion, lionDataGrid);
-
-            // Load monkeys
-            string queryMonkey = "SELECT * FROM Monkey";
-            LoadData(queryMonkey, monkeyDataGrid);
-
-            // Load rabbits
-            string queryRabbit = "SELECT * FROM Rabbit";
-            LoadData(queryRabbit, rabbitDataGrid);
-
             // Load all animals
             string queryAnimals = "SELECT * FROM Animal";
             LoadData(queryAnimals, animalDataGrid);
-
-            //animalDataGrid.Columns[0].Visible = false; // hide ID column during runtime
+            animalDataGrid.Columns[0].Visible = false;
         }
-        private void lionDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewRow row = lionDataGrid.Rows[e.RowIndex];
-                name_txt.Text = row.Cells[1].Value.ToString();
-                species_txt.Text = row.Cells[2].Value.ToString();
-                age_txt.Text = row.Cells[3].Value.ToString();
-                if (row.Cells[4].Value.ToString() == "Male")
-                {
-                    male_radio_btn.Checked = true;
-                }
-                else
-                {
-                    female_radio_btn.Checked = true;
-                }
-
-            }
-            catch (Exception) // reset textboxes
-            {
-                MessageBox.Show("Empty field");
-                // refresh fields
-                name_txt.Text = "";
-                name_txt.Focus();
-                species_txt.Text = "";
-                age_txt.Text = "";
-                male_radio_btn.Checked = true;
-            }
-        }
-
-        private void monkeyDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewRow row = monkeyDataGrid.Rows[e.RowIndex];
-                name_txt.Text = row.Cells[1].Value.ToString();
-                species_txt.Text = row.Cells[2].Value.ToString();
-                age_txt.Text = row.Cells[3].Value.ToString();
-                if (row.Cells[4].Value.ToString() == "Male")
-                {
-                    male_radio_btn.Checked = true;
-                }
-                else
-                {
-                    female_radio_btn.Checked = true;
-                }
-
-            }
-            catch (Exception) // reset textboxes
-            {
-                MessageBox.Show("Empty field");
-                // refresh fields
-                name_txt.Text = "";
-                name_txt.Focus();
-                species_txt.Text = "";
-                age_txt.Text = "";
-                male_radio_btn.Checked = true;
-            }
-        }
-
-        private void rabbitDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewRow row = rabbitDataGrid.Rows[e.RowIndex];
-                name_txt.Text = row.Cells[1].Value.ToString();
-                species_txt.Text = row.Cells[2].Value.ToString();
-                age_txt.Text = row.Cells[3].Value.ToString();
-                if (row.Cells[4].Value.ToString() == "Male")
-                {
-                    male_radio_btn.Checked = true;
-                }
-                else
-                {
-                    female_radio_btn.Checked = true;
-                }
-            }
-            catch (Exception) // reset textboxes
-            {
-                MessageBox.Show("Empty field");
-                // refresh fields
-                name_txt.Text = "";
-                name_txt.Focus();
-                species_txt.Text = "";
-                age_txt.Text = "";
-                male_radio_btn.Checked = true;
-            }
-        }
-
         private void mealDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -475,7 +377,7 @@ namespace AnimalTracker
         private void materialTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             // this displays the data in the feeding table when feeding tab selected
-            if (materialTabControl.SelectedTab == meal_page)
+            if (TabControl.SelectedTab == meal_page)
             {
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Feeding";
@@ -488,7 +390,7 @@ namespace AnimalTracker
             }
 
             // this displays the data in the exercise table after exercise tab selected
-            if (materialTabControl.SelectedTab == exercise_page)
+            if (TabControl.SelectedTab == exercise_page)
             {
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Exercise";
@@ -497,7 +399,7 @@ namespace AnimalTracker
             }
 
             // this displays the data in the activity table after activity tab selected
-            if (materialTabControl.SelectedTab == activity_page)
+            if (TabControl.SelectedTab == activity_page)
             {
                 // Returns all data from the meals table
                 string query = "SELECT * FROM Activity";
@@ -506,7 +408,7 @@ namespace AnimalTracker
             }
 
             // this displays the data in the weight table after weight tab selected
-            if (materialTabControl.SelectedTab == physique_page)
+            if (TabControl.SelectedTab == physique_page)
             {
                 // Returns all data from the meals table
                 string queryWeight = "SELECT * FROM Weight";
@@ -518,7 +420,7 @@ namespace AnimalTracker
                 //weightDataGrid.Columns[0].Visible = false; // hide ID column during runtime
             }
             // this displays which settings were last selected
-            if(materialTabControl.SelectedTab == settings_page)
+            if(TabControl.SelectedTab == settings_page)
             {
                 string Theme = checkTheme();
                 if(Theme == "Dark")
@@ -537,12 +439,12 @@ namespace AnimalTracker
 
         void resetAnimalFields()
         {
-            name_txt.Text = "";
-            name_txt.Focus();
+            txt_name.Text = "";
+            txt_name.Focus();
             gender = "Male";
-            male_radio_btn.Checked = true;
-            age_txt.Text = "";
-            species_txt.Text = "";
+            radio_male.Checked = true;
+            txt_age.Text = "";
+            txt_species.Text = "";
         }
 
         void resetMealFields()
@@ -563,183 +465,6 @@ namespace AnimalTracker
             duration_txt.Text = "";
             exercise_AnimalId_txt.Text = "";
         }
-            
-        // adds animal to database
-        private void add_ani_btn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // if the lion tab is in view, insert into the Lion database
-                if (animalTabs.SelectedTab == lionTab)
-                {
-                    string queryLion = "INSERT INTO Lion (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
-                    Text + "','" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(queryLion);
-
-                    // pull the animal's Id to reference to in the animal table
-                    string queryAnimallId = "SELECT Id FROM Lion WHERE Name = '" + name_txt.Text + "'";
-                    string AnimalId = Connection.ReadString(queryAnimallId);
-                    string queryAnimal = "INSERT INTO Animal (AnimalId, Registered) VALUES ('" + AnimalId.ToString() + "', '" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(queryAnimal);
-
-                    // refresh the data grids
-                    string queryLions = "SELECT * FROM Lion";
-                    LoadData(queryLions, lionDataGrid);
-
-                    string queryAnimals = "SELECT * FROM Animal";
-                    LoadData(queryAnimals, animalDataGrid);
-                }
-
-                // if the Monkey tab is in view, insert into the Monkey database
-                if (animalTabs.SelectedTab == monkeyTab)
-                {
-                    string queryLion = "INSERT INTO Monkey (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
-                    Text + "','" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(queryLion);
-
-                    // pull the animal's Id to reference to in the animal table
-                    string queryAnimallId = "SELECT Id FROM Monkey WHERE Name = '" + name_txt.Text + "'";
-                    string AnimalId = Connection.ReadString(queryAnimallId);
-                    string queryAnimal = "INSERT INTO Animal (AnimalId, Registered) VALUES ('" + AnimalId.ToString() + "', '" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(queryAnimal);
-
-                    string queryMonkeys = "SELECT * FROM Monkey";
-                    LoadData(queryMonkeys, monkeyDataGrid);
-
-                    string queryAnimals = "SELECT * FROM Animal";
-                    LoadData(queryAnimals, animalDataGrid);
-                }
-
-                // if the Rabbit tab is in view, insert into the Rabbit database
-                if (animalTabs.SelectedTab == rabbitTab)
-                {
-                    string queryRabbit = "INSERT INTO Rabbit (Name, Gender, Age, Species, Registered) VALUES ('" + name_txt.Text + "','" + gender + "','" + age_txt.Text + "','" + species_txt.
-                    Text + "','" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(queryRabbit);
-
-                    // pull the animal's Id to reference to in the animal table
-                    string queryAnimallId = "SELECT Id FROM Rabbit WHERE Name = '" + name_txt.Text + "'";
-                    string AnimalId = Connection.ReadString(queryAnimallId);
-                    string queryAnimal = "INSERT INTO Animal (AnimalId, Registered) VALUES ('" + AnimalId.ToString() + "', '" + DateTime.Now.ToString("s") + "')";
-                    AnimalControls.Querydb(queryAnimal);
-
-                    // refresh the data grids
-                    string queryRabbits = "SELECT * FROM Rabbit";
-                    LoadData(queryRabbits, rabbitDataGrid);
-
-                    string queryAnimals = "SELECT * FROM Animal";
-                    LoadData(queryAnimals, animalDataGrid);
-                }
-
-                // refresh fields
-                resetAnimalFields();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to record!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // updates animal list
-        private void update_ani_btn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // if the lion tab is in view, insert into the Lion database
-                if (animalTabs.SelectedTab == lionTab)
-                {
-                    int id = Convert.ToInt32(lionDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string queryLion = "UPDATE Lion SET Name = '" + @name_txt.Text + "', Age = '" + age_txt.Text + "', Gender = '" + @gender + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
-                    AnimalControls.Querydb(queryLion);
-                    string queryList = "SELECT * FROM Lion";
-                    LoadData(queryList, lionDataGrid);
-                }
-
-                // if the Monkey tab is in view, insert into the Monkey database
-                if (animalTabs.SelectedTab == monkeyTab)
-                {
-                    int id = Convert.ToInt32(monkeyDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string queryMonkey = "UPDATE Monkey SET Name = '" + @name_txt.Text + "', Age = '" + age_txt.Text + "', Gender = '" + @gender + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
-                    AnimalControls.Querydb(queryMonkey);
-                    string queryList = "SELECT * FROM Monkey";
-                    LoadData(queryList, monkeyDataGrid);
-                }
-
-                // if the Rabbit tab is in view, insert into the Rabbit database
-                if (animalTabs.SelectedTab == rabbitTab)
-                {
-                    int id = Convert.ToInt32(rabbitDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string queryRabbit = "UPDATE Rabbit SET Name = '" + @name_txt.Text + "', Age = '" + age_txt.Text + "', Gender = '" + @gender + "', Species = '" + @species_txt.Text + "' WHERE Id ='" + id + "'";
-                    AnimalControls.Querydb(queryRabbit);
-                    string queryList = "SELECT * FROM Rabbit";
-                    LoadData(queryList, rabbitDataGrid);
-                }
-
-                // refresh fields
-                resetAnimalFields();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Failed to update!", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // deletes animal from database
-        private void delete_ani_btn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                try
-                {
-                    DialogResult dialogResult = MessageBox.Show("Delete Animal?", "Are you sure?", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-
-                        // if the lion tab is in view, delete the Lion
-                        if (animalTabs.SelectedTab == lionTab)
-                        {
-                            int lionId = Convert.ToInt32(lionDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                            string queryLion = "DELETE FROM Lion WHERE ID = '" + lionId + "' ";
-                            AnimalControls.Querydb(queryLion);
-                            string query = "SELECT * FROM Lion";
-                            LoadData(query, lionDataGrid);
-                        }
-
-                        // if the Monkey tab is in view, delete the Monkey
-                        if (animalTabs.SelectedTab == monkeyTab)
-                        {
-                            int monkeyId = Convert.ToInt32(monkeyDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                            string queryMonkey = "DELETE FROM Monkey WHERE ID = '" + monkeyId + "' ";
-                            AnimalControls.Querydb(queryMonkey);
-                            string query = "SELECT * FROM Monkey";
-                            LoadData(query, monkeyDataGrid);
-                        }
-
-                        // if the Rabbit tab is in view, delete the Rabbit
-                        if (animalTabs.SelectedTab == rabbitTab)
-                        {
-                            int rabbitId = Convert.ToInt32(rabbitDataGrid.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                            string queryRabbit = "DELETE FROM Rabbit WHERE ID = '" + rabbitId + "' ";
-                            AnimalControls.Querydb(queryRabbit);
-                            string query = "SELECT * FROM Rabbit";
-                            LoadData(query, rabbitDataGrid);
-                        }
-                         // refresh fields
-                        resetAnimalFields();
-                    } // edd of dialogue
-                }
-                catch (Exception)
-                {
-                    // this happens when we have an error
-                    MessageBox.Show("Empty row selected", "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error)", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         /* Meal tab */
         // records meals to the database
         private void rec_meal_btn_Click(object sender, EventArgs e)
@@ -1220,34 +945,32 @@ namespace AnimalTracker
             }
         }
 
-        string showmore = "less";
-
         private void loadGraph_btn_Click(object sender, EventArgs e)
         {
+            int id = int.Parse(chart_AnimalId_num.Text);
             SQLiteConnection con = Connection.GetConnection();
-            SQLiteCommand cmd = new SQLiteCommand("SELECT CAST(WeightAverage AS INT), WeightMorning, WeightEvening, date FROM Weight WHERE AnimalId = '" + chart_AnimalId_num.Text + "'", con);
-            SQLiteDataReader reader = cmd.ExecuteReader();
+            // get average
+            SQLiteCommand average = new SQLiteCommand($"SELECT CAST(WeightAverage AS INT), date FROM Weight WHERE AnimalId = {id}", con);
+            // get morning weight
+            SQLiteCommand morningWeight = new SQLiteCommand($"SELECT WeightMorning, date FROM Weight WHERE AnimalId = {id}", con);
+            // get evening weight
+            SQLiteCommand eveningWeight = new SQLiteCommand($"SELECT WeightEvening, date FROM Weight WHERE AnimalId = {id}", con);
+            SQLiteDataReader avg = average.ExecuteReader();
+            SQLiteDataReader mw = morningWeight.ExecuteReader();
+            SQLiteDataReader ew = eveningWeight.ExecuteReader();
             try
             {
                 // clear previous trend
                 chart.Series[0].Points.Clear(); 
                 chart.Series[1].Points.Clear();
                 chart.Series[2].Points.Clear();
-                if (showmore == "less")
+
+                while (avg.Read() && mw.Read() && ew.Read())
                 {
-                    while (reader.Read())
-                    {
-                        chart.Series[0].Points.Add(reader.GetInt32(0));
-                    }
+                    chart.Series["Weight Average"].Points.Add(avg.GetInt32(0));
+                    chart.Series["Morning Weight"].Points.Add(mw.GetInt32(0));
+                    chart.Series["Evening Weight"].Points.Add(ew.GetInt32(0));
                 }
-                else
-                {
-                    while (reader.Read())
-                    {
-                        this.chart.Series["WeightAverage"].Points.AddXY(reader.GetInt32(0));
-                    }
-                }
-                
                 if (Convert.ToInt32(chart_AnimalId_num.Text) > 0)
                 {
                     chart_lbl.Hide();
@@ -1257,27 +980,12 @@ namespace AnimalTracker
                     chart_lbl.Show();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Select AnimalId or record weight fist!");
+                MessageBox.Show(ex.ToString(),"Assistant");
                 con.Close();
             }
         }
-        void showMore(string query, SQLiteDataReader reader)
-        {
-            chart.Series[1].Points.Add(reader.GetInt32(0));
-            chart.Series[2].Points.Add(reader.GetInt32(0));
-        }
-
-        private void more_btn_CheckedChanged(object sender, EventArgs e)
-        {
-            showmore = "more";
-        }
-        private void less_btn_CheckedChanged(object sender, EventArgs e)
-        {
-            showmore = "less";
-        }
-
         /* Settings tab */
 
         private void theme_btn_Click(object sender, EventArgs e)

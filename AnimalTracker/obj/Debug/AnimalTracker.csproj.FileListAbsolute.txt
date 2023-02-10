@@ -33,3 +33,16 @@ C:\Users\Wanga Kanjala\source\repos\Animal Tracker\AnimalTracker\obj\Debug\Anima
 C:\Users\Wanga Kanjala\source\repos\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.csproj.CopyComplete
 C:\Users\Wanga Kanjala\source\repos\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.exe
 C:\Users\Wanga Kanjala\source\repos\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.pdb
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\bin\Debug\AnimalTracker.exe.config
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.exe
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.pdb
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\bin\Debug\AnimalTracker.exe
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\bin\Debug\AnimalTracker.pdb
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\bin\Debug\MaterialSkin.dll
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\bin\Debug\System.Data.SQLite.dll
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\bin\Debug\System.Data.SQLite.xml
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.csprojResolveAssemblyReference.cache
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.Home.resources
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.Properties.Resources.resources
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.SplashScreen.resources
+C:\Users\Wanga\Documents\Visual Studio 2015\Projects\Animal Tracker\AnimalTracker\obj\Debug\AnimalTracker.csproj.GenerateResource.Cache
