@@ -48,7 +48,7 @@ This page allows the user to set the activity level of the animal on a particula
 
 <img src="screenshots/activity.png" alt="Activity interface" >
 
-# Activity
+# Chart
 
 This page shows the weight in the morning and everning compared to the average weight in chart form to represent a visualization of data.
 
