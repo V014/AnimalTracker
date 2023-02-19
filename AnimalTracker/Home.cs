@@ -16,7 +16,8 @@ namespace AnimalTracker
         private string activity = "Inactive";
         private string gender = "Male";
         private string Theme = "";
-        
+        private string date = DateTime.Now.ToString("f");
+
         public Home()
         {
             InitializeComponent();
@@ -171,53 +172,6 @@ namespace AnimalTracker
             Application.Exit();
         }
         // load animal table when program starts
-        
-        private void mealDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewRow row = data_meal.Rows[e.RowIndex];
-                lbl_calories.Text = row.Cells[2].Value.ToString();
-
-                var calories = Convert.ToInt32(row.Cells[2].Value.ToString());
-                string queryWeight = "SELECT Calories FROM Meal WHERE Id ='" + data_meal.Rows[e.RowIndex] + "'";
-                var weight = Convert.ToInt32(con.ReadString(queryWeight).ToString());
-                var weightDifference = 
-
-
-                txt_meal.Text = row.Cells[1].Value.ToString();
-                txt_portion.Text = row.Cells[3].Value.ToString();
-
-            }
-            catch (Exception) // reset textboxes
-            {
-                MessageBox.Show("Empty field");
-                // refresh fields
-                txt_meal.Text = " ";
-                txt_meal.Focus();
-                lbl_calories.Text = "Waiting on you...";
-                txt_portion.Text = "";
-            }
-        }
-
-        private void feedingDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewRow row = data_feeding.Rows[e.RowIndex];
-                txt_animal_id.Text = row.Cells[1].Value.ToString();
-
-            }
-            catch (Exception) // reset textboxes
-            {
-                MessageBox.Show("Empty field");
-                // refresh fields
-                txt_meal.Text = " ";
-                txt_meal.Focus();
-                lbl_calories.Text = "Waiting on you...";
-                txt_portion.Text = "";
-            }
-        }
 
         private void weightDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -322,30 +276,12 @@ namespace AnimalTracker
             }
         }
 
-        
-
-        // react to user input when they select the female radio button
-        private void female_radio_btn_CheckedChanged(object sender, EventArgs e)
+        private void LoadMeals()
         {
-            gender = "Female";
-        }
-
-        
-
-        private void inactive_radio_btn_CheckedChanged(object sender, EventArgs e)
-        {
-            activity = "Inactive";
-        }
-
-        // react to user input when they select the other avtivity buttons
-        private void moderate_radio_btn_CheckedChanged(object sender, EventArgs e)
-        {
-            activity = "Moderately Active"; 
-        }
-
-        private void active_radio_btn_CheckedChanged(object sender, EventArgs e)
-        {
-            activity = "Active";
+            string queryMeal = "SELECT * FROM Meal AS M INNER JOIN Feeding AS F ON F.MealId = M.Id";
+            con.LoadData(queryMeal, data_meal);
+            data_meal.Columns[0].Visible = false;
+            data_meal.Columns[4].Visible = false;
         }
 
         /* ========= Pull data from the db depending on which tab is selected ========= */
@@ -414,12 +350,12 @@ namespace AnimalTracker
 
         void resetAnimalFields()
         {
-            txt_name.Text = "";
-            txt_name.Focus();
+            txt_animal_name.Text = "";
+            txt_animal_name.Focus();
             gender = "Male";
             radio_male.Checked = true;
-            txt_age.Text = "";
-            txt_species.Text = "";
+            txt_animal_age.Text = "";
+            txt_animal_species.Text = "";
         }
 
         void resetMealFields()
@@ -427,9 +363,8 @@ namespace AnimalTracker
             // refresh fields
             txt_meal.Text = "";
             txt_meal.Focus();
-            lbl_calories.Text = "Waiting on you";
             txt_portion.Text = "";
-            txt_animal_id.Text = "";
+            txt_meal_animal_id.Text = "";
         }
 
         void resetExerciseFields()
@@ -442,10 +377,6 @@ namespace AnimalTracker
         }
         /* Meal tab */
         // records meals to the database
-        private void rec_meal_btn_Click(object sender, EventArgs e)
-        {
-            
-        }
         /* Exercise tab */
         private void rec_exe_btn_Click(object sender, EventArgs e)
         {
@@ -839,10 +770,10 @@ namespace AnimalTracker
             {
                 DataGridViewRow row = data_animal.Rows[e.RowIndex];
 
-                txt_name.Text = row.Cells[1].Value.ToString();
-                txt_species.Text = row.Cells[2].Value.ToString();
+                txt_animal_name.Text = row.Cells[1].Value.ToString();
+                txt_animal_species.Text = row.Cells[2].Value.ToString();
                 string gender = row.Cells[3].Value.ToString();
-                txt_age.Text = row.Cells[4].Value.ToString();
+                txt_animal_age.Text = row.Cells[4].Value.ToString();
 
                 if (gender == "Male")
                 {
@@ -857,9 +788,9 @@ namespace AnimalTracker
             catch (Exception) // reset textboxes
             {
                 // refresh fields
-                txt_name.Text = "";
-                txt_species.Text = "";
-                txt_age.Text = "";
+                txt_animal_name.Text = "";
+                txt_animal_species.Text = "";
+                txt_animal_age.Text = "";
                 radio_male.Checked = true;
             }
         }
@@ -868,59 +799,49 @@ namespace AnimalTracker
         {
             try
             {
-                if (mealTabs.SelectedTab == feeding_page)
+                int id = Convert.ToInt32(txt_meal_animal_id.Text);
+                // if the meal's name already exists then add the feeding only
+                if (id > 0)
                 {
-                    // pull the meal name to compare it to the user input
-                    string queryMealName = "SELECT Name FROM Meal WHERE Name = '" + txt_meal.Text + "'";
-                    string MealName = con.ReadString(queryMealName);
+                    string feedingQuery = $"INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ({id}, '{date}')";
+                    con.ExecuteQuery(feedingQuery);
+
+                    string loadMeals = "SELECT * FROM Meal";
+                    con.LoadData(loadMeals, data_meal);
+
+                    string loadFeedings = "SELECT * FROM Feeding";
+                    con.LoadData(loadFeedings, data_feeding);
+
+                    // refresh fields
+                    resetMealFields();
+
+                }
+                else
+                {
+                    // calculate calories per gram, 4 being the multiple digit to calculate protein
+                    var calories = Convert.ToInt32(txt_portion.Text) * 4;
+                    // if the meal didn't exist, add the feeding and the meal details to the database
+                    // we build our query in the form page which has references to the its controls.
+                    string mealQuery = "INSERT INTO Meal (Name, Calories, Portion, Date) VALUES ('" + txt_meal.Text + "','" + calories + "','" + txt_portion.Text + "','" + DateTime.Now.ToString("s") + "')";
+                    con.ExecuteQuery(mealQuery);
 
                     // pull the meal Id to reference to the meal
-                    string queryMealId = "SELECT Id FROM Meal WHERE Name = '" + txt_meal.Text + "'";
-                    string mealId = con.ReadString(queryMealId);
+                    string queryNewMealId = "SELECT Id FROM Meal WHERE Name = '" + txt_meal.Text + "'";
+                    string newMealId = con.ReadString(queryNewMealId);
 
-                    // if the meal's name already exists then add the feeding only
-                    if (MealName.ToString() == txt_meal.Text)
-                    {
-                        string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + txt_animal_id.Text + "', '" + mealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
-                        con.ExecuteQuery(feedingQuery);
+                    string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + txt_meal_animal_id.Text + "', '" + newMealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
+                    con.ExecuteQuery(feedingQuery);
 
-                        string loadMeals = "SELECT * FROM Meal";
-                        con.LoadData(loadMeals, data_meal);
+                    string loadMeals = "SELECT * FROM Meal";
+                    con.LoadData(loadMeals, data_meal);
 
-                        string loadFeedings = "SELECT * FROM Feeding";
-                        con.LoadData(loadFeedings, data_feeding);
+                    string loadFeedings = "SELECT * FROM Feeding";
+                    con.LoadData(loadFeedings, data_feeding);
 
-                        // refresh fields
-                        resetMealFields();
+                    MessageBox.Show("Recorded new meal!");
 
-                    }
-                    else
-                    {
-                        // calculate calories per gram, 4 being the multiple digit to calculate protein
-                        var calories = Convert.ToInt32(txt_portion.Text) * 4;
-                        // if the meal didn't exist, add the feeding and the meal details to the database
-                        // we build our query in the form page which has references to the its controls.
-                        string mealQuery = "INSERT INTO Meal (Name, Calories, Portion, Date) VALUES ('" + txt_meal.Text + "','" + calories + "','" + txt_portion.Text + "','" + DateTime.Now.ToString("s") + "')";
-                        con.ExecuteQuery(mealQuery);
-
-                        // pull the meal Id to reference to the meal
-                        string queryNewMealId = "SELECT Id FROM Meal WHERE Name = '" + txt_meal.Text + "'";
-                        string newMealId = con.ReadString(queryNewMealId);
-
-                        string feedingQuery = "INSERT INTO Feeding (AnimalId, MealId, Date) VALUES ('" + txt_animal_id.Text + "', '" + newMealId.ToString() + "','" + DateTime.Now.ToString("s") + "')";
-                        con.ExecuteQuery(feedingQuery);
-
-                        string loadMeals = "SELECT * FROM Meal";
-                        con.LoadData(loadMeals, data_meal);
-
-                        string loadFeedings = "SELECT * FROM Feeding";
-                        con.LoadData(loadFeedings, data_feeding);
-
-                        MessageBox.Show("Recorded new meal!");
-
-                        // refresh fields
-                        resetMealFields();
-                    }
+                    // refresh fields
+                    resetMealFields();
                 }
             }
             catch (Exception)
@@ -953,7 +874,7 @@ namespace AnimalTracker
                 {
                     // we build our query in the form page which has references to its controls
                     int id = Convert.ToInt32(data_feeding.CurrentRow.Cells[0].Value.ToString()); // collect id from selected row
-                    string txtQuery = "UPDATE Feeding SET AnimalId = '" + txt_animal_id.Text + "' WHERE Id ='" + id + "'";
+                    string txtQuery = "UPDATE Feeding SET AnimalId = '" + txt_meal_animal_id.Text + "' WHERE Id ='" + id + "'";
 
                     // we push the query to the AnimalControl class to process the query which links back to the con class
                     con.ExecuteQuery(txtQuery);
@@ -1025,11 +946,26 @@ namespace AnimalTracker
         {
             try
             {
-                
+                // set variables
+                string name = txt_animal_name.Text;
+                string species = txt_animal_species.Text;
+                string age = txt_animal_age.Text;
+                // how to handle check boxes
+                if(radio_male.Checked == true)
+                {
+                    gender = "Male";
+                }
+                else
+                {
+                    gender = "Female";
+                }
+                // insert into the database
+                con.ExecuteQuery($"INSERT INTO Animal(Name, species, gender age) VALUES('{name}', '{species}', '{gender}', {age})");
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Failed to record feeding!", "Error)", MessageBoxButtons.OK);
+                MessageBox.Show(ex.ToString());
             }
         }
 
